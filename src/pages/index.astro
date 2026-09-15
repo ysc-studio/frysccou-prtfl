@@ -364,7 +364,7 @@ const STAMP = `<svg viewBox="0 0 60 60" width="100%" height="100%" fill="none" s
         {PRICING.map(({ n, title, price, original, desc, features, highlight }) => {
           const discount = Math.round((1 - Number(price) / Number(original)) * 100);
           return (
-            <div style={`position:relative; padding:clamp(24px,3vw,32px) clamp(20px,2.6vw,28px); border-right:1px solid ${LINE}; border-bottom:1px solid ${LINE}; ${highlight ? `background:${BLACK}; color:${BG};` : ''}`}>
+            <div class="price-card" style={`position:relative; padding:clamp(24px,3vw,32px) clamp(20px,2.6vw,28px); border-right:1px solid ${LINE}; border-bottom:1px solid ${LINE}; ${highlight ? `background:${BLACK}; color:${BG};` : ''}`}>
               {highlight && <span data-i18n="pricing.badge" style={`position:absolute; top:0; right:0; font-family:'JetBrains Mono',monospace; font-size:9px; letter-spacing:.12em; text-transform:uppercase; color:${BG}; background:${VIOLET}; padding:5px 10px;`}>Most chosen</span>}
               <span style={`font-family:'JetBrains Mono',monospace; font-size:11px; color:${VIOLET};`}>{n}</span>
               <h3 data-i18n={`pricing.${n}.title`} style={`font-family:'Poppins',sans-serif; font-weight:700; font-size:clamp(19px,2.2vw,23px); margin:10px 0 4px; color:${highlight ? BG : BLACK};`}>{title}</h3>
@@ -457,6 +457,13 @@ const STAMP = `<svg viewBox="0 0 60 60" width="100%" height="100%" fill="none" s
 </Layout>
 
 <script>
+  import gsap from 'gsap';
+  import { ScrollTrigger } from 'gsap/ScrollTrigger';
+  gsap.registerPlugin(ScrollTrigger);
+
+  const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  const hasFinePointer = window.matchMedia('(pointer: fine)').matches;
+
   const PROJECTS = [
     { title: "Elevate Gym", num: "01" },
     { title: "Atlas", num: "02" },
@@ -698,6 +705,149 @@ const STAMP = `<svg viewBox="0 0 60 60" width="100%" height="100%" fill="none" s
   let storedLang = 'en';
   try { storedLang = localStorage.getItem(LANG_KEY) || 'en'; } catch {}
   if (storedLang === 'es') applyLang('es');
+
+  function splitWords(el) {
+    const words = el.textContent.split(/(\s+)/);
+    el.innerHTML = words.map((w) => (w.trim() ? `<span class="word"><span class="word-inner">${w}</span></span>` : w)).join('');
+    return el.querySelectorAll('.word-inner');
+  }
+
+  if (!prefersReducedMotion) {
+    gsap.from('#services', {
+      clipPath: 'inset(0 100% 0 0)', opacity: 0, duration: 1.1, ease: 'power4.inOut',
+      scrollTrigger: { trigger: '#services', start: 'top 82%' },
+    });
+    gsap.from('#work', {
+      opacity: 0, y: 100, duration: 1, ease: 'power3.out',
+      scrollTrigger: { trigger: '#work', start: 'top 85%' },
+    });
+    gsap.from('#side-projects', {
+      opacity: 0, scale: 0.78, duration: 1, ease: 'back.out(1.4)',
+      scrollTrigger: { trigger: '#side-projects', start: 'top 82%' },
+    });
+    gsap.from('#experience', {
+      opacity: 0, x: -120, skewX: 6, duration: 1, ease: 'power4.out',
+      scrollTrigger: { trigger: '#experience', start: 'top 82%' },
+    });
+    gsap.from('#tech', {
+      opacity: 0, filter: 'blur(16px)', duration: 1.1, ease: 'power2.out',
+      scrollTrigger: { trigger: '#tech', start: 'top 85%' },
+    });
+    gsap.from('#pricing', {
+      clipPath: 'inset(0 0 0 100%)', opacity: 0, duration: 1.1, ease: 'power4.inOut',
+      scrollTrigger: { trigger: '#pricing', start: 'top 82%' },
+    });
+    gsap.from('#contact', {
+      opacity: 0, scale: 1.1, duration: 1.1, ease: 'power3.out',
+      scrollTrigger: { trigger: '#contact', start: 'top 85%' },
+    });
+    gsap.from('footer', {
+      opacity: 0, y: 50, duration: 0.9, ease: 'power2.out',
+      scrollTrigger: { trigger: 'footer', start: 'top 92%' },
+    });
+
+    const heroLines = gsap.utils.toArray('.r-h1 > span:not(.hero-tag)');
+    const heroWords = heroLines.flatMap((el) => Array.from(splitWords(el)));
+
+    gsap.timeline({ defaults: { ease: 'power4.out' } })
+      .from('.marquee', { opacity: 0, y: 20, duration: 0.6 })
+      .from(heroWords, { opacity: 0, yPercent: 130, rotate: 6, stagger: 0.045, duration: 1 }, '-=0.25')
+      .from('.hero-tag', { opacity: 0, y: 18, duration: 0.6 }, '-=0.5')
+      .from('.hero-grid > *', { opacity: 0, y: 28, stagger: 0.12, duration: 0.7 }, '-=0.4')
+      .from('.rail-link, .rail .lang-toggle, .rail > div:last-child > div:last-child', { opacity: 0, x: -12, stagger: 0.05, duration: 0.5 }, '-=0.9');
+
+    gsap.utils.toArray('[data-i18n$=".header"]').forEach((el) => {
+      const words = splitWords(el);
+      gsap.from(words, {
+        opacity: 0, yPercent: 100, stagger: 0.03, duration: 0.7, ease: 'power3.out',
+        scrollTrigger: { trigger: el, start: 'top 85%' },
+      });
+    });
+
+    gsap.utils.toArray('.exhibit').forEach((el, i) => {
+      const dir = i % 2 === 0 ? -60 : 60;
+      const img = el.querySelector('.proj-img');
+      const tl = gsap.timeline({ scrollTrigger: { trigger: el, start: 'top 78%' } });
+      tl.from(el, { opacity: 0, x: dir, rotate: i % 2 === 0 ? -1.5 : 1.5, duration: 1, ease: 'power4.out' });
+      if (img) tl.from(img, { clipPath: 'inset(0 0 100% 0)', scale: 1.2, duration: 1.1, ease: 'power4.out' }, '<');
+      tl.from(el.querySelectorAll('h3, p, div span'), { opacity: 0, y: 16, stagger: 0.04, duration: 0.6 }, '<0.15');
+
+      const num = el.querySelector('span[aria-hidden="true"]');
+      if (num) {
+        gsap.fromTo(num, { yPercent: -16 }, {
+          yPercent: 16, ease: 'none',
+          scrollTrigger: { trigger: el, start: 'top bottom', end: 'bottom top', scrub: true },
+        });
+      }
+    });
+
+    ScrollTrigger.batch('.reel-card', {
+      start: 'top 88%',
+      onEnter: (batch) => gsap.from(batch, { opacity: 0, y: 60, scale: 0.92, rotate: -2, stagger: 0.12, duration: 0.9, ease: 'back.out(1.6)' }),
+    });
+
+    ScrollTrigger.batch('.sp-card', {
+      start: 'top 92%',
+      onEnter: (batch) => gsap.from(batch, { opacity: 0, y: 50, scale: 0.9, rotate: 3, stagger: 0.08, duration: 0.8, ease: 'back.out(1.7)' }),
+    });
+
+    gsap.utils.toArray('.log-year').forEach((el) => {
+      gsap.from(el.children[0], { opacity: 0, x: -30, duration: 0.7, ease: 'power3.out', scrollTrigger: { trigger: el, start: 'top 88%' } });
+      gsap.from(el.querySelectorAll(':scope > div:last-child > div'), {
+        opacity: 0, y: 24, stagger: 0.08, duration: 0.6, ease: 'power2.out',
+        scrollTrigger: { trigger: el, start: 'top 85%' },
+      });
+    });
+
+    ScrollTrigger.batch('.price-card', {
+      start: 'top 90%',
+      onEnter: (batch) => gsap.from(batch, { opacity: 0, y: 50, scale: 0.94, rotate: -1, stagger: 0.1, duration: 0.8, ease: 'back.out(1.5)' }),
+    });
+
+    gsap.to('.hero-glow', {
+      yPercent: 40, scale: 1.15, ease: 'none',
+      scrollTrigger: { trigger: '#top', start: 'top top', end: 'bottom top', scrub: true },
+    });
+    gsap.to('.hero-glow', { scale: 1.08, opacity: 0.85, duration: 3.5, yoyo: true, repeat: -1, ease: 'sine.inOut' });
+
+    gsap.utils.toArray('.exhibit-media, #contact > div > div:last-child').forEach((el) => {
+      gsap.fromTo(el, { yPercent: -6 }, {
+        yPercent: 6, ease: 'none',
+        scrollTrigger: { trigger: el, start: 'top bottom', end: 'bottom top', scrub: true },
+      });
+    });
+  }
+
+  if (hasFinePointer && !prefersReducedMotion) {
+    document.querySelectorAll('.sp-card, .reel-card').forEach((el) => {
+      const rotateX = gsap.quickTo(el, 'rotationX', { duration: 0.4, ease: 'power3.out' });
+      const rotateY = gsap.quickTo(el, 'rotationY', { duration: 0.4, ease: 'power3.out' });
+      const lift = gsap.quickTo(el, 'z', { duration: 0.4, ease: 'power3.out' });
+
+      el.addEventListener('mousemove', (e) => {
+        const rect = el.getBoundingClientRect();
+        const px = (e.clientX - rect.left) / rect.width - 0.5;
+        const py = (e.clientY - rect.top) / rect.height - 0.5;
+        rotateY(px * 16);
+        rotateX(-py * 16);
+        lift(24);
+      });
+      el.addEventListener('mouseleave', () => {
+        rotateX(0);
+        rotateY(0);
+        lift(0);
+      });
+    });
+
+    document.querySelectorAll('.btn-primary, .btn-outline, .exhibit-link, .lang-toggle').forEach((el) => {
+      el.addEventListener('mousemove', (e) => {
+        const r = el.getBoundingClientRect();
+        gsap.to(el, { x: (e.clientX - r.left - r.width / 2) * 0.35, y: (e.clientY - r.top - r.height / 2) * 0.4, duration: 0.3, ease: 'power3.out' });
+      });
+      el.addEventListener('mouseleave', () => gsap.to(el, { x: 0, y: 0, duration: 0.6, ease: 'elastic.out(1,0.4)' }));
+    });
+
+  }
 </script>
 
 <style>
@@ -710,6 +860,31 @@ const STAMP = `<svg viewBox="0 0 60 60" width="100%" height="100%" fill="none" s
   .price-reveal { opacity: 0; }
   .price-box:hover .price-hidden { opacity: 0; }
   .price-box:hover .price-reveal { opacity: 1; }
+
+  .reel, .reel-projects { perspective: 1200px; }
+  .sp-card, .reel-card { transform-style: preserve-3d; will-change: transform; }
+
+  .reel-nav, #sp-close, #sp-prev, #sp-next {
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+  }
+  #sp-modal > div {
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    background: rgba(245,243,250,.92) !important;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .marquee { animation: none; }
+  }
+
+  .word { display: inline-block; overflow: hidden; vertical-align: top; }
+  .word-inner { display: inline-block; }
+
+  .exhibit-media { overflow: hidden; }
+
+  .page-body { perspective: 1600px; }
+  section, footer { transform-style: preserve-3d; will-change: transform; }
 
   @media (max-width: 900px) {
     .rail { display: none !important; }
