@@ -1,0 +1,430 @@
+---
+import Layout from "../layouts/Layout.astro";
+
+const BG = "#0E0E0E";
+const FG = "#FFFFFF";
+const MUTED = "rgba(255,255,255,.58)";
+const FAINT = "rgba(255,255,255,.34)";
+const LINE = "rgba(255,255,255,.1)";
+const ACCENT = "#554070";
+
+const PACKAGES = [
+  {
+    id: "landing",
+    title: "Landing Page",
+    tag: "Quick package",
+    original: "220",
+    price: "150",
+    unit: "starting at",
+    desc: "A focused one-pager to launch an idea or get a small business online, fast.",
+    features: [
+      "Up to 5 sections (hero, about, services, testimonials, contact)",
+      "Contact form wired to your email",
+      "Responsive design, mobile-first",
+      "Basic on-page SEO",
+      "1 round of revisions",
+      "Delivery in 1–3 days",
+    ],
+  },
+  {
+    id: "business",
+    title: "Business Website",
+    tag: "Quick package",
+    original: "420",
+    price: "300",
+    unit: "starting at",
+    desc: "A multi-page site for businesses that need more room to explain themselves.",
+    features: [
+      "Up to 5 pages (Home, About, Services, Contact, +1)",
+      "Custom sections tailored to your brand",
+      "Full on-page SEO (meta tags, sitemap)",
+      "2 rounds of revisions",
+      "Delivery in 1–5 days",
+    ],
+    highlight: true,
+  },
+  {
+    id: "ecommerce",
+    title: "E-Commerce",
+    tag: "From",
+    original: "850",
+    price: "600",
+    unit: "starting at",
+    desc: "An online store with product catalog, cart and payment gateway integration.",
+    features: [
+      "Product catalog & cart",
+      "Stripe / Mercado Pago integration",
+      "Order management",
+      "2 rounds of revisions",
+      "Estimated delivery: 1–3 weeks",
+    ],
+  },
+  {
+    id: "webapp",
+    title: "Web Application",
+    tag: "From",
+    original: "999",
+    price: "749",
+    unit: "starting at",
+    desc: "A custom web app — dashboards, authentication, database-backed features. Scoped together on a quick call.",
+    features: [
+      "Authentication & database",
+      "Custom dashboard / business logic",
+      "Scalable architecture",
+      "Estimated delivery: 1–3 weeks",
+    ],
+  },
+];
+
+const ADDONS = [
+  { id: "page", title: "Extra page or section", price: "20", unit: "each" },
+  { id: "revision", title: "Extra round of revisions", price: "25", unit: "each" },
+  { id: "copy", title: "Copywriting (EN / ES)", price: "30", unit: "flat" },
+  { id: "rush", title: "Rush delivery", price: "+30%", unit: "of total" },
+  { id: "hosting", title: "Hosting & domain setup", price: "35", unit: "one-time" },
+  { id: "maintenance", title: "Monthly maintenance & support", price: "35", unit: "/ month" },
+  { id: "feature", title: "Extra functionality (auth, integrations, APIs...)", price: "Custom", unit: "priced per feature" },
+];
+---
+
+<Layout
+  title="Catalog — Francisco Espindola · Services & Pricing"
+  description="Web development packages, pricing and add-ons — landing pages, business websites, e-commerce, web apps and custom projects."
+>
+  <div class="root" style={`background:${BG}; color:${FG}; min-height:100vh; font-family:'Inter',sans-serif;`}>
+    <div class="dot-grid" aria-hidden="true"></div>
+
+    <div class="wrap">
+      <span class="corner corner-tl" aria-hidden="true">+</span>
+      <span class="corner corner-tr" aria-hidden="true">+</span>
+      <span class="corner corner-bl" aria-hidden="true">+</span>
+      <span class="corner corner-br" aria-hidden="true">+</span>
+
+      <!-- TOP BAR -->
+      <div class="topbar">
+        <a href="/" class="back-link"><span aria-hidden="true">←</span> <span data-i18n="back">Francisco Espindola</span></a>
+        <button type="button" class="lang-toggle" aria-label="Switch language">EN / ES</button>
+      </div>
+
+      <!-- HEADER -->
+      <header class="section intro">
+        <span class="label" data-i18n="hero.eyebrow">Catalog</span>
+        <h1 class="page-title" data-i18n="hero.title">Services &amp; pricing.</h1>
+        <p class="bio" data-i18n="hero.desc">
+          Fixed-scope packages for the most common projects, plus custom work for everything else. Clear boundaries keep the quick packages fast — and fair for both of us.
+        </p>
+      </header>
+
+      <!-- PACKAGES -->
+      <section class="section reveal">
+        <h2 class="label" data-i18n="packages.label">Quick packages</h2>
+        <div class="pkg-grid">
+          {PACKAGES.map(({ id, title, tag, original, price, unit, desc, features, highlight }) => {
+            const discount = Math.round((1 - Number(price) / Number(original)) * 100);
+            return (
+            <div class={`pkg-card ${highlight ? "pkg-highlight" : ""}`}>
+              <span class="pkg-sale" data-i18n="packages.sale">-{discount}% · Limited offer</span>
+              {highlight && <span class="pkg-badge" data-i18n="packages.badge">Most requested</span>}
+              <span class="pkg-tag" data-i18n={`packages.${id}.tag`}>{tag}</span>
+              <h3 class="pkg-title" data-i18n={`packages.${id}.title`}>{title}</h3>
+              <div class="pkg-price">
+                <span class="pkg-price-original">${original}</span>
+                <span class="pkg-price-num">${price}</span>
+                <span class="pkg-price-unit" data-i18n={`packages.${id}.unit`}>{unit}</span>
+              </div>
+              <p class="pkg-desc" data-i18n={`packages.${id}.desc`}>{desc}</p>
+              <ul class="pkg-features">
+                {features.map((f, i) => (
+                  <li><span class="tick">✦</span> <span data-i18n={`packages.${id}.feature.${i}`}>{f}</span></li>
+                ))}
+              </ul>
+              <a href={`mailto:franespindola71@gmail.com?subject=${encodeURIComponent(title + " — quote request")}`} class="pkg-cta" data-i18n="packages.cta">Start this project →</a>
+            </div>
+            );
+          })}
+        </div>
+        <p class="fine-print" data-i18n="packages.note">
+          Prices shown are fixed-scope, quick-turnaround packages. If your project needs more than what's listed — extra pages, integrations, unique features — the price adjusts to match what you actually need. Anything outside the initial scope is quoted separately, no surprises.
+        </p>
+      </section>
+
+      <!-- ADD-ONS -->
+      <section class="section reveal">
+        <h2 class="label" data-i18n="addons.label">Add-ons</h2>
+        <div class="addon-list">
+          {ADDONS.map(({ id, title, price, unit }) => (
+            <div class="addon-row">
+              <span class="addon-title" data-i18n={`addons.${id}.title`}>{title}</span>
+              <span class="addon-price">{/^[+\d]/.test(price) ? (price.startsWith("+") ? price : `$${price}`) : <span data-i18n={`addons.${id}.price`}>{price}</span>} <span class="addon-unit" data-i18n={`addons.${id}.unit`}>{unit}</span></span>
+            </div>
+          ))}
+        </div>
+        <p class="fine-print" data-i18n="addons.note">
+          Need a package plus something extra — like authentication on a landing page? That's added as a functionality, not part of the fixed price: it's quoted based on what it actually takes to build, case by case.
+        </p>
+      </section>
+
+      <!-- HOSTING NOTE -->
+      <section class="section reveal">
+        <h2 class="label" data-i18n="hosting.label">About hosting &amp; third parties</h2>
+        <p class="bio" data-i18n="hosting.text">
+          I handle the full setup — hosting, domain, DNS, SSL, email, payment gateways — but the services themselves are external and billed directly to you by the provider (Vercel, Namecheap, Stripe, etc.). I don't mark them up; you only pay me for the work.
+        </p>
+      </section>
+
+      <!-- CUSTOM PROJECT -->
+      <section class="section reveal">
+        <div class="custom-card">
+          <div>
+            <span class="label" data-i18n="custom.label">Custom project</span>
+            <h2 class="custom-title" data-i18n="custom.title">Got something specific in mind?</h2>
+            <p class="bio" data-i18n="custom.desc">Tell me what you need and I'll put together a tailored quote — scope, timeline and price, no pressure.</p>
+          </div>
+          <a href="mailto:franespindola71@gmail.com?subject=Custom%20project" class="custom-cta" data-i18n="custom.cta">Write me →</a>
+        </div>
+      </section>
+
+      <footer class="foot-line">
+        <span>© 2026 Francisco Espindola</span>
+        <a href="/" data-i18n="footer.back">Back to portfolio</a>
+      </footer>
+    </div>
+  </div>
+</Layout>
+
+<script>
+  import gsap from 'gsap';
+  import { ScrollTrigger } from 'gsap/ScrollTrigger';
+  gsap.registerPlugin(ScrollTrigger);
+
+  const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  if (!prefersReducedMotion) {
+    gsap.from('.intro > *', { opacity: 0, y: 14, stagger: 0.08, duration: 0.7, ease: 'power2.out' });
+    gsap.utils.toArray('.reveal').forEach((el) => {
+      gsap.from(el, { opacity: 0, y: 24, duration: 0.8, ease: 'power2.out', scrollTrigger: { trigger: el, start: 'top 88%' } });
+    });
+    gsap.utils.toArray('.pkg-card, .addon-row').forEach((el) => {
+      gsap.from(el, { opacity: 0, y: 14, duration: 0.6, ease: 'power2.out', scrollTrigger: { trigger: el, start: 'top 92%' } });
+    });
+  }
+
+  const ES = {
+    'back': 'Francisco Espindola',
+    'hero.eyebrow': 'Catálogo',
+    'hero.title': 'Servicios y precios.',
+    'hero.desc': 'Paquetes de alcance fijo para los proyectos más comunes, y trabajo a medida para todo lo demás. Los límites claros son lo que hace que los paquetes rápidos sean rápidos — y justos para ambos.',
+
+    'packages.label': 'Paquetes rápidos',
+    'packages.badge': 'El más pedido',
+    'packages.sale': 'Oferta por tiempo limitado',
+    'packages.landing.tag': 'Paquete rápido',
+    'packages.landing.title': 'Landing Page',
+    'packages.landing.unit': 'desde',
+    'packages.landing.desc': 'Una página enfocada para lanzar una idea o poner en línea un negocio chico, rápido.',
+    'packages.landing.feature.0': 'Hasta 5 secciones (hero, sobre mí, servicios, testimonios, contacto)',
+    'packages.landing.feature.1': 'Formulario de contacto conectado a tu email',
+    'packages.landing.feature.2': 'Diseño responsive, mobile-first',
+    'packages.landing.feature.3': 'SEO básico on-page',
+    'packages.landing.feature.4': '1 ronda de revisiones',
+    'packages.landing.feature.5': 'Entrega en 1–3 días',
+
+    'packages.business.tag': 'Paquete rápido',
+    'packages.business.title': 'Sitio Empresarial',
+    'packages.business.unit': 'desde',
+    'packages.business.desc': 'Un sitio de varias páginas para negocios que necesitan más espacio para explicarse.',
+    'packages.business.feature.0': 'Hasta 5 páginas (Inicio, Sobre nosotros, Servicios, Contacto, +1)',
+    'packages.business.feature.1': 'Secciones a medida según tu marca',
+    'packages.business.feature.2': 'SEO on-page completo (meta tags, sitemap)',
+    'packages.business.feature.3': '2 rondas de revisiones',
+    'packages.business.feature.4': 'Entrega en 1–5 días',
+
+    'packages.ecommerce.tag': 'Desde',
+    'packages.ecommerce.title': 'E-Commerce',
+    'packages.ecommerce.unit': 'desde',
+    'packages.ecommerce.desc': 'Una tienda online con catálogo de productos, carrito e integración de pagos.',
+    'packages.ecommerce.feature.0': 'Catálogo de productos y carrito',
+    'packages.ecommerce.feature.1': 'Integración con Stripe / Mercado Pago',
+    'packages.ecommerce.feature.2': 'Gestión de pedidos',
+    'packages.ecommerce.feature.3': '2 rondas de revisiones',
+    'packages.ecommerce.feature.4': 'Entrega estimada: 1–3 semanas',
+
+    'packages.webapp.tag': 'Desde',
+    'packages.webapp.title': 'Aplicación Web',
+    'packages.webapp.unit': 'desde',
+    'packages.webapp.desc': 'Una app web a medida — dashboards, autenticación, funcionalidades con base de datos. Se define junto en una llamada rápida.',
+    'packages.webapp.feature.0': 'Autenticación y base de datos',
+    'packages.webapp.feature.1': 'Dashboard / lógica de negocio a medida',
+    'packages.webapp.feature.2': 'Arquitectura escalable',
+    'packages.webapp.feature.3': 'Entrega estimada: 1–3 semanas',
+
+    'packages.cta': 'Empezar este proyecto →',
+    'packages.note': 'Los precios mostrados son de paquetes de alcance fijo y entrega rápida. Si tu proyecto necesita más de lo listado — páginas extra, integraciones, funcionalidades particulares — el precio se ajusta a lo que realmente necesitas. Todo lo que quede fuera del alcance inicial se cotiza aparte, sin sorpresas.',
+
+    'addons.label': 'Extras',
+    'addons.page.title': 'Página o sección extra', 'addons.page.unit': 'cada una',
+    'addons.revision.title': 'Ronda de revisión extra', 'addons.revision.unit': 'cada una',
+    'addons.copy.title': 'Redacción de contenido (EN / ES)', 'addons.copy.unit': 'fijo',
+    'addons.rush.title': 'Entrega urgente', 'addons.rush.unit': 'del total',
+    'addons.hosting.title': 'Configuración de hosting y dominio', 'addons.hosting.unit': 'pago único',
+    'addons.maintenance.title': 'Mantenimiento y soporte mensual', 'addons.maintenance.unit': '/ mes',
+    'addons.feature.title': 'Funcionalidad extra (auth, integraciones, APIs...)', 'addons.feature.price': 'A cotizar', 'addons.feature.unit': 'según la funcionalidad',
+    'addons.note': '¿Necesitas un paquete más algo extra — como autenticación en una landing page? Eso se agrega como funcionalidad, no entra en el precio fijo: se cotiza según lo que realmente lleve implementarlo, caso por caso.',
+
+    'hosting.label': 'Sobre hosting y terceros',
+    'hosting.text': 'Yo me encargo de toda la configuración — hosting, dominio, DNS, SSL, email, pasarelas de pago — pero esos servicios son externos y te los factura el proveedor directamente (Vercel, Namecheap, Stripe, etc.). No les agrego margen; solo me pagas a mí por el trabajo.',
+
+    'custom.label': 'Proyecto a medida',
+    'custom.title': '¿Tienes algo específico en mente?',
+    'custom.desc': 'Cuéntame qué necesitas y te armo una cotización a medida — alcance, tiempos y precio, sin compromiso.',
+    'custom.cta': 'Escribime →',
+
+    'footer.back': 'Volver al portfolio',
+  };
+
+  const LANG_KEY = 'site-lang';
+  const originalHTML = new WeakMap();
+  let currentLang = 'en';
+
+  function applyLang(lang) {
+    document.querySelectorAll('[data-i18n]').forEach((el) => {
+      if (!originalHTML.has(el)) originalHTML.set(el, el.innerHTML);
+      const key = el.getAttribute('data-i18n');
+      const orig = originalHTML.get(el);
+      el.innerHTML = (lang === 'es' && ES[key]) ? ES[key] : orig;
+    });
+    currentLang = lang;
+    document.documentElement.lang = lang;
+    document.querySelectorAll('.lang-toggle').forEach((btn) => {
+      btn.textContent = lang === 'en' ? 'EN / ES' : 'ES / EN';
+    });
+    try { localStorage.setItem(LANG_KEY, lang); } catch {}
+  }
+
+  document.querySelectorAll('.lang-toggle').forEach((btn) => {
+    btn.addEventListener('click', () => applyLang(currentLang === 'en' ? 'es' : 'en'));
+  });
+
+  let storedLang = 'en';
+  try { storedLang = localStorage.getItem(LANG_KEY) || 'en'; } catch {}
+  if (storedLang === 'es') applyLang('es');
+</script>
+
+<style define:vars={{ accent: ACCENT, muted: MUTED, faint: FAINT, line: LINE }}>
+  .root { --accent: var(--accent); position: relative; overflow: hidden; }
+
+  .dot-grid {
+    position: fixed; inset: 0; z-index: 0; pointer-events: none;
+    background-image: radial-gradient(rgba(255,255,255,.09) 1px, transparent 1px);
+    background-size: 24px 24px;
+    background-position: 18px 18px;
+    mask-image: radial-gradient(ellipse 80% 70% at 50% 20%, #000 40%, transparent 92%);
+  }
+
+  .corner { position: absolute; z-index: 2; color: var(--faint); font-size: 12px; line-height: 1; font-family: 'JetBrains Mono', monospace; pointer-events: none; }
+  .corner-tl { top: -6px; left: -6px; }
+  .corner-tr { top: -6px; right: -6px; }
+  .corner-bl { bottom: -6px; left: -6px; }
+  .corner-br { bottom: -6px; right: -6px; }
+
+  .wrap {
+    position: relative; z-index: 1;
+    max-width: 780px;
+    margin: 0 auto;
+    padding: clamp(48px, 8vh, 96px) clamp(20px, 5vw, 24px) clamp(64px, 10vh, 120px);
+    border-left: 1px dashed var(--line);
+    border-right: 1px dashed var(--line);
+  }
+
+  .topbar { display: flex; align-items: center; justify-content: space-between; gap: 16px; margin-bottom: clamp(32px, 6vh, 56px); }
+  .back-link {
+    display: inline-flex; align-items: center; gap: 8px; font-family: 'JetBrains Mono', monospace; font-size: 11px;
+    letter-spacing: .06em; text-transform: uppercase; color: var(--muted); text-decoration: none;
+  }
+  .back-link:hover { color: #fff; }
+  .lang-toggle {
+    all: unset; cursor: pointer; font-family: 'JetBrains Mono', monospace; font-size: 11px;
+    letter-spacing: .06em; color: var(--muted); border: 1px solid var(--line); padding: 6px 12px;
+    transition: color .2s ease, border-color .2s ease;
+  }
+  .lang-toggle:hover { color: #fff; border-color: rgba(255,255,255,.3); }
+
+  .section { margin-bottom: clamp(56px, 9vh, 84px); }
+  .section:last-of-type { margin-bottom: clamp(32px, 5vh, 48px); }
+
+  .label {
+    display: flex; align-items: center; gap: 8px;
+    font-family: 'JetBrains Mono', monospace; font-size: 11px; letter-spacing: .16em;
+    text-transform: uppercase; color: var(--accent); margin-bottom: 16px;
+  }
+  .label::before { content: '+'; color: var(--faint); font-size: 12px; }
+
+  .page-title { font-size: clamp(28px, 5vw, 40px); font-weight: 700; letter-spacing: -.02em; margin-bottom: 16px; }
+  .bio { font-size: 15px; line-height: 1.75; color: var(--muted); max-width: 60ch; }
+
+  /* PACKAGES */
+  .pkg-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 16px; margin-bottom: 20px; }
+  .pkg-card {
+    position: relative; display: flex; flex-direction: column; padding: 24px; border: 1px solid var(--line);
+  }
+  .pkg-highlight { border-color: var(--accent); background: rgba(85,64,112,.08); }
+  .pkg-badge {
+    position: absolute; top: 0; right: 0; font-family: 'JetBrains Mono', monospace; font-size: 9px; letter-spacing: .1em;
+    text-transform: uppercase; color: #fff; background: var(--accent); padding: 5px 10px;
+  }
+  .pkg-sale {
+    align-self: flex-start; font-family: 'JetBrains Mono', monospace; font-size: 9.5px; letter-spacing: .08em;
+    text-transform: uppercase; color: #d9c8f5; border: 1px solid var(--accent); padding: 3px 8px; margin-bottom: 12px;
+  }
+  .pkg-tag { font-family: 'JetBrains Mono', monospace; font-size: 10px; letter-spacing: .1em; text-transform: uppercase; color: var(--accent); }
+  .pkg-title { font-size: 19px; font-weight: 700; margin: 8px 0 10px; }
+  .pkg-price { display: flex; align-items: baseline; gap: 8px; margin-bottom: 12px; flex-wrap: wrap; }
+  .pkg-price-original { font-family: 'JetBrains Mono', monospace; font-size: 14px; color: var(--faint); text-decoration: line-through; }
+  .pkg-price-num { font-size: 30px; font-weight: 800; letter-spacing: -.02em; color: #fff; }
+  .pkg-price-unit { font-family: 'JetBrains Mono', monospace; font-size: 10.5px; color: var(--faint); text-transform: uppercase; }
+  .pkg-desc { font-size: 13px; line-height: 1.6; color: var(--muted); margin-bottom: 16px; }
+  .pkg-features { list-style: none; display: flex; flex-direction: column; gap: 8px; margin-bottom: 20px; flex: 1; }
+  .pkg-features li { display: flex; align-items: flex-start; gap: 8px; font-size: 12px; line-height: 1.5; color: var(--muted); }
+  .pkg-features .tick { color: var(--accent); flex-shrink: 0; }
+  .pkg-cta {
+    align-self: flex-start; font-family: 'JetBrains Mono', monospace; font-size: 11px; letter-spacing: .06em;
+    text-transform: uppercase; color: #fff; text-decoration: none; border-bottom: 1px solid var(--accent); padding-bottom: 3px;
+  }
+  .fine-print { font-size: 12px; line-height: 1.65; color: var(--faint); max-width: 68ch; }
+
+  /* ADD-ONS */
+  .addon-list { display: flex; flex-direction: column; }
+  .addon-row { display: flex; align-items: baseline; justify-content: space-between; gap: 12px; padding: 14px 0; border-top: 1px solid var(--line); }
+  .addon-list .addon-row:last-child { border-bottom: 1px solid var(--line); }
+  .addon-title { font-size: 13.5px; color: #fff; }
+  .addon-price { font-family: 'JetBrains Mono', monospace; font-size: 13px; color: var(--accent); white-space: nowrap; }
+  .addon-unit { color: var(--faint); font-size: 10.5px; text-transform: uppercase; }
+
+  /* CUSTOM */
+  .custom-card {
+    display: flex; align-items: flex-end; justify-content: space-between; gap: 24px; flex-wrap: wrap;
+    padding: 28px; border: 1px dashed var(--line);
+  }
+  .custom-title { font-size: 20px; font-weight: 700; margin-bottom: 8px; }
+  .custom-cta {
+    flex-shrink: 0; font-family: 'JetBrains Mono', monospace; font-weight: 500; font-size: 12.5px; letter-spacing: .06em;
+    text-transform: uppercase; color: #000; text-decoration: none; background: #fff; padding: 14px 22px;
+  }
+
+  .foot-line {
+    display: flex; justify-content: space-between; gap: 12px; flex-wrap: wrap; padding-top: 20px;
+    border-top: 1px solid var(--line); font-family: 'JetBrains Mono', monospace; font-size: 10.5px;
+    letter-spacing: .04em; color: var(--faint);
+  }
+  .foot-line a { color: var(--faint); text-decoration: underline; text-decoration-color: rgba(255,255,255,.2); }
+  .foot-line a:hover { color: #fff; }
+
+  @media (max-width: 720px) {
+    .pkg-grid { grid-template-columns: 1fr; }
+  }
+  @media (max-width: 560px) {
+    .corner { display: none; }
+    .wrap { border-left: none; border-right: none; }
+    .custom-card { flex-direction: column; align-items: flex-start; }
+  }
+</style>
