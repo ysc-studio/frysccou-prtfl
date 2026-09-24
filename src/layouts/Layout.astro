@@ -41,7 +41,7 @@ const jsonLd = JSON.stringify({
       sameAs: [
         "https://github.com/esspindola",
         "https://www.linkedin.com/in/espindola-francisco",
-        "https://instagram.com/frysccou",
+        "https://instagram.com/fryscco_",
       ],
     },
   ],
@@ -49,9 +49,18 @@ const jsonLd = JSON.stringify({
 ---
 
 <!doctype html>
-<html lang="en">
+<html lang="en" data-theme="dark">
   <head>
     <meta charset="UTF-8" />
+    <script is:inline>
+      (function () {
+        try {
+          if (localStorage.getItem('site-theme') === 'light') {
+            document.documentElement.setAttribute('data-theme', 'light');
+          }
+        } catch (e) {}
+      })();
+    </script>
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="generator" content={Astro.generator} />
 

@@ -29,13 +29,6 @@ import prisma1 from "../assets/projects/prisma/1.png";
 import prisma2 from "../assets/projects/prisma/2.png";
 import prisma3 from "../assets/projects/prisma/3.png";
 
-const BG = "#0E0E0E";
-const FG = "#FFFFFF";
-const MUTED = "rgba(255,255,255,.58)";
-const FAINT = "rgba(255,255,255,.34)";
-const LINE = "rgba(255,255,255,.1)";
-const ACCENT = "#554070";
-
 const PROJECTS = [
   { n: "01", title: "Tokenit", cat: "Investor App · Web3", img: tokenitApp, alt: "Tokenit Investor App", desc: "Investor dashboard for a Chilean blockchain real-estate platform — real-time monitoring, KYC, digital signing and AI risk scoring.", tags: ["Meteor.js", "React", "Web3"], url: "https://app.tokenit.cl" },
   { n: "02", title: "Tokenit", cat: "Landing Page · Web3", img: tokenit, alt: "Tokenit Landing", desc: "Public marketplace connecting investors with tokenized real-estate opportunities backed by real assets.", tags: ["Gatsby", "Python", "MongoDB"], url: "https://tokenit.cl" },
@@ -59,7 +52,7 @@ const MORE_WORK_CAROUSEL = [
 
 const TIMELINE = [
   { id: "codigo-facilito", year: "2026", type: "Education", title: "Codigo Facilito", role: "Modern Frontend Bootcamp", date: "Graduated Jan 2026" },
-  { id: "niuro", year: "2025", type: "Work", title: "Niuro", role: "Full Stack Engineer · Marketplace Platform", desc: "Placed at Tokenit, a Chilean blockchain-based real-estate investment platform.", date: "Dec 2025 — Present" },
+  { id: "niuro", year: "2025", type: "Work", title: "YSC Studio", role: "Full Stack Engineer · Marketplace Platform", desc: "Placed at Tokenit, a Chilean blockchain-based real-estate investment platform.", date: "Dec 2025 — Aug 2026" },
   { id: "zatobox-work", year: "2025", type: "Work", title: "ZatoBox", role: "Full Stack & Cloud Solutions Architect", desc: "DevOps lead overseeing the full software development lifecycle.", date: "Aug — Dec 2025" },
   { id: "dragon-pyramid", year: "2025", type: "Work", title: "Dragon Pyramid", role: "Full Stack Engineer", desc: "Front-end focused work — Next.js 14, TailwindCSS, Shadcn UI, NextAuth, Supabase.", date: "Jun — Oct 2025" },
   { id: "issd", year: "2025", type: "Education", title: "Inst. Sup. Santo Domingo", role: "Web Development & Mobile Applications", date: "2025 — Present" },
@@ -99,7 +92,7 @@ const EMAIL_URL_ES = `mailto:${CONTACT_EMAIL}?subject=${encodeURIComponent(EMAIL
 ---
 
 <Layout>
-  <div class="root" style={`background:${BG}; color:${FG}; min-height:100vh; font-family:'Inter',sans-serif;`}>
+  <div class="root">
 
     <!-- ARTBOARD DRESSING -->
     <div class="dot-grid" aria-hidden="true"></div>
@@ -120,6 +113,9 @@ const EMAIL_URL_ES = `mailto:${CONTACT_EMAIL}?subject=${encodeURIComponent(EMAIL
 
       <!-- TOP BAR -->
       <div class="topbar">
+        <button type="button" class="theme-toggle" aria-label="Switch theme">
+          <span class="theme-toggle-icon" data-theme-icon>☾</span>
+        </button>
         <button type="button" class="lang-toggle" aria-label="Switch language">EN / ES</button>
       </div>
 
@@ -137,7 +133,7 @@ const EMAIL_URL_ES = `mailto:${CONTACT_EMAIL}?subject=${encodeURIComponent(EMAIL
           I'm a Full Stack Engineer based in Buenos Aires, Argentina, building digital products end to end — from interface to architecture.
         </p>
         <p class="bio">
-          <span data-i18n="intro.bio2a">I care <em>deeply</em> about craft and clean code, and I like turning ideas into things people actually enjoy using. I also make content on</span> <a class="icon-link" href="https://www.youtube.com/@frysccu" target="_blank" rel="noopener"><Youtube size={14} /> YouTube</a> <span data-i18n="intro.and">and</span> <a class="icon-link" href="https://instagram.com/frysccu" target="_blank" rel="noopener"><Instagram size={14} /> Instagram</a>.
+          <span data-i18n="intro.bio2a">I care <em>deeply</em> about craft and clean code, and I like turning ideas into things people actually enjoy using. I also make content on</span> <a class="icon-link" href="https://www.youtube.com/@fryscoo" target="_blank" rel="noopener"><Youtube size={14} /> YouTube</a> <span data-i18n="intro.and">and</span> <a class="icon-link" href="https://instagram.com/fryscco_" target="_blank" rel="noopener"><Instagram size={14} /> Instagram</a>.
         </p>
         <p class="bio">
           <span data-i18n="intro.bio3a">You can reach me on</span> <a class="icon-link" href="https://www.linkedin.com/in/espindola-francisco" target="_blank" rel="noopener"><Linkedin size={14} /> LinkedIn</a> <span data-i18n="intro.bio3b">and via</span> <a class="icon-link" href="mailto:franespindola71@gmail.com"><Mail size={14} /> <span data-i18n="intro.email">email</span> <span class="email-hint">(franespindola71@gmail.com)</span></a><span data-i18n="intro.bio3c">, see my code on</span> <a class="icon-link" href="https://github.com/esspindola" target="_blank" rel="noopener"><Github size={14} /> GitHub</a>.
@@ -260,8 +256,8 @@ const EMAIL_URL_ES = `mailto:${CONTACT_EMAIL}?subject=${encodeURIComponent(EMAIL
         <div class="socials">
           <a href="https://github.com/esspindola" target="_blank" rel="noopener" aria-label="GitHub"><Github size={18} /></a>
           <a href="https://www.linkedin.com/in/espindola-francisco" target="_blank" rel="noopener" aria-label="LinkedIn"><Linkedin size={18} /></a>
-          <a href="https://instagram.com/frysccu" target="_blank" rel="noopener" aria-label="Instagram"><Instagram size={18} /></a>
-          <a href="https://www.youtube.com/@frysccu" target="_blank" rel="noopener" aria-label="YouTube"><Youtube size={18} /></a>
+          <a href="https://instagram.com/fryscco_" target="_blank" rel="noopener" aria-label="Instagram"><Instagram size={18} /></a>
+          <a href="https://www.youtube.com/@fryscoo" target="_blank" rel="noopener" aria-label="YouTube"><Youtube size={18} /></a>
           <a href="https://www.tiktok.com/@frysccouu" target="_blank" rel="noopener" aria-label="TikTok" set:html={TIKTOK_ICON} />
           <a href="mailto:franespindola71@gmail.com" aria-label="Email"><Mail size={18} /></a>
         </div>
@@ -334,7 +330,7 @@ const EMAIL_URL_ES = `mailto:${CONTACT_EMAIL}?subject=${encodeURIComponent(EMAIL
     'log.codigo-facilito.role': 'Bootcamp de Frontend Moderno', 'log.codigo-facilito.date': 'Graduado en enero de 2026',
     'log.niuro.role': 'Full Stack Engineer · Plataforma Marketplace',
     'log.niuro.desc': 'Asignado a Tokenit, una plataforma chilena de inversión inmobiliaria basada en blockchain.',
-    'log.niuro.date': 'Dic 2025 — Presente',
+    'log.niuro.date': 'Dic 2025 — Ago 2026',
     'log.zatobox-work.role': 'Full Stack & Cloud Solutions Architect',
     'log.zatobox-work.desc': 'Líder de DevOps a cargo de todo el ciclo de vida del desarrollo de software.',
     'log.zatobox-work.date': 'Ago — Dic 2025',
@@ -392,6 +388,28 @@ const EMAIL_URL_ES = `mailto:${CONTACT_EMAIL}?subject=${encodeURIComponent(EMAIL
   try { storedLang = localStorage.getItem(LANG_KEY) || 'en'; } catch {}
   if (storedLang === 'es') applyLang('es');
 
+  // THEME — dark (default) / light toggle
+  const THEME_KEY = 'site-theme';
+
+  function applyTheme(theme) {
+    document.documentElement.setAttribute('data-theme', theme);
+    document.querySelectorAll('[data-theme-icon]').forEach((icon) => {
+      icon.textContent = theme === 'light' ? '☀' : '☾';
+    });
+    try { localStorage.setItem(THEME_KEY, theme); } catch {}
+  }
+
+  document.querySelectorAll('.theme-toggle').forEach((btn) => {
+    btn.addEventListener('click', () => {
+      const current = document.documentElement.getAttribute('data-theme') === 'light' ? 'light' : 'dark';
+      applyTheme(current === 'light' ? 'dark' : 'light');
+    });
+  });
+
+  let storedTheme = 'dark';
+  try { storedTheme = localStorage.getItem(THEME_KEY) || 'dark'; } catch {}
+  applyTheme(storedTheme);
+
   // LIGHTBOX — full-page screenshots, scrollable top to bottom
   const lightbox = document.getElementById('lightbox');
   const openLightbox = (id) => {
@@ -443,13 +461,13 @@ const EMAIL_URL_ES = `mailto:${CONTACT_EMAIL}?subject=${encodeURIComponent(EMAIL
   });
 </script>
 
-<style define:vars={{ accent: ACCENT, muted: MUTED, faint: FAINT, line: LINE }}>
-  .root { --accent: var(--accent); position: relative; overflow: hidden; }
+<style>
+  .root { position: relative; overflow: hidden; background: var(--bg); color: var(--fg); min-height: 100vh; font-family: 'Inter', sans-serif; }
 
   /* ARTBOARD DRESSING */
   .dot-grid {
     position: fixed; inset: 0; z-index: 0; pointer-events: none;
-    background-image: radial-gradient(rgba(255,255,255,.09) 1px, transparent 1px);
+    background-image: radial-gradient(var(--dot) 1px, transparent 1px);
     background-size: 24px 24px;
     background-position: 18px 18px;
     mask-image: radial-gradient(ellipse 80% 70% at 50% 20%, #000 40%, transparent 92%);
@@ -490,13 +508,15 @@ const EMAIL_URL_ES = `mailto:${CONTACT_EMAIL}?subject=${encodeURIComponent(EMAIL
     border-right: 1px dashed var(--line);
   }
 
-  .topbar { display: flex; justify-content: flex-end; margin-bottom: clamp(32px, 6vh, 56px); }
-  .lang-toggle {
+  .topbar { display: flex; justify-content: flex-end; align-items: center; gap: 8px; margin-bottom: clamp(32px, 6vh, 56px); }
+  .lang-toggle, .theme-toggle {
     all: unset; cursor: pointer; font-family: 'JetBrains Mono', monospace; font-size: 11px;
     letter-spacing: .06em; color: var(--muted); border: 1px solid var(--line); padding: 6px 12px;
     transition: color .2s ease, border-color .2s ease;
   }
-  .lang-toggle:hover { color: #fff; border-color: rgba(255,255,255,.3); }
+  .lang-toggle:hover, .theme-toggle:hover { color: var(--fg); border-color: var(--line-strong); }
+  .theme-toggle { display: inline-flex; align-items: center; justify-content: center; line-height: 1; }
+  .theme-toggle-icon { font-size: 12px; }
 
   .section { margin-bottom: clamp(56px, 9vh, 84px); }
   .section:last-child { margin-bottom: 0; }
@@ -516,9 +536,9 @@ const EMAIL_URL_ES = `mailto:${CONTACT_EMAIL}?subject=${encodeURIComponent(EMAIL
 
   .bio { font-size: 15px; line-height: 1.75; color: var(--muted); max-width: 58ch; margin-bottom: 14px; }
   .bio:last-of-type { margin-bottom: 0; }
-  .bio a, footer a { color: #fff; text-decoration: underline; text-underline-offset: 2px; text-decoration-color: rgba(255,255,255,.3); }
+  .bio a, footer a { color: var(--fg); text-decoration: underline; text-underline-offset: 2px; text-decoration-color: var(--line-strong); }
   .bio a:hover, footer a:hover { text-decoration-color: var(--accent); }
-  .bio em { color: #fff; font-style: italic; }
+  .bio em { color: var(--fg); font-style: italic; }
   .icon-link { display: inline-flex; align-items: center; gap: 5px; vertical-align: -2px; }
   .email-hint { font-family: 'JetBrains Mono', monospace; font-size: 12px; color: var(--faint); }
 
@@ -544,12 +564,12 @@ const EMAIL_URL_ES = `mailto:${CONTACT_EMAIL}?subject=${encodeURIComponent(EMAIL
   .contact-cta-buttons { display: flex; flex-wrap: wrap; gap: 12px; }
   .contact-btn {
     display: inline-flex; align-items: center; gap: 9px; font-family: 'JetBrains Mono', monospace;
-    font-size: 12.5px; letter-spacing: .04em; text-decoration: none; color: #fff;
+    font-size: 12.5px; letter-spacing: .04em; text-decoration: none; color: var(--fg);
     border: 1px solid var(--line); padding: 13px 20px; transition: border-color .2s ease, background .2s ease;
   }
   .contact-btn:hover { border-color: var(--accent); }
-  .contact-btn-primary { border-color: var(--accent); background: rgba(85,64,112,.14); }
-  .contact-btn-primary:hover { background: rgba(85,64,112,.26); }
+  .contact-btn-primary { border-color: var(--accent); background: var(--accent-soft); }
+  .contact-btn-primary:hover { background: var(--accent-soft-strong); }
 
   /* MORE WORK */
   .more-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; margin-bottom: 20px; }
@@ -562,7 +582,7 @@ const EMAIL_URL_ES = `mailto:${CONTACT_EMAIL}?subject=${encodeURIComponent(EMAIL
   }
   .more-card-full img { transition: opacity .2s ease; }
   .more-card-full:hover img { opacity: .78; }
-  .more-card-full:hover span { color: #fff; }
+  .more-card-full:hover span { color: var(--fg); }
 
   /* CAROUSEL PROJECTS — 2x2 grid, bigger cards */
   .carousel-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 16px; }
@@ -577,8 +597,8 @@ const EMAIL_URL_ES = `mailto:${CONTACT_EMAIL}?subject=${encodeURIComponent(EMAIL
   }
   .carousel-slide.is-active { opacity: 1; }
   .carousel-dots { display: flex; gap: 5px; position: absolute; bottom: 12px; left: 50%; transform: translateX(-50%); z-index: 1; }
-  .carousel-dot { width: 5px; height: 5px; border-radius: 50%; background: rgba(255,255,255,.4); cursor: pointer; transition: background .2s ease; }
-  .carousel-dot.is-active { background: #fff; }
+  .carousel-dot { width: 5px; height: 5px; border-radius: 50%; background: var(--dot-muted); cursor: pointer; transition: background .2s ease; }
+  .carousel-dot.is-active { background: var(--fg); }
 
   /* LIGHTBOX */
   .lightbox {
@@ -610,13 +630,13 @@ const EMAIL_URL_ES = `mailto:${CONTACT_EMAIL}?subject=${encodeURIComponent(EMAIL
   .know-list { display: flex; flex-direction: column; }
   .know-row { display: grid; grid-template-columns: 110px 1fr; gap: 16px; padding: 12px 0; border-top: 1px solid var(--line); }
   .know-list .know-row:last-child { border-bottom: 1px solid var(--line); }
-  .know-cat { font-size: 12.5px; font-weight: 600; color: #fff; }
+  .know-cat { font-size: 12.5px; font-weight: 600; color: var(--fg); }
   .know-items { font-family: 'JetBrains Mono', monospace; font-size: 12px; line-height: 1.8; color: var(--muted); }
 
   /* CONTACT */
   .socials { display: flex; flex-wrap: wrap; gap: 20px; }
   .socials a { display: inline-flex; color: var(--muted); }
-  .socials a:hover { color: #fff; }
+  .socials a:hover { color: var(--fg); }
   .foot-line { display: flex; justify-content: space-between; gap: 12px; flex-wrap: wrap; margin-top: 32px; padding-top: 20px; border-top: 1px solid var(--line); font-family: 'JetBrains Mono', monospace; font-size: 10.5px; letter-spacing: .04em; color: var(--faint); }
 
   @media (max-width: 1000px) {
