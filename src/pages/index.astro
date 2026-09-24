@@ -2,6 +2,7 @@
 import Layout from "../layouts/Layout.astro";
 import { Image } from "astro:assets";
 import { Github, Linkedin, Instagram, Mail, Youtube } from "lucide-astro";
+import { MessageCircle } from "lucide-astro";
 
 import profile from "../assets/profile.jpg";
 
@@ -16,9 +17,17 @@ import aurora from "../assets/sideprojects/aurora.png";
 import coffee from "../assets/sideprojects/coffee.png";
 
 import arc1 from "../assets/projects/Arc/1.png";
+import arc2 from "../assets/projects/Arc/2.png";
+import arc3 from "../assets/projects/Arc/3.png";
 import outdoor1 from "../assets/projects/outdoor/1.png";
+import outdoor2 from "../assets/projects/outdoor/2.png";
+import outdoor3 from "../assets/projects/outdoor/3.png";
 import muebles1 from "../assets/projects/muebles/1.png";
+import muebles2 from "../assets/projects/muebles/2.png";
+import muebles3 from "../assets/projects/muebles/3.png";
 import prisma1 from "../assets/projects/prisma/1.png";
+import prisma2 from "../assets/projects/prisma/2.png";
+import prisma3 from "../assets/projects/prisma/3.png";
 
 const BG = "#0E0E0E";
 const FG = "#FFFFFF";
@@ -34,15 +43,18 @@ const PROJECTS = [
   { n: "04", title: "ConSentido Cognitivo", cat: "Psicopedagogía · Accessibility", img: consentido, alt: "ConSentido Cognitivo", desc: "Accessible platform for a psychopedagogy practice, built to make cognitive-support resources easy to reach for families.", tags: ["Next.js", "Tailwind", "Firebase"], url: "https://www.consentidocognitivo.site/" },
 ];
 
-const MORE_WORK = [
-  { title: "Elevate Gym", img: elevate },
-  { title: "Atlas", img: atlas },
-  { title: "Aurora AI", img: aurora },
-  { title: "Noma Coffee", img: coffee },
-  { title: "Arc & Form", img: arc1 },
-  { title: "Wild Oak Supply", img: outdoor1 },
-  { title: "Muebles & Decoración", img: muebles1 },
-  { title: "Prisma Events", img: prisma1 },
+const MORE_WORK_FULL = [
+  { id: "elevate", title: "Elevate Gym", img: elevate },
+  { id: "atlas", title: "Atlas", img: atlas },
+  { id: "aurora", title: "Aurora AI", img: aurora },
+  { id: "coffee", title: "Noma Coffee", img: coffee },
+];
+
+const MORE_WORK_CAROUSEL = [
+  { id: "arc", title: "Arc & Form", imgs: [arc1, arc2, arc3] },
+  { id: "outdoor", title: "Wild Oak Supply", imgs: [outdoor1, outdoor2, outdoor3] },
+  { id: "muebles", title: "Muebles & Decoración", imgs: [muebles1, muebles2, muebles3] },
+  { id: "prisma", title: "Prisma Events", imgs: [prisma1, prisma2, prisma3] },
 ];
 
 const TIMELINE = [
@@ -69,6 +81,21 @@ const KNOWLEDGE = [
 ];
 
 const RULER_TICKS = Array.from({ length: 21 }, (_, i) => i * 100);
+
+const WHATSAPP_NUMBER = "541167672197";
+const CONTACT_EMAIL = "franespindola71@gmail.com";
+
+const WHATSAPP_MSG_EN = "Hi Francisco! I found your portfolio and I'd like to talk about a project.";
+const WHATSAPP_MSG_ES = "¡Hola Francisco! Vi tu portfolio y me gustaría hablar sobre un proyecto.";
+const WHATSAPP_URL_EN = `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(WHATSAPP_MSG_EN)}`;
+const WHATSAPP_URL_ES = `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(WHATSAPP_MSG_ES)}`;
+
+const EMAIL_SUBJECT_EN = "Let's talk about a project";
+const EMAIL_SUBJECT_ES = "Hablemos sobre un proyecto";
+const EMAIL_BODY_EN = "Hi Francisco! I found your portfolio and I'd like to talk about a project.";
+const EMAIL_BODY_ES = "¡Hola Francisco! Vi tu portfolio y me gustaría hablar sobre un proyecto.";
+const EMAIL_URL_EN = `mailto:${CONTACT_EMAIL}?subject=${encodeURIComponent(EMAIL_SUBJECT_EN)}&body=${encodeURIComponent(EMAIL_BODY_EN)}`;
+const EMAIL_URL_ES = `mailto:${CONTACT_EMAIL}?subject=${encodeURIComponent(EMAIL_SUBJECT_ES)}&body=${encodeURIComponent(EMAIL_BODY_ES)}`;
 ---
 
 <Layout>
@@ -138,30 +165,61 @@ const RULER_TICKS = Array.from({ length: 21 }, (_, i) => i * 100);
         </div>
       </section>
 
-      <!-- CATALOG CTA -->
-      <section id="catalog-cta" class="section reveal">
-        <a href="/catalog" class="catalog-card">
-          <div class="catalog-card-text">
-            <span class="catalog-card-eyebrow" data-i18n="catalog.eyebrow">Services &amp; pricing</span>
-            <h2 class="catalog-card-title" data-i18n="catalog.title">Looking to hire me?</h2>
-            <p class="catalog-card-desc" data-i18n="catalog.desc">Check the catalog — landing pages, web apps, hosting setup and custom packages, with clear pricing.</p>
-          </div>
-          <span class="catalog-card-arrow" aria-hidden="true">↗</span>
-        </a>
+      <!-- CONTACT CTA -->
+      <section id="whatsapp-cta" class="section reveal">
+        <span class="label" data-i18n="whatsapp.eyebrow">Let's talk</span>
+        <h2 class="contact-cta-title" data-i18n="whatsapp.title">Need something built?</h2>
+        <p class="bio contact-cta-desc" data-i18n="whatsapp.desc">Reach out and let's talk about your project.</p>
+        <div class="contact-cta-buttons">
+          <a href={WHATSAPP_URL_EN} target="_blank" rel="noopener noreferrer" class="contact-btn contact-btn-primary" data-wa-link data-wa-en={WHATSAPP_URL_EN} data-wa-es={WHATSAPP_URL_ES}>
+            <MessageCircle size={16} />
+            <span data-i18n="whatsapp.cta">Send me a WhatsApp</span>
+          </a>
+          <a href={EMAIL_URL_EN} class="contact-btn" data-email-link data-email-en={EMAIL_URL_EN} data-email-es={EMAIL_URL_ES}>
+            <Mail size={16} />
+            <span data-i18n="email.cta">Email me</span>
+          </a>
+        </div>
       </section>
 
       <!-- MORE WORK -->
       <section id="more-work" class="section reveal">
         <h2 class="label" data-i18n="more.label">More work</h2>
         <div class="more-grid">
-          {MORE_WORK.map(({ title, img }) => (
-            <div class="more-card">
+          {MORE_WORK_FULL.map(({ id, title, img }) => (
+            <button type="button" class="more-card more-card-full" data-lightbox-open={id}>
               <Image src={img} alt={title} width={300} height={200} loading="lazy" />
+              <span>{title}</span>
+            </button>
+          ))}
+        </div>
+
+        <div class="carousel-grid">
+          {MORE_WORK_CAROUSEL.map(({ id, title, imgs }) => (
+            <div class="more-card more-card-carousel" data-carousel={id}>
+              <div class="carousel-track">
+                {imgs.map((img, i) => (
+                  <Image src={img} alt={`${title} ${i + 1}`} width={640} height={400} loading="lazy" class="carousel-slide" data-slide={i} />
+                ))}
+              </div>
+              <div class="carousel-dots">
+                {imgs.map((_, i) => <span class="carousel-dot" data-dot={i}></span>)}
+              </div>
               <span>{title}</span>
             </div>
           ))}
         </div>
       </section>
+
+      <!-- LIGHTBOX -->
+      <div id="lightbox" class="lightbox" aria-hidden="true">
+        <button type="button" class="lightbox-close" data-lightbox-close aria-label="Close">✕</button>
+        <div class="lightbox-scroll">
+          {MORE_WORK_FULL.map(({ id, title, img }) => (
+            <Image src={img} alt={title} inferSize loading="lazy" class="lightbox-img" data-lightbox-img={id} />
+          ))}
+        </div>
+      </div>
 
       <!-- EXPERIENCE & EDUCATION -->
       <section id="experience" class="section reveal">
@@ -234,7 +292,7 @@ const RULER_TICKS = Array.from({ length: 21 }, (_, i) => i * 100);
       });
     });
 
-    gsap.utils.toArray('.proj-row, .log-row, .know-row, .more-card').forEach((el) => {
+    gsap.utils.toArray('.proj-row, .log-row, .know-row, .more-card, .more-card-carousel').forEach((el) => {
       gsap.from(el, {
         opacity: 0, y: 14, duration: 0.6, ease: 'power2.out',
         scrollTrigger: { trigger: el, start: 'top 92%' },
@@ -263,9 +321,11 @@ const RULER_TICKS = Array.from({ length: 21 }, (_, i) => i * 100);
     'work.04.cat': 'Psicopedagogía · Accesibilidad',
     'work.04.desc': 'Plataforma accesible para un consultorio de psicopedagogía, pensada para que las familias accedan fácilmente a recursos de apoyo cognitivo.',
 
-    'catalog.eyebrow': 'Servicios y precios',
-    'catalog.title': '¿Buscas contratarme?',
-    'catalog.desc': 'Mira el catálogo — landing pages, aplicaciones web, configuración de hosting y paquetes a medida, con precios claros.',
+    'whatsapp.eyebrow': 'Hablemos',
+    'whatsapp.title': '¿Necesitas algo?',
+    'whatsapp.desc': 'Contáctame y hablamos sobre tu proyecto.',
+    'whatsapp.cta': 'Mándame un WhatsApp',
+    'email.cta': 'Escríbeme un email',
 
     'more.label': 'Más trabajos',
 
@@ -313,6 +373,14 @@ const RULER_TICKS = Array.from({ length: 21 }, (_, i) => i * 100);
     document.querySelectorAll('.lang-toggle').forEach((btn) => {
       btn.textContent = lang === 'en' ? 'EN / ES' : 'ES / EN';
     });
+    document.querySelectorAll('[data-wa-link]').forEach((link) => {
+      const url = lang === 'es' ? link.getAttribute('data-wa-es') : link.getAttribute('data-wa-en');
+      if (url) link.setAttribute('href', url);
+    });
+    document.querySelectorAll('[data-email-link]').forEach((link) => {
+      const url = lang === 'es' ? link.getAttribute('data-email-es') : link.getAttribute('data-email-en');
+      if (url) link.setAttribute('href', url);
+    });
     try { localStorage.setItem(LANG_KEY, lang); } catch {}
   }
 
@@ -323,6 +391,56 @@ const RULER_TICKS = Array.from({ length: 21 }, (_, i) => i * 100);
   let storedLang = 'en';
   try { storedLang = localStorage.getItem(LANG_KEY) || 'en'; } catch {}
   if (storedLang === 'es') applyLang('es');
+
+  // LIGHTBOX — full-page screenshots, scrollable top to bottom
+  const lightbox = document.getElementById('lightbox');
+  const openLightbox = (id) => {
+    if (!lightbox) return;
+    lightbox.querySelectorAll('[data-lightbox-img]').forEach((img) => {
+      img.style.display = img.getAttribute('data-lightbox-img') === id ? 'block' : 'none';
+    });
+    lightbox.classList.add('is-open');
+    lightbox.setAttribute('aria-hidden', 'false');
+    document.body.style.overflow = 'hidden';
+  };
+  const closeLightbox = () => {
+    if (!lightbox) return;
+    lightbox.classList.remove('is-open');
+    lightbox.setAttribute('aria-hidden', 'true');
+    document.body.style.overflow = '';
+  };
+  document.querySelectorAll('[data-lightbox-open]').forEach((btn) => {
+    btn.addEventListener('click', () => openLightbox(btn.getAttribute('data-lightbox-open')));
+  });
+  document.querySelectorAll('[data-lightbox-close]').forEach((btn) => {
+    btn.addEventListener('click', closeLightbox);
+  });
+  lightbox?.addEventListener('click', (e) => {
+    if (!e.target.closest('.lightbox-img')) closeLightbox();
+  });
+  document.addEventListener('keydown', (e) => { if (e.key === 'Escape') closeLightbox(); });
+
+  // CAROUSELS — each project rotates independently through its own 3 images
+  document.querySelectorAll('[data-carousel]').forEach((carousel) => {
+    const slides = carousel.querySelectorAll('.carousel-slide');
+    const dots = carousel.querySelectorAll('.carousel-dot');
+    let index = 0;
+
+    const goTo = (i) => {
+      index = i;
+      slides.forEach((s, si) => s.classList.toggle('is-active', si === index));
+      dots.forEach((d, di) => d.classList.toggle('is-active', di === index));
+    };
+    goTo(0);
+
+    dots.forEach((dot, di) => dot.addEventListener('click', () => goTo(di)));
+
+    let timer = setInterval(() => goTo((index + 1) % slides.length), 3200);
+    carousel.addEventListener('mouseenter', () => clearInterval(timer));
+    carousel.addEventListener('mouseleave', () => {
+      timer = setInterval(() => goTo((index + 1) % slides.length), 3200);
+    });
+  });
 </script>
 
 <style define:vars={{ accent: ACCENT, muted: MUTED, faint: FAINT, line: LINE }}>
@@ -420,34 +538,62 @@ const RULER_TICKS = Array.from({ length: 21 }, (_, i) => i * 100);
   .proj-desc { font-size: 13px; line-height: 1.6; color: var(--muted); max-width: 50ch; margin-top: 7px; }
   .proj-tags { font-family: 'JetBrains Mono', monospace; font-size: 11px; color: var(--faint); margin-top: 8px; }
 
-  /* CATALOG CTA */
-  .catalog-card {
-    position: relative; display: flex; align-items: center; justify-content: space-between; gap: 24px;
-    padding: 28px clamp(20px, 4vw, 32px); text-decoration: none; color: inherit;
-    border: 1px solid var(--accent); background: linear-gradient(135deg, rgba(85,64,112,.22), rgba(85,64,112,.04));
-    overflow: hidden;
+  /* CONTACT CTA */
+  .contact-cta-title { font-size: 19px; font-weight: 700; letter-spacing: -.01em; margin-bottom: 8px; }
+  .contact-cta-desc { margin-bottom: 24px; }
+  .contact-cta-buttons { display: flex; flex-wrap: wrap; gap: 12px; }
+  .contact-btn {
+    display: inline-flex; align-items: center; gap: 9px; font-family: 'JetBrains Mono', monospace;
+    font-size: 12.5px; letter-spacing: .04em; text-decoration: none; color: #fff;
+    border: 1px solid var(--line); padding: 13px 20px; transition: border-color .2s ease, background .2s ease;
   }
-  .catalog-card::before {
-    content: ''; position: absolute; inset: 0; background-image: radial-gradient(rgba(255,255,255,.08) 1px, transparent 1px);
-    background-size: 14px 14px; opacity: .5; pointer-events: none;
-  }
-  .catalog-card-text { position: relative; z-index: 1; }
-  .catalog-card-eyebrow {
-    display: block; font-family: 'JetBrains Mono', monospace; font-size: 10px; letter-spacing: .16em;
-    text-transform: uppercase; color: #cbb8e8; margin-bottom: 8px;
-  }
-  .catalog-card-title { font-size: 19px; font-weight: 700; letter-spacing: -.01em; margin-bottom: 6px; }
-  .catalog-card-desc { font-size: 13px; line-height: 1.6; color: var(--muted); max-width: 46ch; }
-  .catalog-card-arrow {
-    position: relative; z-index: 1; flex-shrink: 0; width: 40px; height: 40px; border-radius: 50%;
-    border: 1px solid var(--accent); display: flex; align-items: center; justify-content: center; font-size: 16px;
-  }
+  .contact-btn:hover { border-color: var(--accent); }
+  .contact-btn-primary { border-color: var(--accent); background: rgba(85,64,112,.14); }
+  .contact-btn-primary:hover { background: rgba(85,64,112,.26); }
 
   /* MORE WORK */
-  .more-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; }
+  .more-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; margin-bottom: 20px; }
   .more-card { display: flex; flex-direction: column; gap: 8px; }
   .more-card img { width: 100%; aspect-ratio: 4/3; object-fit: cover; border: 1px solid var(--line); outline: 1px dashed var(--line); outline-offset: 3px; }
   .more-card span { font-size: 11.5px; color: var(--muted); }
+
+  .more-card-full {
+    all: unset; box-sizing: border-box; cursor: pointer; display: flex; flex-direction: column; gap: 8px;
+  }
+  .more-card-full img { transition: opacity .2s ease; }
+  .more-card-full:hover img { opacity: .78; }
+  .more-card-full:hover span { color: #fff; }
+
+  /* CAROUSEL PROJECTS — 2x2 grid, bigger cards */
+  .carousel-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 16px; }
+  .more-card-carousel { position: relative; }
+  .carousel-track {
+    position: relative; width: 100%; aspect-ratio: 16/10; overflow: hidden;
+    border: 1px solid var(--line); outline: 1px dashed var(--line); outline-offset: 3px;
+  }
+  .carousel-slide {
+    position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover;
+    opacity: 0; transition: opacity .6s ease;
+  }
+  .carousel-slide.is-active { opacity: 1; }
+  .carousel-dots { display: flex; gap: 5px; position: absolute; bottom: 12px; left: 50%; transform: translateX(-50%); z-index: 1; }
+  .carousel-dot { width: 5px; height: 5px; border-radius: 50%; background: rgba(255,255,255,.4); cursor: pointer; transition: background .2s ease; }
+  .carousel-dot.is-active { background: #fff; }
+
+  /* LIGHTBOX */
+  .lightbox {
+    position: fixed; inset: 0; z-index: 50; background: rgba(0,0,0,.92);
+    display: none; overflow: hidden;
+  }
+  .lightbox.is-open { display: block; }
+  .lightbox-close {
+    all: unset; cursor: pointer; position: fixed; top: 18px; right: 18px; z-index: 51;
+    width: 40px; height: 40px; display: flex; align-items: center; justify-content: center;
+    border: 1px solid var(--line); background: rgba(0,0,0,.6); color: #fff; font-size: 16px;
+  }
+  .lightbox-close:hover { border-color: var(--accent); }
+  .lightbox-scroll { height: 100%; overflow-y: auto; display: flex; justify-content: center; align-items: flex-start; padding: 64px 24px; }
+  .lightbox-img { display: none; max-width: 900px; width: 100%; height: auto; }
 
   /* EXPERIENCE */
   .log-list { display: flex; flex-direction: column; }
@@ -479,10 +625,10 @@ const RULER_TICKS = Array.from({ length: 21 }, (_, i) => i * 100);
 
   @media (max-width: 620px) {
     .more-grid { grid-template-columns: repeat(2, 1fr); }
+    .carousel-grid { grid-template-columns: 1fr; }
     .log-row, .know-row { grid-template-columns: 1fr; gap: 6px; }
     .artboard-tag, .corner { display: none; }
     .wrap { border-left: none; border-right: none; }
-    .catalog-card { flex-direction: column; align-items: flex-start; gap: 16px; }
-    .catalog-card-arrow { align-self: flex-end; }
+    .contact-cta-buttons { flex-direction: column; align-items: stretch; }
   }
 </style>
