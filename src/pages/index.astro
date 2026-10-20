@@ -6,9 +6,11 @@ import { MessageCircle } from "lucide-astro";
 
 import profile from "../assets/profile.jpg";
 
+import tiklivetts from "../assets/projects/tiklivetts.png";
 import tokenit from "../assets/projects/tokenit.png";
 import tokenitApp from "../assets/projects/app-tokenit.png";
 import zatobox from "../assets/projects/zatobox.png";
+import zatoboxVideo from "../assets/projects/zatobox.mp4";
 import consentido from "../assets/projects/consentido.png";
 
 import elevate from "../assets/sideprojects/elevate.png";
@@ -30,9 +32,10 @@ import prisma2 from "../assets/projects/prisma/2.png";
 import prisma3 from "../assets/projects/prisma/3.png";
 
 const PROJECTS = [
+  { n: "00", title: "TikLiveTTS", cat: "Desktop App · Live Streaming Tools", img: tiklivetts, alt: "TikLiveTTS", desc: "Open-source Electron desktop app that reads TikTok Live, Twitch, YouTube and Kick chat aloud while streaming, with OBS-ready overlays, moderation tools and Polar-powered subscriptions.", tags: ["Electron", "Express", "WebSocket", "Polar"], url: "https://www.tiklivetts.es/", featured: true },
   { n: "01", title: "Tokenit", cat: "Investor App · Web3", img: tokenitApp, alt: "Tokenit Investor App", desc: "Investor dashboard for a Chilean blockchain real-estate platform — real-time monitoring, KYC, digital signing and AI risk scoring.", tags: ["Meteor.js", "React", "Web3"], url: "https://app.tokenit.cl" },
   { n: "02", title: "Tokenit", cat: "Landing Page · Web3", img: tokenit, alt: "Tokenit Landing", desc: "Public marketplace connecting investors with tokenized real-estate opportunities backed by real assets.", tags: ["Gatsby", "Python", "MongoDB"], url: "https://tokenit.cl" },
-  { n: "03", title: "ZatoBox", cat: "Open Source · POS", img: zatobox, alt: "ZatoBox", desc: "Open-source point-of-sale system with real-time inventory, order management and a Docker-based deployment pipeline.", tags: ["Next.js", "Supabase", "Docker"], url: "https://www.zatobox.io/" },
+  { n: "03", title: "ZatoBox", cat: "Open Source · POS", img: zatobox, alt: "ZatoBox", desc: "Open-source point-of-sale system with real-time inventory, order management and a Docker-based deployment pipeline.", tags: ["Next.js", "Supabase", "Docker"], url: "https://www.zatobox.io/", video: zatoboxVideo, archived: true },
   { n: "04", title: "ConSentido Cognitivo", cat: "Psicopedagogía · Accessibility", img: consentido, alt: "ConSentido Cognitivo", desc: "Accessible platform for a psychopedagogy practice, built to make cognitive-support resources easy to reach for families.", tags: ["Next.js", "Tailwind", "Firebase"], url: "https://www.consentidocognitivo.site/" },
 ];
 
@@ -51,14 +54,15 @@ const MORE_WORK_CAROUSEL = [
 ];
 
 const TIMELINE = [
+  { id: "ysc", year: "2024", type: "Work", title: "YSC Studio", role: "Full Stack Engineer & Content Creator", desc: "Independent developer building functional, well-structured digital solutions and creating tech content.", date: "Aug 2024 — Present", current: true },
+  { id: "tiklivetts", year: "2026", type: "Work", title: "TikLiveTTS", role: "Founder & Full Stack Engineer", desc: "Building an open-source Electron desktop app that reads TikTok Live, Twitch, YouTube and Kick chat aloud for streamers.", date: "Oct 2026 — Present", current: true },
   { id: "codigo-facilito", year: "2026", type: "Education", title: "Codigo Facilito", role: "Modern Frontend Bootcamp", date: "Graduated Jan 2026" },
-  { id: "niuro", year: "2025", type: "Work", title: "YSC Studio", role: "Full Stack Engineer · Marketplace Platform", desc: "Placed at Tokenit, a Chilean blockchain-based real-estate investment platform.", date: "Dec 2025 — Aug 2026" },
+  { id: "niuro", year: "2025", type: "Work", title: "Niuro", role: "Full Stack Engineer · Marketplace Platform", desc: "Placed at Tokenit, a Chilean blockchain-based real-estate investment platform.", date: "Dec 2025 — Aug 2026" },
   { id: "zatobox-work", year: "2025", type: "Work", title: "ZatoBox", role: "Full Stack & Cloud Solutions Architect", desc: "DevOps lead overseeing the full software development lifecycle.", date: "Aug — Dec 2025" },
   { id: "dragon-pyramid", year: "2025", type: "Work", title: "Dragon Pyramid", role: "Full Stack Engineer", desc: "Front-end focused work — Next.js 14, TailwindCSS, Shadcn UI, NextAuth, Supabase.", date: "Jun — Oct 2025" },
   { id: "issd", year: "2025", type: "Education", title: "Inst. Sup. Santo Domingo", role: "Web Development & Mobile Applications", date: "2025 — Present" },
   { id: "henry", year: "2025", type: "Education", title: "Henry", role: "Full Stack Development Bootcamp", date: "Graduated Jun 2025" },
   { id: "coderhouse", year: "2025", type: "Education", title: "Coderhouse", role: "Full Stack Development Program", date: "Graduated Feb 2025" },
-  { id: "ysc", year: "2024", type: "Work", title: "YSC by frysccou", role: "Full Stack Engineer & Content Creator", desc: "Independent developer building functional, well-structured digital solutions and creating tech content.", date: "Aug 2024 — Present" },
 ];
 
 const TIKTOK_ICON = `<svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 12a4 4 0 1 0 4 4V4a5 5 0 0 0 5 5"/></svg>`;
@@ -144,20 +148,40 @@ const EMAIL_URL_ES = `mailto:${CONTACT_EMAIL}?subject=${encodeURIComponent(EMAIL
       <section id="work" class="section reveal">
         <h2 class="label" data-i18n="work.label">Projects</h2>
         <div class="proj-list">
-          {PROJECTS.map(({ n, title, cat, img, alt, desc, tags, url }) => (
-            <a href={url} target="_blank" rel="noopener noreferrer" class="proj-row">
-              <Image src={img} alt={alt} width={160} height={160} class="proj-thumb" loading="lazy" />
-              <div class="proj-body">
-                <div class="proj-head">
-                  <span class="proj-title">{title}</span>
-                  <span class="proj-arrow">↗</span>
+          {PROJECTS.map(({ n, title, cat, img, alt, desc, tags, url, featured, video, archived }) => {
+            const Tag = archived ? "div" : "a";
+            return (
+              <Tag
+                href={archived ? undefined : url}
+                target={archived ? undefined : "_blank"}
+                rel={archived ? undefined : "noopener noreferrer"}
+                class={`proj-row ${featured ? "proj-row-featured" : ""} ${archived ? "proj-row-archived" : ""}`}
+              >
+                {video ? (
+                  <video class="proj-thumb proj-thumb-video" poster={img.src} muted loop playsinline preload="none" controls aria-label={alt}>
+                    <source src={video} type="video/mp4" />
+                  </video>
+                ) : (
+                  <Image src={img} alt={alt} width={160} height={160} class="proj-thumb" loading="lazy" />
+                )}
+                <div class="proj-body">
+                  <div class="proj-head">
+                    <span class="proj-title">{title}</span>
+                    {featured && <span class="proj-badge" data-i18n={`work.${n}.badge`}>Latest project</span>}
+                    {!archived && <span class="proj-arrow">↗</span>}
+                  </div>
+                  <div class="proj-cat" data-i18n={`work.${n}.cat`}>{cat}</div>
+                  <p class="proj-desc" data-i18n={`work.${n}.desc`}>{desc}</p>
+                  <div class="proj-tags">{tags.join(" · ")}</div>
+                  {archived && (
+                    <p class="proj-memorial" data-i18n={`work.${n}.memorial`}>
+                      🕯 In Memoriam — the site is no longer live. This video shows ZatoBox back when it was up and running.
+                    </p>
+                  )}
                 </div>
-                <div class="proj-cat" data-i18n={`work.${n}.cat`}>{cat}</div>
-                <p class="proj-desc" data-i18n={`work.${n}.desc`}>{desc}</p>
-                <div class="proj-tags">{tags.join(" · ")}</div>
-              </div>
-            </a>
-          ))}
+              </Tag>
+            );
+          })}
         </div>
       </section>
 
@@ -221,12 +245,13 @@ const EMAIL_URL_ES = `mailto:${CONTACT_EMAIL}?subject=${encodeURIComponent(EMAIL
       <section id="experience" class="section reveal">
         <h2 class="label" data-i18n="log.label">Experience &amp; education</h2>
         <div class="log-list">
-          {TIMELINE.map(({ id, type, title, role, desc, date }) => (
-            <div class="log-row">
+          {TIMELINE.map(({ id, type, title, role, desc, date, current }) => (
+            <div class={`log-row ${current ? "log-row-current" : ""}`}>
               <span class="log-type" data-i18n={`log.type.${type.toLowerCase()}`}>{type}</span>
               <div class="log-body">
                 <div class="log-top">
                   <h3>{title}</h3>
+                  {current && <span class="log-badge"><span class="log-badge-dot"></span><span data-i18n="log.badge.current">Current</span></span>}
                   <span class="log-date" data-i18n={`log.${id}.date`}>{date}</span>
                 </div>
                 <div class="log-role" data-i18n={`log.${id}.role`}>{role}</div>
@@ -308,12 +333,16 @@ const EMAIL_URL_ES = `mailto:${CONTACT_EMAIL}?subject=${encodeURIComponent(EMAIL
     'intro.email': 'correo',
 
     'work.label': 'Proyectos',
+    'work.00.cat': 'App de Escritorio · Herramientas para Streaming',
+    'work.00.desc': 'App de escritorio open-source hecha con Electron que lee en voz alta el chat de TikTok Live, Twitch, YouTube y Kick mientras transmitís, con overlays para OBS, moderación y suscripciones gestionadas con Polar.',
+    'work.00.badge': 'Proyecto más reciente',
     'work.01.cat': 'App de Inversores · Web3',
     'work.01.desc': 'Panel de inversores para una plataforma chilena de real estate en blockchain — monitoreo en tiempo real, KYC, firma digital y scoring de riesgo con IA.',
     'work.02.cat': 'Landing Page · Web3',
     'work.02.desc': 'Marketplace público que conecta inversores con oportunidades de real estate tokenizado respaldadas por activos reales.',
     'work.03.cat': 'Open Source · POS',
     'work.03.desc': 'Sistema de punto de venta open-source con inventario en tiempo real, gestión de pedidos y un pipeline de despliegue basado en Docker.',
+    'work.03.memorial': '🕯 In Memoriam — el sitio ya no está en línea. Este video muestra ZatoBox cuando estaba en vivo.',
     'work.04.cat': 'Psicopedagogía · Accesibilidad',
     'work.04.desc': 'Plataforma accesible para un consultorio de psicopedagogía, pensada para que las familias accedan fácilmente a recursos de apoyo cognitivo.',
 
@@ -327,6 +356,10 @@ const EMAIL_URL_ES = `mailto:${CONTACT_EMAIL}?subject=${encodeURIComponent(EMAIL
 
     'log.label': 'Experiencia y educación',
     'log.type.education': 'Educación', 'log.type.work': 'Trabajo',
+    'log.badge.current': 'Actual',
+    'log.tiklivetts.role': 'Founder & Full Stack Engineer',
+    'log.tiklivetts.desc': 'Construyendo una app de escritorio open-source con Electron que lee en voz alta el chat de TikTok Live, Twitch, YouTube y Kick para streamers.',
+    'log.tiklivetts.date': 'Oct 2026 — Presente',
     'log.codigo-facilito.role': 'Bootcamp de Frontend Moderno', 'log.codigo-facilito.date': 'Graduado en enero de 2026',
     'log.niuro.role': 'Full Stack Engineer · Plataforma Marketplace',
     'log.niuro.desc': 'Asignado a Tokenit, una plataforma chilena de inversión inmobiliaria basada en blockchain.',
@@ -558,6 +591,30 @@ const EMAIL_URL_ES = `mailto:${CONTACT_EMAIL}?subject=${encodeURIComponent(EMAIL
   .proj-desc { font-size: 13px; line-height: 1.6; color: var(--muted); max-width: 50ch; margin-top: 7px; }
   .proj-tags { font-family: 'JetBrains Mono', monospace; font-size: 11px; color: var(--faint); margin-top: 8px; }
 
+  /* FEATURED PROJECT — most recent work, called out */
+  .proj-row-featured {
+    position: relative; margin: 4px 0; padding: 20px 14px; border-top-color: transparent !important;
+    background: var(--accent-soft); border: 1px solid var(--accent); border-radius: 8px;
+  }
+  .proj-row-featured + .proj-row { border-top-color: transparent; }
+  .proj-row-featured .proj-thumb { width: 64px; height: 64px; outline-color: var(--accent); }
+  .proj-head { flex-wrap: wrap; }
+  .proj-badge {
+    font-family: 'JetBrains Mono', monospace; font-size: 9.5px; letter-spacing: .08em; text-transform: uppercase;
+    color: var(--bg); background: var(--accent); padding: 3px 8px; border-radius: 20px; white-space: nowrap;
+  }
+
+  /* ARCHIVED / MEMORIAL PROJECT */
+  .proj-row-archived { cursor: default; }
+  .proj-thumb-video { width: 160px; height: 90px; border-radius: 6px; background: #000; }
+  .proj-memorial {
+    font-size: 12px; line-height: 1.6; color: var(--faint); font-style: italic; margin-top: 8px; max-width: 50ch;
+  }
+
+  @media (max-width: 480px) {
+    .proj-thumb-video { width: 110px; height: 62px; }
+  }
+
   /* CONTACT CTA */
   .contact-cta-title { font-size: 19px; font-weight: 700; letter-spacing: -.01em; margin-bottom: 8px; }
   .contact-cta-desc { margin-bottom: 24px; }
@@ -625,6 +682,24 @@ const EMAIL_URL_ES = `mailto:${CONTACT_EMAIL}?subject=${encodeURIComponent(EMAIL
   .log-date { font-family: 'JetBrains Mono', monospace; font-size: 10.5px; color: var(--faint); }
   .log-role { font-size: 12.5px; color: var(--muted); margin-top: 3px; }
   .log-desc { font-size: 12.5px; line-height: 1.6; color: var(--faint); max-width: 54ch; margin-top: 4px; }
+
+  /* CURRENT ROLE — quiet technical marker, no color-block, fits the blueprint aesthetic */
+  .log-row-current { border-top: 1px solid var(--accent); }
+  .log-row-current .log-type { color: var(--accent); }
+
+  .log-badge {
+    display: inline-flex; align-items: center; gap: 5px; font-family: 'JetBrains Mono', monospace;
+    font-size: 9.5px; letter-spacing: .1em; text-transform: uppercase; color: var(--accent);
+  }
+  .log-badge::before { content: '//'; color: var(--faint); margin-right: 1px; }
+  .log-badge-dot {
+    width: 4px; height: 4px; border-radius: 50%; background: var(--accent); flex-shrink: 0;
+    animation: log-pulse 1.8s ease-in-out infinite;
+  }
+  @keyframes log-pulse {
+    0%, 100% { opacity: 1; }
+    50% { opacity: .25; }
+  }
 
   /* KNOWLEDGE */
   .know-list { display: flex; flex-direction: column; }
