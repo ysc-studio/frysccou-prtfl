@@ -1,8 +1,6 @@
 ---
 import Layout from "../layouts/Layout.astro";
 import { Image } from "astro:assets";
-import { Github, Linkedin, Instagram, Mail, Youtube } from "lucide-astro";
-import { MessageCircle } from "lucide-astro";
 
 import profile from "../assets/profile.jpg";
 
@@ -32,698 +30,656 @@ import prisma2 from "../assets/projects/prisma/2.png";
 import prisma3 from "../assets/projects/prisma/3.png";
 
 const PROJECTS = [
-  { n: "00", title: "TikLiveTTS", cat: "Desktop App · Live Streaming Tools", img: tiklivetts, alt: "TikLiveTTS", desc: "Open-source Electron desktop app that reads TikTok Live, Twitch, YouTube and Kick chat aloud while streaming, with OBS-ready overlays, moderation tools and Polar-powered subscriptions.", tags: ["Electron", "Express", "WebSocket", "Polar"], url: "https://www.tiklivetts.es/", featured: true },
-  { n: "01", title: "Tokenit", cat: "Investor App · Web3", img: tokenitApp, alt: "Tokenit Investor App", desc: "Investor dashboard for a Chilean blockchain real-estate platform — real-time monitoring, KYC, digital signing and AI risk scoring.", tags: ["Meteor.js", "React", "Web3"], url: "https://app.tokenit.cl" },
-  { n: "02", title: "Tokenit", cat: "Landing Page · Web3", img: tokenit, alt: "Tokenit Landing", desc: "Public marketplace connecting investors with tokenized real-estate opportunities backed by real assets.", tags: ["Gatsby", "Python", "MongoDB"], url: "https://tokenit.cl" },
-  { n: "03", title: "ZatoBox", cat: "Open Source · POS", img: zatobox, alt: "ZatoBox", desc: "Open-source point-of-sale system with real-time inventory, order management and a Docker-based deployment pipeline.", tags: ["Next.js", "Supabase", "Docker"], url: "https://www.zatobox.io/", video: zatoboxVideo, archived: true },
-  { n: "04", title: "ConSentido Cognitivo", cat: "Psicopedagogía · Accessibility", img: consentido, alt: "ConSentido Cognitivo", desc: "Accessible platform for a psychopedagogy practice, built to make cognitive-support resources easy to reach for families.", tags: ["Next.js", "Tailwind", "Firebase"], url: "https://www.consentidocognitivo.site/" },
+  {
+    num: "01", title: "TikLiveTTS", stackShort: "Electron · WebSocket", badge: true,
+    img: tiklivetts, alt: "TikLiveTTS — app screenshot",
+    catEn: "Desktop App · Live Streaming Tools", catEs: "App de Escritorio · Herramientas para Streaming",
+    descEn: "Open-source Electron desktop app that reads TikTok Live, Twitch, YouTube and Kick chat aloud while streaming, with OBS-ready overlays, moderation tools and Polar-powered subscriptions.",
+    descEs: "App de escritorio open-source hecha con Electron que lee en voz alta el chat de TikTok Live, Twitch, YouTube y Kick mientras transmitís, con overlays para OBS, moderación y suscripciones gestionadas con Polar.",
+    stack: ["Electron", "Express", "WebSocket", "Polar"], url: "https://www.tiklivetts.es/", domain: "tiklivetts.es",
+  },
+  {
+    num: "02", title: "Tokenit — Investor App", stackShort: "Meteor.js · Web3",
+    img: tokenitApp, alt: "Tokenit — investor app",
+    catEn: "Investor App · Web3", catEs: "App de Inversores · Web3",
+    descEn: "Investor dashboard for a Chilean blockchain real-estate platform — real-time monitoring, KYC, digital signing and AI risk scoring.",
+    descEs: "Panel de inversores para una plataforma chilena de real estate en blockchain — monitoreo en tiempo real, KYC, firma digital y scoring de riesgo con IA.",
+    stack: ["Meteor.js", "React", "Web3"], url: "https://app.tokenit.cl", domain: "app.tokenit.cl",
+  },
+  {
+    num: "03", title: "Tokenit — Landing Page", stackShort: "Gatsby · Python",
+    img: tokenit, alt: "Tokenit — landing page",
+    catEn: "Landing Page · Web3", catEs: "Landing Page · Web3",
+    descEn: "Public marketplace connecting investors with tokenized real-estate opportunities backed by real assets.",
+    descEs: "Marketplace público que conecta inversores con oportunidades de real estate tokenizado respaldadas por activos reales.",
+    stack: ["Gatsby", "Python", "MongoDB"], url: "https://tokenit.cl", domain: "tokenit.cl",
+  },
+  {
+    num: "04", title: "ZatoBox", stackShort: "Next.js · Docker", archived: true,
+    img: zatobox, alt: "ZatoBox — video still",
+    catEn: "Open Source · POS", catEs: "Open Source · POS",
+    descEn: "Open-source point-of-sale system with real-time inventory, order management and a Docker-based deployment pipeline.",
+    descEs: "Sistema de punto de venta open-source con inventario en tiempo real, gestión de pedidos y un pipeline de despliegue basado en Docker.",
+    memorialEn: "The site is no longer live. This video shows ZatoBox back when it was up and running.",
+    memorialEs: "El sitio ya no está en línea. Este video muestra ZatoBox cuando estaba en vivo.",
+    stack: ["Next.js", "Supabase", "Docker"],
+  },
+  {
+    num: "05", title: "ConSentido Cognitivo", stackShort: "Next.js · Firebase",
+    img: consentido, alt: "ConSentido Cognitivo — platform",
+    catEn: "Psicopedagogía · Accessibility", catEs: "Psicopedagogía · Accesibilidad",
+    descEn: "Accessible platform for a psychopedagogy practice, built to make cognitive-support resources easy to reach for families.",
+    descEs: "Plataforma accesible para un consultorio de psicopedagogía, pensada para que las familias accedan fácilmente a recursos de apoyo cognitivo.",
+    stack: ["Next.js", "Tailwind", "Firebase"], url: "https://www.consentidocognitivo.site/", domain: "consentidocognitivo.site",
+  },
 ];
 
 const MORE_WORK_FULL = [
-  { id: "elevate", title: "Elevate Gym", img: elevate },
-  { id: "atlas", title: "Atlas", img: atlas },
-  { id: "aurora", title: "Aurora AI", img: aurora },
-  { id: "coffee", title: "Noma Coffee", img: coffee },
+  { id: "elevate", title: "Elevate Gym", num: "06", img: elevate },
+  { id: "atlas", title: "Atlas", num: "07", img: atlas },
+  { id: "aurora", title: "Aurora AI", num: "08", img: aurora },
+  { id: "noma", title: "Noma Coffee", num: "09", img: coffee },
 ];
 
 const MORE_WORK_CAROUSEL = [
-  { id: "arc", title: "Arc & Form", imgs: [arc1, arc2, arc3] },
-  { id: "outdoor", title: "Wild Oak Supply", imgs: [outdoor1, outdoor2, outdoor3] },
-  { id: "muebles", title: "Muebles & Decoración", imgs: [muebles1, muebles2, muebles3] },
-  { id: "prisma", title: "Prisma Events", imgs: [prisma1, prisma2, prisma3] },
+  { key: "arc", title: "Arc & Form", imgs: [arc1, arc2, arc3] },
+  { key: "wildoak", title: "Wild Oak Supply", imgs: [outdoor1, outdoor2, outdoor3] },
+  { key: "muebles", title: "Muebles & Decoración", imgs: [muebles1, muebles2, muebles3] },
+  { key: "prisma", title: "Prisma Events", imgs: [prisma1, prisma2, prisma3] },
 ];
 
-const TIMELINE = [
-  { id: "ysc", year: "2024", type: "Work", title: "YSC Studio", role: "Full Stack Engineer & Content Creator", desc: "Independent developer building functional, well-structured digital solutions and creating tech content.", date: "Aug 2024 — Present", current: true },
-  { id: "tiklivetts", year: "2026", type: "Work", title: "TikLiveTTS", role: "Full Stack Engineer", desc: "Building an open-source Electron desktop app that reads TikTok Live, Twitch, YouTube and Kick chat aloud for streamers.", date: "Oct 2026 — Present", current: true },
-  { id: "codigo-facilito", year: "2026", type: "Education", title: "Codigo Facilito", role: "Modern Frontend Bootcamp", date: "Graduated Jan 2026" },
-  { id: "niuro", year: "2025", type: "Work", title: "Niuro", role: "Full Stack Engineer · Marketplace Platform", desc: "Placed at Tokenit, a Chilean blockchain-based real-estate investment platform.", date: "Dec 2025 — Aug 2026" },
-  { id: "zatobox-work", year: "2025", type: "Work", title: "ZatoBox", role: "Full Stack & Cloud Solutions Architect", desc: "DevOps lead overseeing the full software development lifecycle.", date: "Aug — Dec 2025" },
-  { id: "dragon-pyramid", year: "2025", type: "Work", title: "Dragon Pyramid", role: "Full Stack Engineer", desc: "Front-end focused work — Next.js 14, TailwindCSS, Shadcn UI, NextAuth, Supabase.", date: "Jun — Oct 2025" },
-  { id: "issd", year: "2025", type: "Education", title: "Inst. Sup. Santo Domingo", role: "Web Development & Mobile Applications", date: "2025 — Present" },
-  { id: "henry", year: "2025", type: "Education", title: "Henry", role: "Full Stack Development Bootcamp", date: "Graduated Jun 2025" },
-  { id: "coderhouse", year: "2025", type: "Education", title: "Coderhouse", role: "Full Stack Development Program", date: "Graduated Feb 2025" },
-];
-
-const TIKTOK_ICON = `<svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 12a4 4 0 1 0 4 4V4a5 5 0 0 0 5 5"/></svg>`;
-
-const KNOWLEDGE = [
-  { id: "core-languages", label: "Languages", items: ["HTML", "CSS", "JavaScript", "TypeScript", "Java", "Python", "PHP"] },
-  { id: "frontend", label: "Frontend", items: ["React", "Vue", "Angular", "Astro"] },
-  { id: "backend", label: "Backend", items: ["Node.js", "NestJS", "Spring Boot", "Django", "FastAPI", "Laravel"] },
-  { id: "meta-frameworks", label: "Frameworks", items: ["Next.js", "Nuxt.js", "Meteor", "Gatsby"] },
-  { id: "mobile", label: "Mobile", items: ["Flutter", "Dart", "React Native"] },
-  { id: "databases", label: "Databases", items: ["MongoDB", "Supabase", "Firebase", "PostgreSQL", "MySQL"] },
-  { id: "tools-devops", label: "Tools", items: ["Docker", "Git", "GitHub", "AWS", "Figma"] },
-];
-
-const RULER_TICKS = Array.from({ length: 21 }, (_, i) => i * 100);
-
-const WHATSAPP_NUMBER = "541167672197";
-const CONTACT_EMAIL = "franespindola71@gmail.com";
-
-const WHATSAPP_MSG_EN = "Hi Francisco! I found your portfolio and I'd like to talk about a project.";
-const WHATSAPP_MSG_ES = "¡Hola Francisco! Vi tu portfolio y me gustaría hablar sobre un proyecto.";
-const WHATSAPP_URL_EN = `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(WHATSAPP_MSG_EN)}`;
-const WHATSAPP_URL_ES = `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(WHATSAPP_MSG_ES)}`;
-
-const EMAIL_SUBJECT_EN = "Let's talk about a project";
-const EMAIL_SUBJECT_ES = "Hablemos sobre un proyecto";
-const EMAIL_BODY_EN = "Hi Francisco! I found your portfolio and I'd like to talk about a project.";
-const EMAIL_BODY_ES = "¡Hola Francisco! Vi tu portfolio y me gustaría hablar sobre un proyecto.";
-const EMAIL_URL_EN = `mailto:${CONTACT_EMAIL}?subject=${encodeURIComponent(EMAIL_SUBJECT_EN)}&body=${encodeURIComponent(EMAIL_BODY_EN)}`;
-const EMAIL_URL_ES = `mailto:${CONTACT_EMAIL}?subject=${encodeURIComponent(EMAIL_SUBJECT_ES)}&body=${encodeURIComponent(EMAIL_BODY_ES)}`;
+const WHATSAPP_URL_EN = "https://wa.me/5491167672197?text=Hi%20Francisco!%20I%20found%20your%20portfolio%20and%20I'd%20like%20to%20talk%20about%20a%20project.";
+const WHATSAPP_URL_ES = "https://wa.me/5491167672197?text=%C2%A1Hola%20Francisco!%20Vi%20tu%20portfolio%20y%20me%20gustar%C3%ADa%20hablar%20sobre%20un%20proyecto.";
+const EMAIL_URL_EN = "mailto:franespindola71@gmail.com?subject=Let's%20talk%20about%20a%20project";
+const EMAIL_URL_ES = "mailto:franespindola71@gmail.com?subject=Hablemos%20sobre%20un%20proyecto";
 ---
 
 <Layout>
-  <div class="root">
+<div style="min-height:100vh;background:var(--bg);color:var(--fg);transition:background .35s,color .35s;overflow-x:clip">
 
-    <!-- ARTBOARD DRESSING -->
-    <div class="dot-grid" aria-hidden="true"></div>
-    <div class="ruler ruler-top" aria-hidden="true">
-      {RULER_TICKS.map((v) => <span class="ruler-tick" style={`left:${v}px;`}>{v}</span>)}
+  <header style="position:sticky;top:0;z-index:30;background:color-mix(in oklab,var(--bg) 78%,transparent);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);border-bottom:1px solid var(--line)">
+    <div style="max-width:1200px;margin:0 auto;padding:12px clamp(18px,4vw,40px);display:flex;align-items:center;justify-content:space-between;gap:14px;font-family:'Martian Mono',monospace;font-size:11px;text-transform:uppercase;letter-spacing:.02em">
+      <a href="#top" style="display:flex;align-items:center;gap:6px;text-decoration:none;color:var(--fg);text-transform:none;font-size:13px;font-weight:500">
+        <span style="color:var(--acc)">ysc</span><span style="color:var(--mute)">/</span><span>studio</span><span style="width:8px;height:15px;background:var(--acc);animation:blink 1.1s step-end infinite"></span>
+      </a>
+      <nav style="display:flex;align-items:center;gap:clamp(10px,2.4vw,24px);flex-wrap:wrap;justify-content:flex-end">
+        <a href="#work" style="text-decoration:none;color:var(--mute)">./<span data-en="">work</span><span data-es="">proyectos</span></a>
+        <a href="#log" style="text-decoration:none;color:var(--mute)">./log</a>
+        <a href="#contact" style="text-decoration:none;color:var(--mute)">./<span data-en="">contact</span><span data-es="">contacto</span></a>
+        <div style="display:flex;align-items:center;border:1px solid var(--line);border-radius:6px;overflow:hidden">
+          <button id="lang-en-btn" type="button" style="all:unset;cursor:pointer;padding:6px 9px">EN</button>
+          <button id="lang-es-btn" type="button" style="all:unset;cursor:pointer;padding:6px 9px">ES</button>
+        </div>
+        <button id="theme-toggle" type="button" aria-label="Toggle theme" class="hover-fg" style="all:unset;cursor:pointer;padding:6px 9px;border:1px solid var(--line);border-radius:6px;color:var(--mute)">◐ dark</button>
+        <button id="motion-toggle" type="button" aria-label="Toggle motion" class="hover-fg" style="all:unset;cursor:pointer;padding:6px 9px;border:1px solid var(--line);border-radius:6px;color:var(--mute)">❚❚ motion</button>
+      </nav>
     </div>
-    <div class="ruler ruler-left" aria-hidden="true">
-      {RULER_TICKS.map((v) => <span class="ruler-tick" style={`top:${v}px;`}>{v}</span>)}
+  </header>
+
+  <section id="top" style="position:relative;min-height:calc(100vh - 56px);display:flex;align-items:center">
+    <div style="position:absolute;inset:0;pointer-events:none;-webkit-mask-image:radial-gradient(ellipse 80% 75% at 60% 40%,#000 30%,transparent 80%);mask-image:radial-gradient(ellipse 80% 75% at 60% 40%,#000 30%,transparent 80%)">
+      <canvas id="particle-canvas" style="width:100%;height:100%;display:block"></canvas>
     </div>
-
-    <div class="wrap">
-      <span class="corner corner-tl" aria-hidden="true">+</span>
-      <span class="corner corner-tr" aria-hidden="true">+</span>
-      <span class="corner corner-bl" aria-hidden="true">+</span>
-      <span class="corner corner-br" aria-hidden="true">+</span>
-      <span class="artboard-tag artboard-tag-tl" aria-hidden="true">F.E — PORTFOLIO</span>
-      <span class="artboard-tag artboard-tag-br" aria-hidden="true">680 × ∞</span>
-
-      <!-- TOP BAR -->
-      <div class="topbar">
-        <button type="button" class="theme-toggle" aria-label="Switch theme">
-          <span class="theme-toggle-icon" data-theme-icon>☾</span>
-        </button>
-        <button type="button" class="lang-toggle" aria-label="Switch language">EN / ES</button>
+    <div style="position:relative;width:100%;max-width:1200px;margin:0 auto;padding:clamp(40px,8vw,96px) clamp(18px,4vw,40px);display:flex;flex-direction:column;gap:clamp(28px,4vw,44px)">
+      <div style="display:flex;flex-wrap:wrap;gap:8px 22px;font-family:'Martian Mono',monospace;font-size:11px;text-transform:uppercase;letter-spacing:.02em;color:var(--mute)">
+        <span style="display:flex;align-items:center;gap:8px;color:var(--acc)"><span style="width:7px;height:7px;border-radius:50%;background:var(--acc);box-shadow:0 0 0 4px color-mix(in oklab,var(--acc) 22%,transparent);animation:pulse 2s ease-in-out infinite"></span><span data-en="">online · open to projects</span><span data-es="">online · abierto a proyectos</span></span>
+        <span>Buenos Aires · <span id="clock-time">--:--</span> GMT-3</span>
+        <span>uptime <span id="uptime" style="color:var(--fg)"></span></span>
       </div>
 
-      <!-- INTRO -->
-      <header id="top" class="section intro">
-        <div class="who">
-          <Image src={profile} alt="Francisco Espindola" width={160} height={160} class="avatar" />
-          <div>
-            <h1 class="name">Francisco Espindola</h1>
-            <p class="role" data-i18n="intro.role">Full Stack Engineer</p>
+      <h1 style="margin:0;font-family:'Doto',monospace;font-weight:900;font-size:clamp(46px,11.5vw,168px);line-height:.88;letter-spacing:-.02em;text-transform:uppercase">Francisco<br>Espindola</h1>
+
+      <p style="margin:0;font-size:clamp(22px,3vw,38px);line-height:1.15;font-weight:400;letter-spacing:-.015em;max-width:24ch">
+        <span>Full Stack Engineer.</span><br>
+        <span style="color:var(--mute)"><span data-en="">I build</span><span data-es="">Construyo</span> </span><span id="scramble-word" style="color:var(--acc);font-weight:600"></span><span style="display:inline-block;width:.45em;height:.9em;margin-left:4px;vertical-align:-.08em;background:var(--acc);animation:blink 1.1s step-end infinite"></span>
+      </p>
+
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,420px),1fr));gap:20px;align-items:end">
+        <div style="border:1px solid var(--line);border-radius:14px;background:color-mix(in oklab,var(--card) 88%,transparent);backdrop-filter:blur(6px);overflow:hidden">
+          <div style="display:flex;justify-content:space-between;padding:10px 16px;border-bottom:1px solid var(--line);font-family:'Martian Mono',monospace;font-size:10px;text-transform:uppercase;color:var(--mute)"><span>~/francisco — zsh</span><span>bio.md</span></div>
+          <div style="padding:18px 18px 20px;display:flex;flex-direction:column;gap:14px;font-size:16px;line-height:1.6;text-wrap:pretty">
+            <div style="display:flex;align-items:center;gap:12px;font-family:'Martian Mono',monospace;font-size:12px"><span style="color:var(--acc)">$</span><span>whoami</span></div>
+            <div style="display:flex;gap:14px;align-items:flex-start">
+              <div style="width:52px;height:52px;flex:none;border-radius:50%;overflow:hidden">
+                <Image src={profile} alt="Francisco Espindola" width={104} height={104} style="width:100%;height:100%;object-fit:cover;display:block" />
+              </div>
+              <div data-en="" style="display:flex;flex-direction:column;gap:10px">
+                <p style="margin:0">I'm a Full Stack Engineer based in Buenos Aires, Argentina, building digital products end to end — from interface to architecture.</p>
+                <p style="margin:0;color:var(--mute)">I care deeply about craft and clean code, and I like turning ideas into things people actually enjoy using. I also make content on <a href="https://www.youtube.com/@fryscoo" target="_blank">YouTube</a> and <a href="https://instagram.com/fryscco_" target="_blank">Instagram</a>. Reach me on <a href="https://www.linkedin.com/in/espindola-francisco" target="_blank">LinkedIn</a> or <a href="mailto:franespindola71@gmail.com">email</a>, see my code on <a href="https://github.com/esspindola" target="_blank">GitHub</a>.</p>
+              </div>
+              <div data-es="" style="display:flex;flex-direction:column;gap:10px">
+                <p style="margin:0">Soy Full Stack Engineer con base en Buenos Aires, Argentina, construyendo productos digitales de punta a punta — desde la interfaz hasta la arquitectura.</p>
+                <p style="margin:0;color:var(--mute)">Me importa profundamente el cuidado del detalle y el código limpio, y me gusta convertir ideas en cosas que la gente realmente disfrute usar. También hago contenido en <a href="https://www.youtube.com/@fryscoo" target="_blank">YouTube</a> e <a href="https://instagram.com/fryscco_" target="_blank">Instagram</a>. Contáctame por <a href="https://www.linkedin.com/in/espindola-francisco" target="_blank">LinkedIn</a> o <a href="mailto:franespindola71@gmail.com">correo</a>, y mirá mi código en <a href="https://github.com/esspindola" target="_blank">GitHub</a>.</p>
+              </div>
+            </div>
           </div>
         </div>
-
-        <p class="bio" data-i18n="intro.bio1">
-          I'm a Full Stack Engineer based in Buenos Aires, Argentina, building digital products end to end — from interface to architecture.
-        </p>
-        <p class="bio">
-          <span data-i18n="intro.bio2a">I care <em>deeply</em> about craft and clean code, and I like turning ideas into things people actually enjoy using. I also make content on</span> <a class="icon-link" href="https://www.youtube.com/@fryscoo" target="_blank" rel="noopener"><Youtube size={14} /> YouTube</a> <span data-i18n="intro.and">and</span> <a class="icon-link" href="https://instagram.com/fryscco_" target="_blank" rel="noopener"><Instagram size={14} /> Instagram</a>.
-        </p>
-        <p class="bio">
-          <span data-i18n="intro.bio3a">You can reach me on</span> <a class="icon-link" href="https://www.linkedin.com/in/espindola-francisco" target="_blank" rel="noopener"><Linkedin size={14} /> LinkedIn</a> <span data-i18n="intro.bio3b">and via</span> <a class="icon-link" href="mailto:franespindola71@gmail.com"><Mail size={14} /> <span data-i18n="intro.email">email</span> <span class="email-hint">(franespindola71@gmail.com)</span></a><span data-i18n="intro.bio3c">, see my code on</span> <a class="icon-link" href="https://github.com/esspindola" target="_blank" rel="noopener"><Github size={14} /> GitHub</a>.
-        </p>
-      </header>
-
-      <!-- PROJECTS -->
-      <section id="work" class="section reveal">
-        <h2 class="label" data-i18n="work.label">Projects</h2>
-        <div class="proj-list">
-          {PROJECTS.map(({ n, title, cat, img, alt, desc, tags, url, featured, video, archived }) => {
-            const Tag = archived ? "div" : "a";
-            return (
-              <Tag
-                href={archived ? undefined : url}
-                target={archived ? undefined : "_blank"}
-                rel={archived ? undefined : "noopener noreferrer"}
-                class={`proj-row ${featured ? "proj-row-featured" : ""} ${archived ? "proj-row-archived" : ""}`}
-              >
-                {video ? (
-                  <video class="proj-thumb proj-thumb-video" poster={img.src} muted loop playsinline preload="none" controls aria-label={alt}>
-                    <source src={video} type="video/mp4" />
-                  </video>
-                ) : (
-                  <Image src={img} alt={alt} width={160} height={160} class="proj-thumb" loading="lazy" />
-                )}
-                <div class="proj-body">
-                  <div class="proj-head">
-                    <span class="proj-title">{title}</span>
-                    {featured && <span class="proj-badge" data-i18n={`work.${n}.badge`}>Latest project</span>}
-                    {!archived && <span class="proj-arrow">↗</span>}
-                  </div>
-                  <div class="proj-cat" data-i18n={`work.${n}.cat`}>{cat}</div>
-                  <p class="proj-desc" data-i18n={`work.${n}.desc`}>{desc}</p>
-                  <div class="proj-tags">{tags.join(" · ")}</div>
-                  {archived && (
-                    <p class="proj-memorial" data-i18n={`work.${n}.memorial`}>
-                      🕯 In Memoriam — the site is no longer live. This video shows ZatoBox back when it was up and running.
-                    </p>
-                  )}
-                </div>
-              </Tag>
-            );
-          })}
+        <div style="display:flex;flex-wrap:wrap;gap:10px;justify-content:flex-start">
+          <a href="#work" class="hover-bright" style="display:inline-flex;align-items:center;gap:10px;padding:15px 22px;border-radius:10px;background:var(--acc);color:var(--on-acc);text-decoration:none;font-family:'Martian Mono',monospace;font-size:12px;font-weight:500;text-transform:uppercase"><span data-en="">See the work</span><span data-es="">Ver proyectos</span> ↓</a>
+          <a href="#contact" style="display:inline-flex;align-items:center;gap:10px;padding:15px 22px;border-radius:10px;border:1px solid var(--line);background:var(--bg);text-decoration:none;font-family:'Martian Mono',monospace;font-size:12px;font-weight:500;text-transform:uppercase"><span data-en="">Let's talk</span><span data-es="">Hablemos</span> →</a>
         </div>
-      </section>
+      </div>
+    </div>
+  </section>
 
-      <!-- CONTACT CTA -->
-      <section id="whatsapp-cta" class="section reveal">
-        <span class="label" data-i18n="whatsapp.eyebrow">Let's talk</span>
-        <h2 class="contact-cta-title" data-i18n="whatsapp.title">Need something built?</h2>
-        <p class="bio contact-cta-desc" data-i18n="whatsapp.desc">Reach out and let's talk about your project.</p>
-        <div class="contact-cta-buttons">
-          <a href={WHATSAPP_URL_EN} target="_blank" rel="noopener noreferrer" class="contact-btn contact-btn-primary" data-wa-link data-wa-en={WHATSAPP_URL_EN} data-wa-es={WHATSAPP_URL_ES}>
-            <MessageCircle size={16} />
-            <span data-i18n="whatsapp.cta">Send me a WhatsApp</span>
-          </a>
-          <a href={EMAIL_URL_EN} class="contact-btn" data-email-link data-email-en={EMAIL_URL_EN} data-email-es={EMAIL_URL_ES}>
-            <Mail size={16} />
-            <span data-i18n="email.cta">Email me</span>
-          </a>
-        </div>
-      </section>
+  <main style="max-width:1200px;margin:0 auto;padding:0 clamp(18px,4vw,40px)">
 
-      <!-- MORE WORK -->
-      <section id="more-work" class="section reveal">
-        <h2 class="label" data-i18n="more.label">More work</h2>
-        <div class="more-grid">
-          {MORE_WORK_FULL.map(({ id, title, img }) => (
-            <button type="button" class="more-card more-card-full" data-lightbox-open={id}>
-              <Image src={img} alt={title} width={300} height={200} loading="lazy" />
-              <span>{title}</span>
+    <section id="work" style="padding:clamp(72px,10vw,128px) 0">
+      <div data-reveal="" style="display:flex;align-items:center;gap:14px;margin-bottom:20px;font-family:'Martian Mono',monospace;font-size:11px;text-transform:uppercase;color:var(--mute)"><span style="color:var(--acc)">01</span><span><span data-en="">Selected work</span><span data-es="">Proyectos</span></span><span style="flex:1;height:1px;background:var(--line)"></span><span>~/work</span></div>
+      <h2 data-reveal="" style="margin:0 0 clamp(32px,5vw,56px);font-size:clamp(36px,5.6vw,76px);line-height:1;font-weight:600;letter-spacing:-.035em"><span data-en="">Things I've shipped.</span><span data-es="">Cosas que lancé.</span></h2>
+
+      <div id="work-showcase" style="display:flex;flex-wrap:wrap;gap:28px;align-items:flex-start">
+        <div style="flex:1 1 280px;display:flex;flex-direction:column;gap:4px;position:sticky;top:80px">
+          {PROJECTS.map((p, i) => (
+            <button type="button" data-work-pick={i} style="all:unset;cursor:pointer;display:grid;grid-template-columns:28px minmax(0,1fr) auto;align-items:center;gap:12px;padding:16px 14px;border-radius:10px;transition:background .3s">
+              <span data-work-num={i} style={`font-family:'Martian Mono',monospace;font-size:11px;color:${i === 0 ? "var(--acc)" : "var(--mute)"}`}>{p.num}</span>
+              <span style={`display:flex;flex-direction:column;gap:3px${p.archived ? ";color:var(--mute)" : ""}`}><span style="font-size:19px;font-weight:600;letter-spacing:-.01em">{p.title}{p.archived && " †"}</span><span style="font-family:'Martian Mono',monospace;font-size:10px;color:var(--mute)">{p.stackShort}</span></span>
+              {p.badge ? (
+                <span style="font-family:'Martian Mono',monospace;font-size:9px;text-transform:uppercase;padding:3px 7px;border-radius:4px;background:var(--acc);color:var(--on-acc)"><span data-en="">latest</span><span data-es="">nuevo</span></span>
+              ) : p.archived ? (
+                <span style="width:7px;height:7px;border-radius:50%;border:1.5px solid var(--mute);box-sizing:border-box"></span>
+              ) : (
+                <span style="width:7px;height:7px;border-radius:50%;background:var(--acc)"></span>
+              )}
             </button>
           ))}
+          <div style="margin:12px 14px 0;height:2px;background:var(--line);border-radius:2px;overflow:hidden"><div id="work-progress" style="height:100%;width:0;background:var(--acc)"></div></div>
         </div>
 
-        <div class="carousel-grid">
-          {MORE_WORK_CAROUSEL.map(({ id, title, imgs }) => (
-            <div class="more-card more-card-carousel" data-carousel={id}>
-              <div class="carousel-track">
-                {imgs.map((img, i) => (
-                  <Image src={img} alt={`${title} ${i + 1}`} width={640} height={400} loading="lazy" class="carousel-slide" data-slide={i} />
-                ))}
+        <div style="flex:999 1 480px;min-width:0;display:grid">
+          {PROJECTS.map((p, i) => (
+            <article data-work-article={i} style={`grid-area:1/1;display:flex;flex-direction:column;gap:18px;transition:opacity .5s ease,transform .6s cubic-bezier(.2,.7,.2,1);opacity:${i === 0 ? 1 : 0};transform:${i === 0 ? "none" : "translateY(14px)"};pointer-events:${i === 0 ? "auto" : "none"}`}>
+              {p.archived ? (
+                <div id="zatobox-media" style="position:relative;aspect-ratio:16/10;border-radius:14px;overflow:hidden;background:var(--card);border:1px solid var(--line);filter:grayscale(1)">
+                  <div data-zb-slide="0" style="position:absolute;inset:0;transition:opacity .4s ease">
+                    <Image src={p.img} alt={p.alt} width={960} height={600} style="width:100%;height:100%;object-fit:cover;display:block" />
+                  </div>
+                  <div data-zb-slide="1" style="position:absolute;inset:0;opacity:0;pointer-events:none;transition:opacity .4s ease">
+                    <video style="width:100%;height:100%;object-fit:cover;display:block" poster={zatobox.src} muted loop playsinline controls preload="none">
+                      <source src={zatoboxVideo} type="video/mp4" />
+                    </video>
+                  </div>
+                  <div style="position:absolute;bottom:10px;left:50%;transform:translateX(-50%);display:flex;align-items:center;gap:8px;padding:7px 10px;border-radius:999px;background:rgba(10,11,10,.72);backdrop-filter:blur(4px);z-index:2">
+                    <button type="button" data-zb-dot="0" aria-label="Screenshot" style="all:unset;cursor:pointer;font-family:'Martian Mono',monospace;font-size:10px;letter-spacing:.04em;text-transform:uppercase;color:#eceee8;padding:2px 6px;border-radius:999px;background:oklch(0.88 0.19 125);transition:all .3s"><span data-en="">image</span><span data-es="">imagen</span></button>
+                    <button type="button" data-zb-dot="1" aria-label="Video" style="all:unset;cursor:pointer;font-family:'Martian Mono',monospace;font-size:10px;letter-spacing:.04em;text-transform:uppercase;color:#8b8f87;padding:2px 6px;border-radius:999px;background:transparent;transition:all .3s">video</button>
+                  </div>
+                </div>
+              ) : (
+                <div style="position:relative;aspect-ratio:16/10;border-radius:14px;overflow:hidden;background:var(--card);border:1px solid var(--line)">
+                  <Image src={p.img} alt={p.alt} width={960} height={600} style="width:100%;height:100%;object-fit:cover;display:block" />
+                </div>
+              )}
+              <div style="display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:10px;font-family:'Martian Mono',monospace;font-size:11px;text-transform:uppercase;color:var(--mute)">
+                <span><span data-en="">{p.catEn}</span><span data-es="">{p.catEs}</span></span>
+                {p.archived ? (
+                  <span style="display:flex;align-items:center;gap:8px;text-transform:none"><span style="width:6px;height:6px;border-radius:50%;border:1.5px solid var(--mute)"></span>410 Gone · in memoriam</span>
+                ) : (
+                  <a href={p.url} target="_blank" style="display:flex;align-items:center;gap:8px;text-transform:none;text-decoration:none;color:var(--acc)"><span style="width:6px;height:6px;border-radius:50%;background:var(--acc);animation:pulse 2s infinite"></span>200 · {p.domain} ↗</a>
+                )}
               </div>
-              <div class="carousel-dots">
-                {imgs.map((_, i) => <span class="carousel-dot" data-dot={i}></span>)}
-              </div>
-              <span>{title}</span>
-            </div>
-          ))}
-        </div>
-      </section>
-
-      <!-- LIGHTBOX -->
-      <div id="lightbox" class="lightbox" aria-hidden="true">
-        <button type="button" class="lightbox-close" data-lightbox-close aria-label="Close">✕</button>
-        <div class="lightbox-scroll">
-          {MORE_WORK_FULL.map(({ id, title, img }) => (
-            <Image src={img} alt={title} inferSize loading="lazy" class="lightbox-img" data-lightbox-img={id} />
+              <h3 style={`margin:0;font-size:clamp(34px,4.4vw,56px);line-height:1;font-weight:600;letter-spacing:-.035em${p.archived ? ";color:var(--mute)" : ""}`}>{p.title}{p.archived && <span style="font-weight:300"> †</span>}</h3>
+              <p style="margin:0;font-size:17px;line-height:1.6;color:var(--mute);max-width:62ch;text-wrap:pretty"><span data-en="">{p.descEn}</span><span data-es="">{p.descEs}</span></p>
+              {p.archived && (
+                <code style="font-family:'Martian Mono',monospace;font-size:12px;line-height:1.7;color:var(--mute)">// <span data-en="">{p.memorialEn}</span><span data-es="">{p.memorialEs}</span></code>
+              )}
+              <code style="font-family:'Martian Mono',monospace;font-size:12px;line-height:1.8;color:var(--mute)"><span style="color:var(--acc2)">stack</span> = [{p.stack.map((s, si) => <>{si > 0 && ", "}<span style="color:var(--acc)">"{s}"</span></>)}]</code>
+            </article>
           ))}
         </div>
       </div>
+    </section>
 
-      <!-- EXPERIENCE & EDUCATION -->
-      <section id="experience" class="section reveal">
-        <h2 class="label" data-i18n="log.label">Experience &amp; education</h2>
-        <div class="log-list">
-          {TIMELINE.map(({ id, type, title, role, desc, date, current }) => (
-            <div class={`log-row ${current ? "log-row-current" : ""}`}>
-              <span class="log-type" data-i18n={`log.type.${type.toLowerCase()}`}>{type}</span>
-              <div class="log-body">
-                <div class="log-top">
-                  <h3>{title}</h3>
-                  {current && <span class="log-badge"><span class="log-badge-dot"></span><span data-i18n="log.badge.current">Current</span></span>}
-                  <span class="log-date" data-i18n={`log.${id}.date`}>{date}</span>
+    <section id="contact" style="padding-bottom:clamp(72px,10vw,128px)">
+      <div data-reveal="" style="position:relative;border:1px solid var(--line);border-radius:20px;background:var(--card);padding:clamp(28px,5vw,64px);display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,380px),1fr));gap:36px;align-items:end;overflow:hidden">
+        <div style="display:flex;flex-direction:column;gap:22px">
+          <span style="display:flex;align-items:center;gap:10px;font-family:'Martian Mono',monospace;font-size:11px;text-transform:uppercase;color:var(--acc)"><span style="width:7px;height:7px;border-radius:50%;background:var(--acc);animation:pulse 2s infinite"></span><span data-en="">Let's talk</span><span data-es="">Hablemos</span></span>
+          <h2 style="margin:0;font-size:clamp(44px,7vw,104px);line-height:.92;font-weight:600;letter-spacing:-.045em"><span data-en="">Need something built?</span><span data-es="">¿Necesitas algo?</span><span style="display:inline-block;width:.4em;height:.75em;margin-left:.12em;background:var(--acc);animation:blink 1.1s step-end infinite"></span></h2>
+          <p style="margin:0;font-size:18px;line-height:1.55;color:var(--mute)"><span data-en="">Reach out and let's talk about your project.</span><span data-es="">Contáctame y hablamos sobre tu proyecto.</span></p>
+        </div>
+        <div style="display:flex;flex-direction:column;gap:10px;font-family:'Martian Mono',monospace;font-size:13px">
+          <a data-en="" href={WHATSAPP_URL_EN} target="_blank" class="hover-bright" style="display:flex;justify-content:space-between;align-items:center;gap:16px;padding:20px 22px;border-radius:12px;background:var(--acc);color:var(--on-acc);text-decoration:none"><span>$ send --whatsapp</span><span>→</span></a>
+          <a data-es="" href={WHATSAPP_URL_ES} target="_blank" class="hover-bright" style="display:flex;justify-content:space-between;align-items:center;gap:16px;padding:20px 22px;border-radius:12px;background:var(--acc);color:var(--on-acc);text-decoration:none"><span>$ enviar --whatsapp</span><span>→</span></a>
+          <a data-en="" href={EMAIL_URL_EN} class="hover-acc-border" style="display:flex;justify-content:space-between;align-items:center;gap:16px;padding:20px 22px;border-radius:12px;border:1px solid var(--line);background:var(--bg);text-decoration:none"><span>$ send --email</span><span>→</span></a>
+          <a data-es="" href={EMAIL_URL_ES} class="hover-acc-border" style="display:flex;justify-content:space-between;align-items:center;gap:16px;padding:20px 22px;border-radius:12px;border:1px solid var(--line);background:var(--bg);text-decoration:none"><span>$ enviar --email</span><span>→</span></a>
+        </div>
+      </div>
+    </section>
+
+    <section style="padding-bottom:clamp(72px,10vw,128px)">
+      <div data-reveal="" style="display:flex;align-items:center;gap:14px;margin-bottom:20px;font-family:'Martian Mono',monospace;font-size:11px;text-transform:uppercase;color:var(--mute)"><span style="color:var(--acc)">02</span><span><span data-en="">More work</span><span data-es="">Más trabajos</span></span><span style="flex:1;height:1px;background:var(--line)"></span><span>~/work/more</span></div>
+      <h2 data-reveal="" style="margin:0 0 clamp(32px,5vw,56px);font-size:clamp(36px,5.6vw,76px);line-height:1;font-weight:600;letter-spacing:-.035em"><span data-en="">More from the studio.</span><span data-es="">Más del estudio.</span></h2>
+      <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(min(100%,260px),1fr));gap:32px 18px">
+        {MORE_WORK_FULL.map(({ title, num, img }) => (
+          <div data-reveal="" style="display:flex;flex-direction:column;gap:12px">
+            <div style="position:relative;aspect-ratio:4/3;border-radius:12px;overflow:hidden;background:var(--card);border:1px solid var(--line)">
+              <Image src={img} alt={title} width={520} height={390} class="pan-shot" style="width:100%;height:100%;object-fit:cover;display:block" />
+            </div>
+            <div style="display:flex;justify-content:space-between;align-items:baseline;gap:8px"><span style="font-size:17px;font-weight:600">{title}</span><span style="font-family:'Martian Mono',monospace;font-size:10px;color:var(--mute)">{num}</span></div>
+          </div>
+        ))}
+        {MORE_WORK_CAROUSEL.map(({ key, title, imgs }) => (
+          <div data-reveal="" data-carousel={key} style="display:flex;flex-direction:column;gap:12px">
+            <div style="position:relative;aspect-ratio:4/3;border-radius:12px;overflow:hidden;background:var(--card);border:1px solid var(--line)">
+              {imgs.map((img, i) => (
+                <div class="carousel-slide" data-slide={i} style={`position:absolute;inset:0;transition:opacity .7s ease,transform 1.2s cubic-bezier(.2,.7,.2,1);opacity:${i === 0 ? 1 : 0};transform:${i === 0 ? "scale(1)" : "scale(1.04)"};pointer-events:${i === 0 ? "auto" : "none"}`}>
+                  <Image src={img} alt={`${title} ${i + 1}/3`} width={520} height={390} style="width:100%;height:100%;object-fit:cover;display:block" />
                 </div>
-                <div class="log-role" data-i18n={`log.${id}.role`}>{role}</div>
-                {desc && <p class="log-desc" data-i18n={`log.${id}.desc`}>{desc}</p>}
+              ))}
+              <span class="carousel-badge" style="position:absolute;top:10px;right:10px;pointer-events:none;padding:4px 8px;border-radius:5px;background:var(--bg);font-family:'Martian Mono',monospace;font-size:10px;color:var(--fg)">1/3</span>
+            </div>
+            <div style="display:flex;justify-content:space-between;align-items:center;gap:8px">
+              <span style="font-size:17px;font-weight:600">{title}</span>
+              <div style="display:flex;gap:5px">
+                {imgs.map((_, i) => (
+                  <button type="button" class="carousel-dot" data-dot={i} aria-label="Slide" style={`all:unset;cursor:pointer;width:${i === 0 ? "18px" : "5px"};height:5px;border-radius:3px;background:${i === 0 ? "var(--acc)" : "var(--line)"};transition:all .3s`}></button>
+                ))}
               </div>
             </div>
-          ))}
-        </div>
-      </section>
+          </div>
+        ))}
+      </div>
+    </section>
 
-      <!-- KNOWLEDGE -->
-      <section id="knowledge" class="section reveal">
-        <h2 class="label" data-i18n="tech.label">Knowledge</h2>
-        <div class="know-list">
-          {KNOWLEDGE.map(({ id, label, items }) => (
-            <div class="know-row">
-              <span class="know-cat" data-i18n={`tech.label.${id}`}>{label}</span>
-              <span class="know-items">{items.join(" · ")}</span>
-            </div>
-          ))}
-        </div>
-      </section>
+    <section id="log" style="padding-bottom:clamp(72px,10vw,128px)">
+      <div data-reveal="" style="display:flex;align-items:center;gap:14px;margin-bottom:20px;font-family:'Martian Mono',monospace;font-size:11px;text-transform:uppercase;color:var(--mute)"><span style="color:var(--acc)">03</span><span><span data-en="">Experience &amp; education</span><span data-es="">Experiencia y educación</span></span><span style="flex:1;height:1px;background:var(--line)"></span><span>git log</span></div>
+      <h2 data-reveal="" style="margin:0 0 18px;font-size:clamp(36px,5.6vw,76px);line-height:1;font-weight:600;letter-spacing:-.035em"><span data-en="">The commit history.</span><span data-es="">El historial de commits.</span></h2>
+      <div data-reveal="" style="display:flex;flex-wrap:wrap;gap:8px 20px;margin-bottom:28px;font-family:'Martian Mono',monospace;font-size:11px;color:var(--mute)">
+        <span><span style="color:var(--acc)">$</span> git log --graph --career</span>
+        <span style="display:flex;align-items:center;gap:7px"><span style="width:8px;height:8px;border-radius:50%;background:var(--acc)"></span><span data-en="">work</span><span data-es="">trabajo</span></span>
+        <span style="display:flex;align-items:center;gap:7px"><span style="width:8px;height:8px;border-radius:50%;background:var(--acc2)"></span><span data-en="">education</span><span data-es="">educación</span></span>
+      </div>
 
-      <!-- CONTACT / FOOTER -->
-      <footer id="contact" class="section reveal">
-        <h2 class="label" data-i18n="contact.label">Elsewhere</h2>
-        <div class="socials">
-          <a href="https://github.com/esspindola" target="_blank" rel="noopener" aria-label="GitHub"><Github size={18} /></a>
-          <a href="https://www.linkedin.com/in/espindola-francisco" target="_blank" rel="noopener" aria-label="LinkedIn"><Linkedin size={18} /></a>
-          <a href="https://instagram.com/fryscco_" target="_blank" rel="noopener" aria-label="Instagram"><Instagram size={18} /></a>
-          <a href="https://www.youtube.com/@fryscoo" target="_blank" rel="noopener" aria-label="YouTube"><Youtube size={18} /></a>
-          <a href="https://www.tiktok.com/@frysccouu" target="_blank" rel="noopener" aria-label="TikTok" set:html={TIKTOK_ICON} />
-          <a href="mailto:franespindola71@gmail.com" aria-label="Email"><Mail size={18} /></a>
+      <div style="display:flex;flex-direction:column">
+        <div data-reveal="" style="display:grid;grid-template-columns:44px minmax(0,1fr);gap:0 14px">
+          <div style="position:relative"><span style="position:absolute;left:11px;top:28px;bottom:0;width:2px;background:var(--acc)"></span><span style="position:absolute;left:31px;top:28px;bottom:0;width:2px;background:color-mix(in oklab,var(--acc2) 60%,transparent)"></span><span style="position:absolute;left:5px;top:22px;width:14px;height:14px;border-radius:50%;background:var(--acc);box-shadow:0 0 0 5px color-mix(in oklab,var(--acc) 20%,transparent)"></span></div>
+          <div style="padding:18px 0 22px;border-bottom:1px solid var(--line);display:flex;flex-direction:column;gap:8px">
+            <div style="display:flex;flex-wrap:wrap;align-items:center;gap:8px;font-family:'Martian Mono',monospace;font-size:11px;color:var(--mute)"><span style="color:var(--acc)">9f3c2a1</span><span style="padding:2px 7px;border-radius:4px;background:var(--acc);color:var(--on-acc)">HEAD → main</span><span style="flex:1"></span><span><span data-en="">Oct 2026 — Present</span><span data-es="">Oct 2026 — Actual</span></span></div>
+            <div style="font-size:clamp(20px,2.2vw,26px);font-weight:600;letter-spacing:-.02em">TikLiveTTS <span style="font-weight:400;color:var(--mute)">· Full Stack Engineer</span></div>
+            <div style="font-size:15px;line-height:1.55;color:var(--mute);max-width:70ch"><span data-en="">Building an open-source Electron desktop app that reads TikTok Live, Twitch, YouTube and Kick chat aloud for streamers.</span><span data-es="">Construyendo una app de escritorio open-source con Electron que lee en voz alta el chat de TikTok Live, Twitch, YouTube y Kick para streamers.</span></div>
+          </div>
         </div>
-        <div class="foot-line">
-          <span>© 2026 Francisco Espindola</span>
-          <span data-i18n="footer.location">Buenos Aires, Argentina</span>
+        <div data-reveal="" style="display:grid;grid-template-columns:44px minmax(0,1fr);gap:0 14px">
+          <div style="position:relative"><span style="position:absolute;left:11px;top:0;bottom:0;width:2px;background:var(--acc)"></span><span style="position:absolute;left:31px;top:0;bottom:0;width:2px;background:color-mix(in oklab,var(--acc2) 60%,transparent)"></span><span style="position:absolute;left:26px;top:23px;width:8px;height:8px;border-radius:50%;background:var(--bg);border:2px solid var(--acc2)"></span></div>
+          <div style="padding:18px 0 22px;border-bottom:1px solid var(--line);display:flex;flex-direction:column;gap:8px">
+            <div style="display:flex;flex-wrap:wrap;align-items:center;gap:8px;font-family:'Martian Mono',monospace;font-size:11px;color:var(--mute)"><span style="color:var(--acc2)">e71b0d4</span><span style="padding:2px 7px;border-radius:4px;border:1px solid var(--line)">tag: <span data-en="">graduated</span><span data-es="">egresado</span></span><span style="flex:1"></span><span><span data-en="">Jan 2026</span><span data-es="">Ene 2026</span></span></div>
+            <div style="font-size:clamp(20px,2.2vw,26px);font-weight:600;letter-spacing:-.02em">Codigo Facilito <span style="font-weight:400;color:var(--mute)">· <span data-en="">Modern Frontend Bootcamp</span><span data-es="">Bootcamp de Frontend Moderno</span></span></div>
+          </div>
         </div>
-      </footer>
+        <div data-reveal="" style="display:grid;grid-template-columns:44px minmax(0,1fr);gap:0 14px">
+          <div style="position:relative"><span style="position:absolute;left:11px;top:0;bottom:0;width:2px;background:var(--acc)"></span><span style="position:absolute;left:31px;top:0;bottom:0;width:2px;background:color-mix(in oklab,var(--acc2) 60%,transparent)"></span><span style="position:absolute;left:6px;top:23px;width:8px;height:8px;border-radius:50%;background:var(--bg);border:2px solid var(--acc)"></span></div>
+          <div style="padding:18px 0 22px;border-bottom:1px solid var(--line);display:flex;flex-direction:column;gap:8px">
+            <div style="display:flex;flex-wrap:wrap;align-items:center;gap:8px;font-family:'Martian Mono',monospace;font-size:11px;color:var(--mute)"><span style="color:var(--acc)">4ac9e82</span><span style="padding:2px 7px;border-radius:4px;border:1px solid var(--line)">merge: tokenit</span><span style="flex:1"></span><span><span data-en="">Dec 2025 — Aug 2026</span><span data-es="">Dic 2025 — Ago 2026</span></span></div>
+            <div style="font-size:clamp(20px,2.2vw,26px);font-weight:600;letter-spacing:-.02em">Niuro <span style="font-weight:400;color:var(--mute)">· Full Stack Engineer · Marketplace Platform</span></div>
+            <div style="font-size:15px;line-height:1.55;color:var(--mute);max-width:70ch"><span data-en="">Placed at Tokenit, a Chilean blockchain-based real-estate investment platform.</span><span data-es="">Asignado a Tokenit, una plataforma chilena de inversión inmobiliaria basada en blockchain.</span></div>
+          </div>
+        </div>
+        <div data-reveal="" style="display:grid;grid-template-columns:44px minmax(0,1fr);gap:0 14px">
+          <div style="position:relative"><span style="position:absolute;left:11px;top:0;bottom:0;width:2px;background:var(--acc)"></span><span style="position:absolute;left:31px;top:0;bottom:0;width:2px;background:color-mix(in oklab,var(--acc2) 60%,transparent)"></span><span style="position:absolute;left:6px;top:23px;width:8px;height:8px;border-radius:50%;background:var(--bg);border:2px solid var(--acc)"></span></div>
+          <div style="padding:18px 0 22px;border-bottom:1px solid var(--line);display:flex;flex-direction:column;gap:8px">
+            <div style="display:flex;flex-wrap:wrap;align-items:center;gap:8px;font-family:'Martian Mono',monospace;font-size:11px;color:var(--mute)"><span style="color:var(--acc)">b20f7d3</span><span style="padding:2px 7px;border-radius:4px;border:1px solid var(--line)">devops</span><span style="flex:1"></span><span><span data-en="">Aug — Dec 2025</span><span data-es="">Ago — Dic 2025</span></span></div>
+            <div style="font-size:clamp(20px,2.2vw,26px);font-weight:600;letter-spacing:-.02em">ZatoBox <span style="font-weight:400;color:var(--mute)">· Full Stack &amp; Cloud Solutions Architect</span></div>
+            <div style="font-size:15px;line-height:1.55;color:var(--mute);max-width:70ch"><span data-en="">DevOps lead overseeing the full software development lifecycle.</span><span data-es="">Líder de DevOps a cargo de todo el ciclo de vida del desarrollo de software.</span></div>
+          </div>
+        </div>
+        <div data-reveal="" style="display:grid;grid-template-columns:44px minmax(0,1fr);gap:0 14px">
+          <div style="position:relative"><span style="position:absolute;left:11px;top:0;bottom:0;width:2px;background:var(--acc)"></span><span style="position:absolute;left:31px;top:0;bottom:0;width:2px;background:color-mix(in oklab,var(--acc2) 60%,transparent)"></span><span style="position:absolute;left:6px;top:23px;width:8px;height:8px;border-radius:50%;background:var(--bg);border:2px solid var(--acc)"></span></div>
+          <div style="padding:18px 0 22px;border-bottom:1px solid var(--line);display:flex;flex-direction:column;gap:8px">
+            <div style="display:flex;flex-wrap:wrap;align-items:center;gap:8px;font-family:'Martian Mono',monospace;font-size:11px;color:var(--mute)"><span style="color:var(--acc)">5d8e1c9</span><span style="padding:2px 7px;border-radius:4px;border:1px solid var(--line)">frontend</span><span style="flex:1"></span><span>Jun — Oct 2025</span></div>
+            <div style="font-size:clamp(20px,2.2vw,26px);font-weight:600;letter-spacing:-.02em">Dragon Pyramid <span style="font-weight:400;color:var(--mute)">· Full Stack Engineer</span></div>
+            <div style="font-size:15px;line-height:1.55;color:var(--mute);max-width:70ch"><span data-en="">Front-end focused work — Next.js 14, TailwindCSS, Shadcn UI, NextAuth, Supabase.</span><span data-es="">Trabajo enfocado en front-end — Next.js 14, TailwindCSS, Shadcn UI, NextAuth, Supabase.</span></div>
+          </div>
+        </div>
+        <div data-reveal="" style="display:grid;grid-template-columns:44px minmax(0,1fr);gap:0 14px">
+          <div style="position:relative"><span style="position:absolute;left:11px;top:0;bottom:0;width:2px;background:var(--acc)"></span><span style="position:absolute;left:31px;top:0;bottom:0;width:2px;background:color-mix(in oklab,var(--acc2) 60%,transparent)"></span><span style="position:absolute;left:26px;top:23px;width:8px;height:8px;border-radius:50%;background:var(--bg);border:2px solid var(--acc2)"></span></div>
+          <div style="padding:18px 0 22px;border-bottom:1px solid var(--line);display:flex;flex-direction:column;gap:8px">
+            <div style="display:flex;flex-wrap:wrap;align-items:center;gap:8px;font-family:'Martian Mono',monospace;font-size:11px;color:var(--mute)"><span style="color:var(--acc2)">c63a0f2</span><span style="padding:2px 7px;border-radius:4px;border:1px solid var(--line)">tag: <span data-en="">graduated</span><span data-es="">egresado</span></span><span style="flex:1"></span><span>Jun 2025</span></div>
+            <div style="font-size:clamp(20px,2.2vw,26px);font-weight:600;letter-spacing:-.02em">Henry <span style="font-weight:400;color:var(--mute)">· <span data-en="">Full Stack Development Bootcamp</span><span data-es="">Bootcamp de Desarrollo Full Stack</span></span></div>
+          </div>
+        </div>
+        <div data-reveal="" style="display:grid;grid-template-columns:44px minmax(0,1fr);gap:0 14px">
+          <div style="position:relative"><span style="position:absolute;left:11px;top:0;bottom:0;width:2px;background:var(--acc)"></span><span style="position:absolute;left:31px;top:0;bottom:0;width:2px;background:color-mix(in oklab,var(--acc2) 60%,transparent)"></span><span style="position:absolute;left:26px;top:23px;width:8px;height:8px;border-radius:50%;background:var(--acc2)"></span></div>
+          <div style="padding:18px 0 22px;border-bottom:1px solid var(--line);display:flex;flex-direction:column;gap:8px">
+            <div style="display:flex;flex-wrap:wrap;align-items:center;gap:8px;font-family:'Martian Mono',monospace;font-size:11px;color:var(--mute)"><span style="color:var(--acc2)">0e9b4a7</span><span style="padding:2px 7px;border-radius:4px;border:1px solid var(--line)"><span data-en="">in progress</span><span data-es="">en curso</span></span><span style="flex:1"></span><span><span data-en="">2025 — Present</span><span data-es="">2025 — Actual</span></span></div>
+            <div style="font-size:clamp(20px,2.2vw,26px);font-weight:600;letter-spacing:-.02em">Inst. Sup. Santo Domingo <span style="font-weight:400;color:var(--mute)">· <span data-en="">Web Development &amp; Mobile Applications</span><span data-es="">Desarrollo Web y Aplicaciones Móviles</span></span></div>
+          </div>
+        </div>
+        <div data-reveal="" style="display:grid;grid-template-columns:44px minmax(0,1fr);gap:0 14px">
+          <div style="position:relative"><span style="position:absolute;left:11px;top:0;height:30px;width:2px;background:var(--acc)"></span><span style="position:absolute;left:31px;top:0;height:30px;width:2px;background:color-mix(in oklab,var(--acc2) 60%,transparent)"></span><span style="position:absolute;left:26px;top:23px;width:8px;height:8px;border-radius:50%;background:var(--bg);border:2px solid var(--acc2)"></span></div>
+          <div style="padding:18px 0 22px;border-bottom:1px solid var(--line);display:flex;flex-direction:column;gap:8px">
+            <div style="display:flex;flex-wrap:wrap;align-items:center;gap:8px;font-family:'Martian Mono',monospace;font-size:11px;color:var(--mute)"><span style="color:var(--acc2)">7f12d6e</span><span style="padding:2px 7px;border-radius:4px;border:1px solid var(--line)">tag: <span data-en="">graduated</span><span data-es="">egresado</span></span><span style="flex:1"></span><span>Feb 2025</span></div>
+            <div style="font-size:clamp(20px,2.2vw,26px);font-weight:600;letter-spacing:-.02em">Coderhouse <span style="font-weight:400;color:var(--mute)">· <span data-en="">Full Stack Development Program</span><span data-es="">Programa de Desarrollo Full Stack</span></span></div>
+          </div>
+        </div>
+        <div data-reveal="" style="display:grid;grid-template-columns:44px minmax(0,1fr);gap:0 14px">
+          <div style="position:relative"><span style="position:absolute;left:11px;top:0;height:28px;width:2px;background:var(--acc)"></span><span style="position:absolute;left:5px;top:22px;width:14px;height:14px;border-radius:50%;background:var(--acc);box-shadow:0 0 0 5px color-mix(in oklab,var(--acc) 20%,transparent)"></span></div>
+          <div style="padding:18px 0 22px;display:flex;flex-direction:column;gap:8px">
+            <div style="display:flex;flex-wrap:wrap;align-items:center;gap:8px;font-family:'Martian Mono',monospace;font-size:11px;color:var(--mute)"><span style="color:var(--acc)">3a7e910</span><span style="padding:2px 7px;border-radius:4px;border:1px solid var(--acc);color:var(--acc)">origin/studio</span><span style="padding:2px 7px;border-radius:4px;border:1px solid var(--line)">init</span><span style="flex:1"></span><span><span data-en="">Aug 2024 — Present</span><span data-es="">Ago 2024 — Actual</span></span></div>
+            <div style="font-size:clamp(20px,2.2vw,26px);font-weight:600;letter-spacing:-.02em">YSC Studio <span style="font-weight:400;color:var(--mute)">· <span data-en="">Full Stack Engineer &amp; Content Creator</span><span data-es="">Full Stack Engineer y Creador de Contenido</span></span></div>
+            <div style="font-size:15px;line-height:1.55;color:var(--mute);max-width:70ch"><span data-en="">Independent developer building functional, well-structured digital solutions and creating tech content.</span><span data-es="">Desarrollador independiente construyendo soluciones digitales funcionales y creando contenido tech.</span></div>
+          </div>
+        </div>
+      </div>
+    </section>
 
-    </div>
+    <section style="padding-bottom:clamp(72px,10vw,128px)">
+      <div data-reveal="" style="display:flex;align-items:center;gap:14px;margin-bottom:20px;font-family:'Martian Mono',monospace;font-size:11px;text-transform:uppercase;color:var(--mute)"><span style="color:var(--acc)">04</span><span><span data-en="">Knowledge</span><span data-es="">Conocimientos</span></span><span style="flex:1;height:1px;background:var(--line)"></span><span>stack.ts</span></div>
+      <h2 data-reveal="" style="margin:0 0 clamp(28px,4vw,44px);font-size:clamp(36px,5.6vw,76px);line-height:1;font-weight:600;letter-spacing:-.035em"><span data-en="">The toolbox.</span><span data-es="">La caja de herramientas.</span></h2>
+      <div data-reveal="" style="border:1px solid var(--line);border-radius:14px;background:var(--card);overflow:hidden">
+        <div style="display:flex;justify-content:space-between;padding:10px 16px;border-bottom:1px solid var(--line);font-family:'Martian Mono',monospace;font-size:10px;text-transform:uppercase;color:var(--mute)"><span>src/stack.ts</span><span>TypeScript</span></div>
+        <div style="padding:18px 0;font-family:'Martian Mono',monospace;font-size:clamp(12px,1.3vw,14px);line-height:2;color:var(--mute)">
+          <div style="display:flex;gap:16px;padding:0 18px"><span style="flex:none;width:18px;text-align:right;opacity:.5">1</span><span><span style="color:var(--acc2)">export const</span> <span style="color:var(--fg)">stack</span> = {`{`}</span></div>
+          <div class="hover-line" style="display:flex;gap:16px;padding:0 18px"><span style="flex:none;width:18px;text-align:right;opacity:.5">2</span><span style="padding-left:2ch;text-wrap:pretty"><span style="color:var(--fg)">languages</span>: [<span style="color:var(--acc)">"HTML"</span>, <span style="color:var(--acc)">"CSS"</span>, <span style="color:var(--acc)">"JavaScript"</span>, <span style="color:var(--acc)">"TypeScript"</span>, <span style="color:var(--acc)">"Java"</span>, <span style="color:var(--acc)">"Python"</span>, <span style="color:var(--acc)">"PHP"</span>],</span></div>
+          <div class="hover-line" style="display:flex;gap:16px;padding:0 18px"><span style="flex:none;width:18px;text-align:right;opacity:.5">3</span><span style="padding-left:2ch;text-wrap:pretty"><span style="color:var(--fg)">frontend</span>: [<span style="color:var(--acc)">"React"</span>, <span style="color:var(--acc)">"Vue"</span>, <span style="color:var(--acc)">"Angular"</span>, <span style="color:var(--acc)">"Astro"</span>],</span></div>
+          <div class="hover-line" style="display:flex;gap:16px;padding:0 18px"><span style="flex:none;width:18px;text-align:right;opacity:.5">4</span><span style="padding-left:2ch;text-wrap:pretty"><span style="color:var(--fg)">backend</span>: [<span style="color:var(--acc)">"Node.js"</span>, <span style="color:var(--acc)">"NestJS"</span>, <span style="color:var(--acc)">"Spring Boot"</span>, <span style="color:var(--acc)">"Django"</span>, <span style="color:var(--acc)">"FastAPI"</span>, <span style="color:var(--acc)">"Laravel"</span>],</span></div>
+          <div class="hover-line" style="display:flex;gap:16px;padding:0 18px"><span style="flex:none;width:18px;text-align:right;opacity:.5">5</span><span style="padding-left:2ch;text-wrap:pretty"><span style="color:var(--fg)">frameworks</span>: [<span style="color:var(--acc)">"Next.js"</span>, <span style="color:var(--acc)">"Nuxt.js"</span>, <span style="color:var(--acc)">"Meteor"</span>, <span style="color:var(--acc)">"Gatsby"</span>],</span></div>
+          <div class="hover-line" style="display:flex;gap:16px;padding:0 18px"><span style="flex:none;width:18px;text-align:right;opacity:.5">6</span><span style="padding-left:2ch;text-wrap:pretty"><span style="color:var(--fg)">mobile</span>: [<span style="color:var(--acc)">"Flutter"</span>, <span style="color:var(--acc)">"Dart"</span>, <span style="color:var(--acc)">"React Native"</span>],</span></div>
+          <div class="hover-line" style="display:flex;gap:16px;padding:0 18px"><span style="flex:none;width:18px;text-align:right;opacity:.5">7</span><span style="padding-left:2ch;text-wrap:pretty"><span style="color:var(--fg)">databases</span>: [<span style="color:var(--acc)">"MongoDB"</span>, <span style="color:var(--acc)">"Supabase"</span>, <span style="color:var(--acc)">"Firebase"</span>, <span style="color:var(--acc)">"PostgreSQL"</span>, <span style="color:var(--acc)">"MySQL"</span>],</span></div>
+          <div class="hover-line" style="display:flex;gap:16px;padding:0 18px"><span style="flex:none;width:18px;text-align:right;opacity:.5">8</span><span style="padding-left:2ch;text-wrap:pretty"><span style="color:var(--fg)">tools</span>: [<span style="color:var(--acc)">"Docker"</span>, <span style="color:var(--acc)">"Git"</span>, <span style="color:var(--acc)">"GitHub"</span>, <span style="color:var(--acc)">"AWS"</span>, <span style="color:var(--acc)">"Figma"</span>],</span></div>
+          <div style="display:flex;gap:16px;padding:0 18px"><span style="flex:none;width:18px;text-align:right;opacity:.5">9</span><span>{`}`} <span style="color:var(--acc2)">as const</span>;<span style="display:inline-block;width:.6em;height:1.1em;margin-left:4px;vertical-align:-.2em;background:var(--acc);animation:blink 1.1s step-end infinite"></span></span></div>
+        </div>
+      </div>
+    </section>
+
+    <section style="padding-bottom:clamp(56px,8vw,96px)">
+      <div style="display:flex;justify-content:space-between;align-items:baseline;border-top:1px solid var(--line);padding-top:18px;margin-bottom:24px;font-family:'Martian Mono',monospace;font-size:11px;letter-spacing:.02em;text-transform:uppercase;color:var(--mute)">
+        <span><span data-en="">Elsewhere</span><span data-es="">En otros lados</span></span><span>(05)</span>
+      </div>
+      <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(min(100%,240px),1fr));gap:0 24px">
+        <a href="https://github.com/esspindola" target="_blank" style="display:flex;justify-content:space-between;align-items:baseline;gap:12px;padding:18px 0;border-bottom:1px solid var(--line);text-decoration:none"><span style="display:flex;flex-direction:column;gap:4px"><span style="font-size:17px;font-weight:500">GitHub</span><span style="font-family:'Martian Mono',monospace;font-size:11px;color:var(--mute)">esspindola</span></span><span>↗</span></a>
+        <a href="https://www.linkedin.com/in/espindola-francisco" target="_blank" style="display:flex;justify-content:space-between;align-items:baseline;gap:12px;padding:18px 0;border-bottom:1px solid var(--line);text-decoration:none"><span style="display:flex;flex-direction:column;gap:4px"><span style="font-size:17px;font-weight:500">LinkedIn</span><span style="font-family:'Martian Mono',monospace;font-size:11px;color:var(--mute)">espindola-francisco</span></span><span>↗</span></a>
+        <a href="https://instagram.com/fryscco_" target="_blank" style="display:flex;justify-content:space-between;align-items:baseline;gap:12px;padding:18px 0;border-bottom:1px solid var(--line);text-decoration:none"><span style="display:flex;flex-direction:column;gap:4px"><span style="font-size:17px;font-weight:500">Instagram</span><span style="font-family:'Martian Mono',monospace;font-size:11px;color:var(--mute)">@fryscco_</span></span><span>↗</span></a>
+        <a href="https://www.youtube.com/@fryscoo" target="_blank" style="display:flex;justify-content:space-between;align-items:baseline;gap:12px;padding:18px 0;border-bottom:1px solid var(--line);text-decoration:none"><span style="display:flex;flex-direction:column;gap:4px"><span style="font-size:17px;font-weight:500">YouTube</span><span style="font-family:'Martian Mono',monospace;font-size:11px;color:var(--mute)">@fryscoo</span></span><span>↗</span></a>
+        <a href="https://www.tiktok.com/@frysccouu" target="_blank" style="display:flex;justify-content:space-between;align-items:baseline;gap:12px;padding:18px 0;border-bottom:1px solid var(--line);text-decoration:none"><span style="display:flex;flex-direction:column;gap:4px"><span style="font-size:17px;font-weight:500">TikTok</span><span style="font-family:'Martian Mono',monospace;font-size:11px;color:var(--mute)">@frysccouu</span></span><span>↗</span></a>
+        <a href="mailto:franespindola71@gmail.com" style="display:flex;justify-content:space-between;align-items:baseline;gap:12px;padding:18px 0;border-bottom:1px solid var(--line);text-decoration:none"><span style="display:flex;flex-direction:column;gap:4px"><span style="font-size:17px;font-weight:500">Email</span><span style="font-family:'Martian Mono',monospace;font-size:11px;color:var(--mute)">franespindola71@gmail.com</span></span><span>↗</span></a>
+        <a href="https://wa.me/5491167672197" target="_blank" style="display:flex;justify-content:space-between;align-items:baseline;gap:12px;padding:18px 0;border-bottom:1px solid var(--line);text-decoration:none"><span style="display:flex;flex-direction:column;gap:4px"><span style="font-size:17px;font-weight:500">WhatsApp</span><span style="font-family:'Martian Mono',monospace;font-size:11px;color:var(--mute)">+54 11 6767-2197</span></span><span>↗</span></a>
+      </div>
+    </section>
+  </main>
+
+  <div id="toast" role="status" aria-live="polite" style="position:fixed;left:50%;bottom:24px;z-index:50;width:min(460px,calc(100vw - 32px));transform:translate(-50%,16px);opacity:0;pointer-events:none;transition:opacity .35s ease,transform .45s cubic-bezier(.2,.8,.2,1);border:1px solid var(--line);border-radius:12px;background:var(--card);box-shadow:0 20px 60px rgba(0,0,0,.45);overflow:hidden;font-family:'Martian Mono',monospace">
+    <div style="display:flex;justify-content:space-between;gap:10px;padding:9px 14px;border-bottom:1px solid var(--line);font-size:10px;text-transform:uppercase;color:var(--mute)"><span>theme.ts</span><span id="toast-tag" style="color:var(--acc)"></span></div>
+    <div style="padding:14px;display:flex;gap:10px;font-size:13px;line-height:1.6;color:var(--fg)"><span style="color:var(--acc)">$</span><span id="toast-msg"></span></div>
+    <div id="toast-hint" style="padding:0 14px 12px;font-size:10px;color:var(--mute)"></div>
   </div>
+
+  <footer style="border-top:1px solid var(--line)">
+    <div style="max-width:1200px;margin:0 auto;padding:28px clamp(18px,4vw,40px) 40px;display:flex;flex-wrap:wrap;justify-content:space-between;align-items:baseline;gap:16px;font-family:'Martian Mono',monospace;font-size:11px;color:var(--mute)">
+      <span>© 2026 Francisco Espindola</span>
+      <span>Buenos Aires, Argentina</span>
+      <a href="#top" style="text-decoration:none;color:var(--mute)">cd ~ ↑</a>
+    </div>
+  </footer>
+
+</div>
 </Layout>
 
-<script>
-  import gsap from 'gsap';
-  import { ScrollTrigger } from 'gsap/ScrollTrigger';
-  gsap.registerPlugin(ScrollTrigger);
-
-  const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-
-  if (!prefersReducedMotion) {
-    gsap.from('.intro > *', { opacity: 0, y: 14, stagger: 0.08, duration: 0.7, ease: 'power2.out' });
-
-    gsap.utils.toArray('.reveal').forEach((el) => {
-      gsap.from(el, {
-        opacity: 0, y: 24, duration: 0.8, ease: 'power2.out',
-        scrollTrigger: { trigger: el, start: 'top 88%' },
-      });
-    });
-
-    gsap.utils.toArray('.proj-row, .log-row, .know-row, .more-card, .more-card-carousel').forEach((el) => {
-      gsap.from(el, {
-        opacity: 0, y: 14, duration: 0.6, ease: 'power2.out',
-        scrollTrigger: { trigger: el, start: 'top 92%' },
-      });
-    });
-  }
-
-  // i18n — EN (default, baked into the markup) / ES toggle
-  const ES = {
-    'intro.role': 'Full Stack Engineer',
-    'intro.bio1': 'Soy Full Stack Engineer con base en Buenos Aires, Argentina, construyendo productos digitales de punta a punta — desde la interfaz hasta la arquitectura.',
-    'intro.bio2a': 'Me importa <em>profundamente</em> el cuidado del detalle y el código limpio, y me gusta convertir ideas en cosas que la gente realmente disfrute usar. También hago contenido en',
-    'intro.and': 'e',
-    'intro.bio3a': 'Puedes contactarme por',
-    'intro.bio3b': 'y por',
-    'intro.bio3c': ', y ver mi código en',
-    'intro.email': 'correo',
-
-    'work.label': 'Proyectos',
-    'work.00.cat': 'App de Escritorio · Herramientas para Streaming',
-    'work.00.desc': 'App de escritorio open-source hecha con Electron que lee en voz alta el chat de TikTok Live, Twitch, YouTube y Kick mientras transmitís, con overlays para OBS, moderación y suscripciones gestionadas con Polar.',
-    'work.00.badge': 'Proyecto más reciente',
-    'work.01.cat': 'App de Inversores · Web3',
-    'work.01.desc': 'Panel de inversores para una plataforma chilena de real estate en blockchain — monitoreo en tiempo real, KYC, firma digital y scoring de riesgo con IA.',
-    'work.02.cat': 'Landing Page · Web3',
-    'work.02.desc': 'Marketplace público que conecta inversores con oportunidades de real estate tokenizado respaldadas por activos reales.',
-    'work.03.cat': 'Open Source · POS',
-    'work.03.desc': 'Sistema de punto de venta open-source con inventario en tiempo real, gestión de pedidos y un pipeline de despliegue basado en Docker.',
-    'work.03.memorial': '🕯 In Memoriam — el sitio ya no está en línea. Este video muestra ZatoBox cuando estaba en vivo.',
-    'work.04.cat': 'Psicopedagogía · Accesibilidad',
-    'work.04.desc': 'Plataforma accesible para un consultorio de psicopedagogía, pensada para que las familias accedan fácilmente a recursos de apoyo cognitivo.',
-
-    'whatsapp.eyebrow': 'Hablemos',
-    'whatsapp.title': '¿Necesitas algo?',
-    'whatsapp.desc': 'Contáctame y hablamos sobre tu proyecto.',
-    'whatsapp.cta': 'Mándame un WhatsApp',
-    'email.cta': 'Escríbeme un email',
-
-    'more.label': 'Más trabajos',
-
-    'log.label': 'Experiencia y educación',
-    'log.type.education': 'Educación', 'log.type.work': 'Trabajo',
-    'log.badge.current': 'Actual',
-    'log.tiklivetts.role': 'Full Stack Engineer',
-    'log.tiklivetts.desc': 'Construyendo una app de escritorio open-source con Electron que lee en voz alta el chat de TikTok Live, Twitch, YouTube y Kick para streamers.',
-    'log.tiklivetts.date': 'Oct 2026 — Presente',
-    'log.codigo-facilito.role': 'Bootcamp de Frontend Moderno', 'log.codigo-facilito.date': 'Graduado en enero de 2026',
-    'log.niuro.role': 'Full Stack Engineer · Plataforma Marketplace',
-    'log.niuro.desc': 'Asignado a Tokenit, una plataforma chilena de inversión inmobiliaria basada en blockchain.',
-    'log.niuro.date': 'Dic 2025 — Ago 2026',
-    'log.zatobox-work.role': 'Full Stack & Cloud Solutions Architect',
-    'log.zatobox-work.desc': 'Líder de DevOps a cargo de todo el ciclo de vida del desarrollo de software.',
-    'log.zatobox-work.date': 'Ago — Dic 2025',
-    'log.dragon-pyramid.role': 'Full Stack Engineer',
-    'log.dragon-pyramid.desc': 'Trabajo enfocado en frontend — Next.js 14, TailwindCSS, Shadcn UI, NextAuth, Supabase.',
-    'log.dragon-pyramid.date': 'Jun — Oct 2025',
-    'log.issd.role': 'Desarrollo Web y Aplicaciones Móviles', 'log.issd.date': '2025 — Presente',
-    'log.henry.role': 'Bootcamp de Desarrollo Full Stack', 'log.henry.date': 'Graduado en junio de 2025',
-    'log.coderhouse.role': 'Programa de Desarrollo Full Stack', 'log.coderhouse.date': 'Graduado en febrero de 2025',
-    'log.ysc.role': 'Full Stack Engineer & Creador de Contenido',
-    'log.ysc.desc': 'Desarrollador independiente construyendo soluciones digitales funcionales y creando contenido tech.',
-    'log.ysc.date': 'Ago 2024 — Presente',
-
-    'tech.label': 'Conocimientos',
-    'tech.label.core-languages': 'Lenguajes', 'tech.label.frontend': 'Frontend', 'tech.label.backend': 'Backend',
-    'tech.label.meta-frameworks': 'Frameworks', 'tech.label.mobile': 'Mobile',
-    'tech.label.databases': 'Bases de datos', 'tech.label.tools-devops': 'Herramientas',
-
-    'contact.label': 'Y en otros lados',
-    'footer.location': 'Buenos Aires, Argentina',
-  };
-
-  const LANG_KEY = 'site-lang';
-  const originalHTML = new WeakMap();
-  let currentLang = 'en';
-
-  function applyLang(lang) {
-    document.querySelectorAll('[data-i18n]').forEach((el) => {
-      if (!originalHTML.has(el)) originalHTML.set(el, el.innerHTML);
-      const key = el.getAttribute('data-i18n');
-      const orig = originalHTML.get(el);
-      el.innerHTML = (lang === 'es' && ES[key]) ? ES[key] : orig;
-    });
-    currentLang = lang;
-    document.documentElement.lang = lang;
-    document.querySelectorAll('.lang-toggle').forEach((btn) => {
-      btn.textContent = lang === 'en' ? 'EN / ES' : 'ES / EN';
-    });
-    document.querySelectorAll('[data-wa-link]').forEach((link) => {
-      const url = lang === 'es' ? link.getAttribute('data-wa-es') : link.getAttribute('data-wa-en');
-      if (url) link.setAttribute('href', url);
-    });
-    document.querySelectorAll('[data-email-link]').forEach((link) => {
-      const url = lang === 'es' ? link.getAttribute('data-email-es') : link.getAttribute('data-email-en');
-      if (url) link.setAttribute('href', url);
-    });
-    try { localStorage.setItem(LANG_KEY, lang); } catch {}
-  }
-
-  document.querySelectorAll('.lang-toggle').forEach((btn) => {
-    btn.addEventListener('click', () => applyLang(currentLang === 'en' ? 'es' : 'en'));
-  });
-
-  let storedLang = 'en';
-  try { storedLang = localStorage.getItem(LANG_KEY) || 'en'; } catch {}
-  if (storedLang === 'es') applyLang('es');
-
-  // THEME — dark (default) / light toggle
-  const THEME_KEY = 'site-theme';
-
-  function applyTheme(theme) {
-    document.documentElement.setAttribute('data-theme', theme);
-    document.querySelectorAll('[data-theme-icon]').forEach((icon) => {
-      icon.textContent = theme === 'light' ? '☀' : '☾';
-    });
-    try { localStorage.setItem(THEME_KEY, theme); } catch {}
-  }
-
-  document.querySelectorAll('.theme-toggle').forEach((btn) => {
-    btn.addEventListener('click', () => {
-      const current = document.documentElement.getAttribute('data-theme') === 'light' ? 'light' : 'dark';
-      applyTheme(current === 'light' ? 'dark' : 'light');
-    });
-  });
-
-  let storedTheme = 'dark';
-  try { storedTheme = localStorage.getItem(THEME_KEY) || 'dark'; } catch {}
-  applyTheme(storedTheme);
-
-  // LIGHTBOX — full-page screenshots, scrollable top to bottom
-  const lightbox = document.getElementById('lightbox');
-  const openLightbox = (id) => {
-    if (!lightbox) return;
-    lightbox.querySelectorAll('[data-lightbox-img]').forEach((img) => {
-      img.style.display = img.getAttribute('data-lightbox-img') === id ? 'block' : 'none';
-    });
-    lightbox.classList.add('is-open');
-    lightbox.setAttribute('aria-hidden', 'false');
-    document.body.style.overflow = 'hidden';
-  };
-  const closeLightbox = () => {
-    if (!lightbox) return;
-    lightbox.classList.remove('is-open');
-    lightbox.setAttribute('aria-hidden', 'true');
-    document.body.style.overflow = '';
-  };
-  document.querySelectorAll('[data-lightbox-open]').forEach((btn) => {
-    btn.addEventListener('click', () => openLightbox(btn.getAttribute('data-lightbox-open')));
-  });
-  document.querySelectorAll('[data-lightbox-close]').forEach((btn) => {
-    btn.addEventListener('click', closeLightbox);
-  });
-  lightbox?.addEventListener('click', (e) => {
-    if (!e.target.closest('.lightbox-img')) closeLightbox();
-  });
-  document.addEventListener('keydown', (e) => { if (e.key === 'Escape') closeLightbox(); });
-
-  // CAROUSELS — each project rotates independently through its own 3 images
-  document.querySelectorAll('[data-carousel]').forEach((carousel) => {
-    const slides = carousel.querySelectorAll('.carousel-slide');
-    const dots = carousel.querySelectorAll('.carousel-dot');
-    let index = 0;
-
-    const goTo = (i) => {
-      index = i;
-      slides.forEach((s, si) => s.classList.toggle('is-active', si === index));
-      dots.forEach((d, di) => d.classList.toggle('is-active', di === index));
-    };
-    goTo(0);
-
-    dots.forEach((dot, di) => dot.addEventListener('click', () => goTo(di)));
-
-    let timer = setInterval(() => goTo((index + 1) % slides.length), 3200);
-    carousel.addEventListener('mouseenter', () => clearInterval(timer));
-    carousel.addEventListener('mouseleave', () => {
-      timer = setInterval(() => goTo((index + 1) % slides.length), 3200);
-    });
-  });
-</script>
-
 <style>
-  .root { position: relative; overflow: hidden; background: var(--bg); color: var(--fg); min-height: 100vh; font-family: 'Inter', sans-serif; }
+  .hover-fg:hover { color: var(--fg); }
+  .hover-bright:hover { color: var(--on-acc); filter: brightness(1.08); }
+  .hover-acc-border:hover { border-color: var(--acc); }
+  .hover-line:hover { background: color-mix(in oklab, var(--acc) 7%, transparent); }
 
-  /* ARTBOARD DRESSING */
-  .dot-grid {
-    position: fixed; inset: 0; z-index: 0; pointer-events: none;
-    background-image: radial-gradient(var(--dot) 1px, transparent 1px);
-    background-size: 24px 24px;
-    background-position: 18px 18px;
-    mask-image: radial-gradient(ellipse 80% 70% at 50% 20%, #000 40%, transparent 92%);
-  }
-
-  .ruler { position: fixed; z-index: 1; pointer-events: none; color: var(--faint); font-family: 'JetBrains Mono', monospace; font-size: 9px; }
-  .ruler-top {
-    top: 0; left: 0; right: 0; height: 18px;
-    background-image: repeating-linear-gradient(to right, var(--line) 0 1px, transparent 1px 100px);
-  }
-  .ruler-left {
-    top: 18px; left: 0; bottom: 0; width: 18px;
-    background-image: repeating-linear-gradient(to bottom, var(--line) 0 1px, transparent 1px 100px);
-  }
-  .ruler-tick { position: absolute; opacity: .55; }
-  .ruler-top .ruler-tick { top: 3px; transform: translateX(3px); }
-  .ruler-left .ruler-tick { left: 3px; writing-mode: vertical-rl; transform: translateY(3px); }
-
-  .corner { position: absolute; z-index: 2; color: var(--faint); font-size: 12px; line-height: 1; font-family: 'JetBrains Mono', monospace; pointer-events: none; }
-  .corner-tl { top: -6px; left: -6px; }
-  .corner-tr { top: -6px; right: -6px; }
-  .corner-bl { bottom: -6px; left: -6px; }
-  .corner-br { bottom: -6px; right: -6px; }
-
-  .artboard-tag {
-    position: absolute; z-index: 2; font-family: 'JetBrains Mono', monospace; font-size: 9.5px;
-    letter-spacing: .1em; text-transform: uppercase; color: var(--faint); white-space: nowrap; pointer-events: none;
-  }
-  .artboard-tag-tl { top: -22px; left: 0; }
-  .artboard-tag-br { bottom: -22px; right: 0; }
-
-  .wrap {
-    position: relative; z-index: 1;
-    max-width: 680px;
-    margin: 0 auto;
-    padding: clamp(48px, 8vh, 96px) clamp(20px, 5vw, 24px) clamp(64px, 10vh, 120px);
-    border-left: 1px dashed var(--line);
-    border-right: 1px dashed var(--line);
-  }
-
-  .topbar { display: flex; justify-content: flex-end; align-items: center; gap: 8px; margin-bottom: clamp(32px, 6vh, 56px); }
-  .lang-toggle, .theme-toggle {
-    all: unset; cursor: pointer; font-family: 'JetBrains Mono', monospace; font-size: 11px;
-    letter-spacing: .06em; color: var(--muted); border: 1px solid var(--line); padding: 6px 12px;
-    transition: color .2s ease, border-color .2s ease;
-  }
-  .lang-toggle:hover, .theme-toggle:hover { color: var(--fg); border-color: var(--line-strong); }
-  .theme-toggle { display: inline-flex; align-items: center; justify-content: center; line-height: 1; }
-  .theme-toggle-icon { font-size: 12px; }
-
-  .section { margin-bottom: clamp(56px, 9vh, 84px); }
-  .section:last-child { margin-bottom: 0; }
-
-  .label {
-    display: flex; align-items: center; gap: 8px;
-    font-family: 'JetBrains Mono', monospace; font-size: 11px; letter-spacing: .16em;
-    text-transform: uppercase; color: var(--accent); margin-bottom: 20px;
-  }
-  .label::before { content: '+'; color: var(--faint); font-size: 12px; }
-  .label::after { content: ''; flex: 1; height: 1px; background: var(--line); }
-
-  .who { display: flex; align-items: center; gap: 14px; margin-bottom: 24px; }
-  .avatar { width: 44px; height: 44px; object-fit: cover; border-radius: 50%; position: relative; outline: 1px dashed var(--line); outline-offset: 4px; }
-  .name { font-size: 17px; font-weight: 600; letter-spacing: -.01em; }
-  .role { font-size: 13.5px; color: var(--muted); margin-top: 1px; }
-
-  .bio { font-size: 15px; line-height: 1.75; color: var(--muted); max-width: 58ch; margin-bottom: 14px; }
-  .bio:last-of-type { margin-bottom: 0; }
-  .bio a, footer a { color: var(--fg); text-decoration: underline; text-underline-offset: 2px; text-decoration-color: var(--line-strong); }
-  .bio a:hover, footer a:hover { text-decoration-color: var(--accent); }
-  .bio em { color: var(--fg); font-style: italic; }
-  .icon-link { display: inline-flex; align-items: center; gap: 5px; vertical-align: -2px; }
-  .email-hint { font-family: 'JetBrains Mono', monospace; font-size: 12px; color: var(--faint); }
-
-  /* PROJECTS */
-  .proj-list { display: flex; flex-direction: column; }
-  .proj-row {
-    position: relative; display: flex; gap: 16px; padding: 20px 0; border-top: 1px solid var(--line);
-    text-decoration: none; color: inherit;
-  }
-  .proj-list .proj-row:last-child { border-bottom: 1px solid var(--line); }
-  .proj-thumb { flex-shrink: 0; width: 56px; height: 56px; object-fit: cover; border-radius: 6px; outline: 1px dashed var(--line); outline-offset: 3px; }
-  .proj-body { min-width: 0; flex: 1; }
-  .proj-head { display: flex; align-items: baseline; justify-content: space-between; gap: 12px; }
-  .proj-title { font-size: 15px; font-weight: 600; }
-  .proj-arrow { color: var(--faint); font-size: 13px; }
-  .proj-cat { font-family: 'JetBrains Mono', monospace; font-size: 10px; letter-spacing: .06em; text-transform: uppercase; color: var(--accent); margin-top: 3px; }
-  .proj-desc { font-size: 13px; line-height: 1.6; color: var(--muted); max-width: 50ch; margin-top: 7px; }
-  .proj-tags { font-family: 'JetBrains Mono', monospace; font-size: 11px; color: var(--faint); margin-top: 8px; }
-
-  /* FEATURED PROJECT — most recent work, called out */
-  .proj-row-featured {
-    position: relative; margin: 4px 0; padding: 20px 14px; border-top-color: transparent !important;
-    background: var(--accent-soft); border: 1px solid var(--accent); border-radius: 8px;
-  }
-  .proj-row-featured + .proj-row { border-top-color: transparent; }
-  .proj-row-featured .proj-thumb { width: 64px; height: 64px; outline-color: var(--accent); }
-  .proj-head { flex-wrap: wrap; }
-  .proj-badge {
-    font-family: 'JetBrains Mono', monospace; font-size: 9.5px; letter-spacing: .08em; text-transform: uppercase;
-    color: var(--bg); background: var(--accent); padding: 3px 8px; border-radius: 20px; white-space: nowrap;
-  }
-
-  /* ARCHIVED / MEMORIAL PROJECT */
-  .proj-row-archived { cursor: default; }
-  .proj-thumb-video { width: 160px; height: 90px; border-radius: 6px; background: #000; }
-  .proj-memorial {
-    font-size: 12px; line-height: 1.6; color: var(--faint); font-style: italic; margin-top: 8px; max-width: 50ch;
-  }
-
-  @media (max-width: 480px) {
-    .proj-thumb-video { width: 110px; height: 62px; }
-  }
-
-  /* CONTACT CTA */
-  .contact-cta-title { font-size: 19px; font-weight: 700; letter-spacing: -.01em; margin-bottom: 8px; }
-  .contact-cta-desc { margin-bottom: 24px; }
-  .contact-cta-buttons { display: flex; flex-wrap: wrap; gap: 12px; }
-  .contact-btn {
-    display: inline-flex; align-items: center; gap: 9px; font-family: 'JetBrains Mono', monospace;
-    font-size: 12.5px; letter-spacing: .04em; text-decoration: none; color: var(--fg);
-    border: 1px solid var(--line); padding: 13px 20px; transition: border-color .2s ease, background .2s ease;
-  }
-  .contact-btn:hover { border-color: var(--accent); }
-  .contact-btn-primary { border-color: var(--accent); background: var(--accent-soft); }
-  .contact-btn-primary:hover { background: var(--accent-soft-strong); }
-
-  /* MORE WORK */
-  .more-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; margin-bottom: 20px; }
-  .more-card { display: flex; flex-direction: column; gap: 8px; }
-  .more-card img { width: 100%; aspect-ratio: 4/3; object-fit: cover; border: 1px solid var(--line); outline: 1px dashed var(--line); outline-offset: 3px; }
-  .more-card span { font-size: 11.5px; color: var(--muted); }
-
-  .more-card-full {
-    all: unset; box-sizing: border-box; cursor: pointer; display: flex; flex-direction: column; gap: 8px;
-  }
-  .more-card-full img { transition: opacity .2s ease; }
-  .more-card-full:hover img { opacity: .78; }
-  .more-card-full:hover span { color: var(--fg); }
-
-  /* CAROUSEL PROJECTS — 2x2 grid, bigger cards */
-  .carousel-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 16px; }
-  .more-card-carousel { position: relative; }
-  .carousel-track {
-    position: relative; width: 100%; aspect-ratio: 16/10; overflow: hidden;
-    border: 1px solid var(--line); outline: 1px dashed var(--line); outline-offset: 3px;
-  }
-  .carousel-slide {
-    position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover;
-    opacity: 0; transition: opacity .6s ease;
-  }
-  .carousel-slide.is-active { opacity: 1; }
-  .carousel-dots { display: flex; gap: 5px; position: absolute; bottom: 12px; left: 50%; transform: translateX(-50%); z-index: 1; }
-  .carousel-dot { width: 5px; height: 5px; border-radius: 50%; background: var(--dot-muted); cursor: pointer; transition: background .2s ease; }
-  .carousel-dot.is-active { background: var(--fg); }
-
-  /* LIGHTBOX */
-  .lightbox {
-    position: fixed; inset: 0; z-index: 50; background: rgba(0,0,0,.92);
-    display: none; overflow: hidden;
-  }
-  .lightbox.is-open { display: block; }
-  .lightbox-close {
-    all: unset; cursor: pointer; position: fixed; top: 18px; right: 18px; z-index: 51;
-    width: 40px; height: 40px; display: flex; align-items: center; justify-content: center;
-    border: 1px solid var(--line); background: rgba(0,0,0,.6); color: #fff; font-size: 16px;
-  }
-  .lightbox-close:hover { border-color: var(--accent); }
-  .lightbox-scroll { height: 100%; overflow-y: auto; display: flex; justify-content: center; align-items: flex-start; padding: 64px 24px; }
-  .lightbox-img { display: none; max-width: 900px; width: 100%; height: auto; }
-
-  /* EXPERIENCE */
-  .log-list { display: flex; flex-direction: column; }
-  .log-row { display: grid; grid-template-columns: 84px 1fr; gap: 16px; padding: 16px 0; border-top: 1px solid var(--line); }
-  .log-list .log-row:last-child { border-bottom: 1px solid var(--line); }
-  .log-type { font-family: 'JetBrains Mono', monospace; font-size: 10px; letter-spacing: .08em; text-transform: uppercase; color: var(--faint); padding-top: 2px; }
-  .log-top { display: flex; align-items: baseline; gap: 10px; flex-wrap: wrap; }
-  .log-top h3 { font-size: 14.5px; font-weight: 600; }
-  .log-date { font-family: 'JetBrains Mono', monospace; font-size: 10.5px; color: var(--faint); }
-  .log-role { font-size: 12.5px; color: var(--muted); margin-top: 3px; }
-  .log-desc { font-size: 12.5px; line-height: 1.6; color: var(--faint); max-width: 54ch; margin-top: 4px; }
-
-  /* CURRENT ROLE — quiet technical marker, no color-block, fits the blueprint aesthetic */
-  .log-row-current { border-top: 1px solid var(--accent); }
-  .log-row-current .log-type { color: var(--accent); }
-
-  .log-badge {
-    display: inline-flex; align-items: center; gap: 5px; font-family: 'JetBrains Mono', monospace;
-    font-size: 9.5px; letter-spacing: .1em; text-transform: uppercase; color: var(--accent);
-  }
-  .log-badge::before { content: '//'; color: var(--faint); margin-right: 1px; }
-  .log-badge-dot {
-    width: 4px; height: 4px; border-radius: 50%; background: var(--accent); flex-shrink: 0;
-    animation: log-pulse 1.8s ease-in-out infinite;
-  }
-  @keyframes log-pulse {
-    0%, 100% { opacity: 1; }
-    50% { opacity: .25; }
-  }
-
-  /* KNOWLEDGE */
-  .know-list { display: flex; flex-direction: column; }
-  .know-row { display: grid; grid-template-columns: 110px 1fr; gap: 16px; padding: 12px 0; border-top: 1px solid var(--line); }
-  .know-list .know-row:last-child { border-bottom: 1px solid var(--line); }
-  .know-cat { font-size: 12.5px; font-weight: 600; color: var(--fg); }
-  .know-items { font-family: 'JetBrains Mono', monospace; font-size: 12px; line-height: 1.8; color: var(--muted); }
-
-  /* CONTACT */
-  .socials { display: flex; flex-wrap: wrap; gap: 20px; }
-  .socials a { display: inline-flex; color: var(--muted); }
-  .socials a:hover { color: var(--fg); }
-  .foot-line { display: flex; justify-content: space-between; gap: 12px; flex-wrap: wrap; margin-top: 32px; padding-top: 20px; border-top: 1px solid var(--line); font-family: 'JetBrains Mono', monospace; font-size: 10.5px; letter-spacing: .04em; color: var(--faint); }
-
-  @media (max-width: 1000px) {
-    .ruler { display: none; }
-  }
-
-  @media (max-width: 620px) {
-    .more-grid { grid-template-columns: repeat(2, 1fr); }
-    .carousel-grid { grid-template-columns: 1fr; }
-    .log-row, .know-row { grid-template-columns: 1fr; gap: 6px; }
-    .artboard-tag, .corner { display: none; }
-    .wrap { border-left: none; border-right: none; }
-    .contact-cta-buttons { flex-direction: column; align-items: stretch; }
-  }
+  .pan-shot { object-position: center top; animation: pan-shot 11s ease-in-out infinite alternate; }
+  @keyframes pan-shot { from { object-position: center top; } to { object-position: center bottom; } }
 </style>
+
+<script>
+  const WORDS = {
+    en: ['interfaces', 'APIs', 'desktop apps', 'real-time systems', 'architecture'],
+    es: ['interfaces', 'APIs', 'apps de escritorio', 'sistemas en tiempo real', 'arquitectura'],
+  };
+  const JOKES = {
+    en: [
+      "Why would you want me to code a light theme? Real devs work in the dark.",
+      "Error 418: I'm a teapot, not a flashlight. Are you really sure?",
+      'Fine, you win. Deploying light mode… bring sunglasses.',
+    ],
+    es: [
+      '¿Para qué querés que codifique un tema claro? Los devs de verdad programamos a oscuras.',
+      'Error 418: soy una tetera, no una linterna. ¿Seguro seguro?',
+      'Bueno, vos ganás. Deployando tema claro… traé lentes de sol.',
+    ],
+  };
+  const THEME_KEY = 'ysc-theme', LANG_KEY = 'ysc-lang', MOTION_KEY = 'ysc-motion';
+
+  const root = document.documentElement;
+  let theme = localStorage.getItem(THEME_KEY) || 'dark';
+  let lang = localStorage.getItem(LANG_KEY) || 'en';
+  let motion = localStorage.getItem(MOTION_KEY) ? localStorage.getItem(MOTION_KEY) === 'on' : !matchMedia('(prefers-reduced-motion: reduce)').matches;
+  let jokes = 0;
+
+  function apply() {
+    root.dataset.theme = theme; root.dataset.lang = lang; root.dataset.motion = motion ? 'on' : 'off'; root.lang = lang;
+    try { localStorage.setItem(THEME_KEY, theme); localStorage.setItem(LANG_KEY, lang); localStorage.setItem(MOTION_KEY, motion ? 'on' : 'off'); } catch (e) {}
+    const themeBtn = document.getElementById('theme-toggle');
+    if (themeBtn) themeBtn.textContent = theme === 'dark' ? '◐ dark' : '◑ light';
+    const motionBtn = document.getElementById('motion-toggle');
+    if (motionBtn) motionBtn.textContent = motion ? '❚❚ motion' : '▶ motion';
+    const enBtn = document.getElementById('lang-en-btn'), esBtn = document.getElementById('lang-es-btn');
+    if (enBtn) { enBtn.style.background = lang === 'en' ? 'var(--fg)' : 'transparent'; enBtn.style.color = lang === 'en' ? 'var(--bg)' : 'var(--mute)'; }
+    if (esBtn) { esBtn.style.background = lang === 'es' ? 'var(--fg)' : 'transparent'; esBtn.style.color = lang === 'es' ? 'var(--bg)' : 'var(--mute)'; }
+  }
+  apply();
+
+  document.getElementById('lang-en-btn')?.addEventListener('click', () => { lang = 'en'; apply(); wi = 0; scramble(WORDS.en[0]); });
+  document.getElementById('lang-es-btn')?.addEventListener('click', () => { lang = 'es'; apply(); wi = 0; scramble(WORDS.es[0]); });
+
+  let toastTimer: ReturnType<typeof setTimeout> | undefined;
+  function showToast(n: number) {
+    clearTimeout(toastTimer);
+    const toast = document.getElementById('toast');
+    const tag = document.getElementById('toast-tag');
+    const msg = document.getElementById('toast-msg');
+    const hint = document.getElementById('toast-hint');
+    if (!toast || !tag || !msg || !hint) return;
+    const j = JOKES[lang as 'en' | 'es'];
+    msg.textContent = j[n - 1];
+    tag.textContent = `easter egg · ${n}/3`;
+    const left = 3 - n;
+    hint.textContent = n === 3
+      ? (lang === 'es' ? '// easter egg desbloqueado' : '// easter egg unlocked')
+      : (lang === 'es' ? `// psst: es un easter egg — tocá ${left} vez${left > 1 ? 'es' : ''} más` : `// psst: it's an easter egg — click ${left} more time${left > 1 ? 's' : ''}`);
+    toast.style.opacity = '1';
+    toast.style.transform = 'translate(-50%,0)';
+    toastTimer = setTimeout(() => { toast.style.opacity = '0'; toast.style.transform = 'translate(-50%,16px)'; }, n === 3 ? 3200 : 4500);
+  }
+
+  document.getElementById('theme-toggle')?.addEventListener('click', () => {
+    if (theme === 'dark') {
+      jokes++;
+      showToast(jokes);
+      if (jokes < 3) return;
+      jokes = 0;
+    }
+    theme = theme === 'dark' ? 'light' : 'dark';
+    apply();
+  });
+  document.getElementById('motion-toggle')?.addEventListener('click', () => { motion = !motion; apply(); });
+
+  // CLOCK + UPTIME
+  const START = new Date('2024-08-01T09:00:00-03:00').getTime();
+  function clock() {
+    const now = new Date();
+    const time = new Intl.DateTimeFormat('en-GB', { hour: '2-digit', minute: '2-digit', timeZone: 'America/Argentina/Buenos_Aires' }).format(now);
+    const timeEl = document.getElementById('clock-time');
+    if (timeEl) timeEl.textContent = time;
+    const s = Math.floor((now.getTime() - START) / 1000), d = Math.floor(s / 86400);
+    const y = Math.floor(d / 365.25), m = Math.floor((d - y * 365.25) / 30.44), dd = Math.floor(d - y * 365.25 - m * 30.44);
+    const p = (n: number) => String(n).padStart(2, '0'), r = s % 86400;
+    const upEl = document.getElementById('uptime');
+    if (upEl) upEl.textContent = `${y}y ${p(m)}m ${p(dd)}d ${p(Math.floor(r / 3600))}:${p(Math.floor((r % 3600) / 60))}:${p(r % 60)}`;
+  }
+  clock(); setInterval(clock, 1000);
+
+  // SCRAMBLE WORD
+  let wi = 0, scrT: ReturnType<typeof setInterval> | undefined;
+  function scramble(to: string) {
+    const el = document.getElementById('scramble-word'); if (!el) return;
+    const chars = '<>/{}[]=+*#01_$', total = 16; let f = 0;
+    clearInterval(scrT);
+    scrT = setInterval(() => {
+      f++; let out = '';
+      for (let i = 0; i < to.length; i++) out += (f / total) * to.length > i || to[i] === ' ' ? to[i] : chars[Math.floor(Math.random() * chars.length)];
+      el.textContent = out;
+      if (f >= total) { el.textContent = to; clearInterval(scrT); }
+    }, 38);
+  }
+  scramble(WORDS[lang as 'en' | 'es'][0]);
+  setInterval(() => { if (!motion) return; const w = WORDS[lang as 'en' | 'es']; wi = (wi + 1) % w.length; scramble(w[wi]); }, 2600);
+
+  // REVEAL ON SCROLL
+  (function reveal() {
+    const els = document.querySelectorAll('[data-reveal]');
+    const io = new IntersectionObserver((es) => es.forEach((en) => {
+      if (en.isIntersecting) { (en.target as HTMLElement).style.opacity = '1'; (en.target as HTMLElement).style.transform = 'none'; io.unobserve(en.target); }
+    }), { rootMargin: '0px 0px -8% 0px' });
+    els.forEach((el) => {
+      const r = el.getBoundingClientRect(); if (r.top < innerHeight) return;
+      (el as HTMLElement).style.opacity = '0'; (el as HTMLElement).style.transform = 'translateY(24px)';
+      (el as HTMLElement).style.transition = 'opacity .8s ease, transform .9s cubic-bezier(.2,.7,.2,1)';
+      io.observe(el);
+    });
+  })();
+
+  // CANVAS PARTICLE GRID
+  (function particles() {
+    const canvas = document.getElementById('particle-canvas') as HTMLCanvasElement | null;
+    if (!canvas) return;
+    const ctx = canvas.getContext('2d'); if (!ctx) return;
+    let cw = 0, ch = 0, dpr = 1, drawn = false;
+    const mouse = { x: -9999, y: -9999 };
+    let colors = { fg: '#eceee8', acc: 'oklch(0.88 0.19 125)' };
+    function readColors() {
+      requestAnimationFrame(() => {
+        const cs = getComputedStyle(root);
+        colors = { fg: cs.getPropertyValue('--fg').trim(), acc: cs.getPropertyValue('--acc').trim() };
+      });
+    }
+    readColors();
+    const themeObserver = new MutationObserver(() => { readColors(); drawn = false; });
+    themeObserver.observe(root, { attributes: true, attributeFilter: ['data-theme'] });
+    function resize() {
+      const parent = canvas.parentElement; if (!parent) return;
+      dpr = Math.min(devicePixelRatio || 1, 2);
+      cw = parent.clientWidth; ch = parent.clientHeight;
+      canvas.width = cw * dpr; canvas.height = ch * dpr; drawn = false;
+    }
+    new ResizeObserver(resize).observe(canvas.parentElement!);
+    resize();
+    window.addEventListener('pointermove', (e) => {
+      const r = canvas.getBoundingClientRect();
+      mouse.x = e.clientX - r.left; mouse.y = e.clientY - r.top;
+    });
+    function frame(now: number) {
+      requestAnimationFrame(frame);
+      if (!motion && drawn) return;
+      const t = motion ? now / 1000 : 0, gap = 22, { x: mx, y: my } = mouse;
+      ctx!.setTransform(dpr, 0, 0, dpr, 0, 0); ctx!.clearRect(0, 0, cw, ch);
+      for (let x = gap / 2; x < cw; x += gap) for (let y = gap / 2; y < ch; y += gap) {
+        const d = Math.hypot(x - mx, y - my), k = Math.max(0, 1 - d / 170);
+        const wave = (Math.sin(x * 0.011 + t * 0.9) + Math.sin(y * 0.016 - t * 0.7) + 2) / 4;
+        const s = 1.6 + k * 2.4 + wave * 0.6;
+        ctx!.globalAlpha = Math.min(1, 0.07 + wave * 0.12 + k * 0.85);
+        ctx!.fillStyle = k > 0.04 ? colors.acc : colors.fg;
+        ctx!.fillRect(x - s / 2, y - s / 2, s, s);
+      }
+      ctx!.globalAlpha = 1; drawn = true;
+    }
+    requestAnimationFrame(frame);
+  })();
+
+  // WORK SHOWCASE — sidebar picks + autoplay progress + hover pause
+  (function workShowcase() {
+    const showcase = document.getElementById('work-showcase'); if (!showcase) return;
+    const rows = Array.from(showcase.querySelectorAll('[data-work-pick]')) as HTMLElement[];
+    const articles = Array.from(showcase.querySelectorAll('[data-work-article]')) as HTMLElement[];
+    const progress = document.getElementById('work-progress');
+    const total = rows.length;
+    let active = 0, hover = false, swStart = performance.now(), swPaused = 0;
+
+    function setActive(i: number) {
+      active = i;
+      rows.forEach((row, ri) => {
+        row.style.background = ri === active ? 'var(--card)' : 'transparent';
+        const num = row.querySelector('[data-work-num]') as HTMLElement | null;
+        if (num) num.style.color = ri === active ? 'var(--acc)' : 'var(--mute)';
+      });
+      articles.forEach((art, ai) => {
+        art.style.opacity = ai === active ? '1' : '0';
+        art.style.transform = ai === active ? 'none' : `translateY(${ai < active ? -14 : 14}px)`;
+        art.style.pointerEvents = ai === active ? 'auto' : 'none';
+      });
+    }
+    setActive(0);
+
+    rows.forEach((row, i) => row.addEventListener('click', () => { swStart = performance.now(); swPaused = 0; setActive(i); }));
+    showcase.addEventListener('mouseenter', () => { hover = true; });
+    showcase.addEventListener('mouseleave', () => { hover = false; });
+
+    function frame(now: number) {
+      requestAnimationFrame(frame);
+      if (!progress) return;
+      if (!motion || hover) swStart = now - swPaused;
+      const el = now - swStart; swPaused = el;
+      const p = Math.min(1, el / 6500);
+      progress.style.width = (p * 100) + '%';
+      if (p >= 1) { swStart = now; swPaused = 0; setActive((active + 1) % total); }
+    }
+    requestAnimationFrame(frame);
+  })();
+
+  // ZATOBOX MEDIA — tiny manual-only carousel (screenshot / video), independent from the autoplay system
+  (function zatoboxMedia() {
+    const media = document.getElementById('zatobox-media'); if (!media) return;
+    const slides = Array.from(media.querySelectorAll('[data-zb-slide]')) as HTMLElement[];
+    const dots = Array.from(media.querySelectorAll('[data-zb-dot]')) as HTMLElement[];
+    function go(i: number) {
+      slides.forEach((s, si) => {
+        s.style.opacity = si === i ? '1' : '0';
+        s.style.pointerEvents = si === i ? 'auto' : 'none';
+        if (si !== i) s.querySelector('video')?.pause();
+      });
+      dots.forEach((d, di) => {
+        d.style.background = di === i ? 'oklch(0.88 0.19 125)' : 'transparent';
+        d.style.color = di === i ? '#eceee8' : '#8b8f87';
+      });
+    }
+    dots.forEach((dot, i) => dot.addEventListener('click', () => go(i)));
+  })();
+
+  // MORE-WORK CAROUSELS — shared tick, per-carousel manual override
+  (function carousels() {
+    const nodes = Array.from(document.querySelectorAll('[data-carousel]')) as HTMLElement[];
+    const picks: Record<string, number> = {};
+    let tick = 0;
+
+    function render() {
+      nodes.forEach((node, ci) => {
+        const key = node.getAttribute('data-carousel')!;
+        const cur = picks[key] ?? ((tick + ci) % 3);
+        const slides = Array.from(node.querySelectorAll('.carousel-slide')) as HTMLElement[];
+        const dots = Array.from(node.querySelectorAll('.carousel-dot')) as HTMLElement[];
+        const badge = node.querySelector('.carousel-badge');
+        slides.forEach((s, i) => {
+          s.style.opacity = i === cur ? '1' : '0';
+          s.style.transform = i === cur ? 'scale(1)' : 'scale(1.04)';
+          s.style.pointerEvents = i === cur ? 'auto' : 'none';
+        });
+        dots.forEach((dot, i) => {
+          dot.style.width = i === cur ? '18px' : '5px';
+          dot.style.background = i === cur ? 'var(--acc)' : 'var(--line)';
+        });
+        if (badge) badge.textContent = `${cur + 1}/3`;
+      });
+    }
+    render();
+
+    nodes.forEach((node) => {
+      const key = node.getAttribute('data-carousel')!;
+      const dots = Array.from(node.querySelectorAll('.carousel-dot')) as HTMLElement[];
+      dots.forEach((dot, i) => dot.addEventListener('click', () => { picks[key] = i; render(); }));
+    });
+
+    setInterval(() => { if (!motion) return; tick++; render(); }, 3600);
+  })();
+</script>
