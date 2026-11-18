@@ -8,9 +8,9 @@ interface Props {
 }
 
 const {
-  title = "YSC Studio — Francisco Espindola · Full Stack Engineer",
+  title = "YSC — Francisco Espindola · Full Stack Engineer",
   description = "YSC is the studio of Francisco Espindola — a Full Stack Engineer building premium digital products end to end, from pixel-perfect interfaces to scalable system architecture.",
-  image = "/brand/og.png",
+  image = "/YSC/logo+text.png",
 } = Astro.props;
 
 const siteURL = Astro.site ?? new URL(Astro.url.href);
@@ -24,7 +24,7 @@ const jsonLd = JSON.stringify({
       "@type": "WebSite",
       "@id": `${siteURL}#website`,
       url: siteURL,
-      name: "YSC Studio",
+      name: "YSC",
       description,
       inLanguage: "en",
     },
@@ -36,7 +36,7 @@ const jsonLd = JSON.stringify({
       url: siteURL,
       image: ogImage,
       jobTitle: "Full Stack Engineer",
-      worksFor: { "@type": "Organization", name: "YSC Studio" },
+      worksFor: { "@type": "Organization", name: "YSC" },
       address: { "@type": "PostalAddress", addressLocality: "Buenos Aires", addressCountry: "AR" },
       sameAs: [
         "https://github.com/esspindola",
@@ -77,14 +77,14 @@ const jsonLd = JSON.stringify({
     <meta name="color-scheme" content="dark" />
 
     <meta property="og:type" content="website" />
-    <meta property="og:site_name" content="YSC Studio" />
+    <meta property="og:site_name" content="YSC" />
     <meta property="og:title" content={title} />
     <meta property="og:description" content={description} />
     <meta property="og:url" content={canonicalURL} />
     <meta property="og:image" content={ogImage} />
-    <meta property="og:image:width" content="1200" />
-    <meta property="og:image:height" content="630" />
-    <meta property="og:image:alt" content="YSC Studio — Francisco Espindola" />
+    <meta property="og:image:width" content="1920" />
+    <meta property="og:image:height" content="819" />
+    <meta property="og:image:alt" content="YSC — Francisco Espindola" />
     <meta property="og:locale" content="en_US" />
 
     <meta name="twitter:card" content="summary_large_image" />
