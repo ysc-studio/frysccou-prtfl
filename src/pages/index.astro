@@ -103,11 +103,12 @@ const EMAIL_URL_ES = "mailto:franespindola71@gmail.com?subject=Hablemos%20sobre%
 <div style="min-height:100vh;background:var(--bg);color:var(--fg);transition:background .35s,color .35s;overflow-x:clip">
 
   <header style="position:sticky;top:0;z-index:30;background:color-mix(in oklab,var(--bg) 78%,transparent);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);border-bottom:1px solid var(--line)">
-    <div style="max-width:1200px;margin:0 auto;padding:12px clamp(18px,4vw,40px);display:flex;align-items:center;justify-content:space-between;gap:14px;font-family:'Martian Mono',monospace;font-size:11px;text-transform:uppercase;letter-spacing:.02em">
+    <div style="position:relative;max-width:1200px;margin:0 auto;padding:12px clamp(18px,4vw,40px);display:flex;align-items:center;justify-content:space-between;gap:14px;font-family:'Martian Mono',monospace;font-size:11px;text-transform:uppercase;letter-spacing:.02em">
       <a href="#top" style="display:flex;align-items:center;text-decoration:none;color:var(--fg)">
         <img src="/YSC/logo+text.png" alt="YSC Studio" style="height:38px;width:auto;display:block" />
       </a>
-      <nav style="display:flex;align-items:center;gap:clamp(10px,2.4vw,24px);flex-wrap:wrap;justify-content:flex-end">
+      <button id="mobile-menu-btn" type="button" aria-label="Menu" aria-expanded="false" style="all:unset;cursor:pointer;display:none;align-items:center;justify-content:center;width:36px;height:36px;border:1px solid var(--line);border-radius:7px;color:var(--mute);font-size:15px">☰</button>
+      <nav id="site-nav" style="display:flex;align-items:center;gap:clamp(10px,2.4vw,24px);flex-wrap:wrap;justify-content:flex-end">
         <a href="#work" style="text-decoration:none;color:var(--mute)">./<span data-en="">work</span><span data-es="">proyectos</span></a>
         <a href="#log" style="text-decoration:none;color:var(--mute)">./log</a>
         <a href="#contact" style="text-decoration:none;color:var(--mute)">./<span data-en="">contact</span><span data-es="">contacto</span></a>
@@ -453,6 +454,27 @@ const EMAIL_URL_ES = "mailto:franespindola71@gmail.com?subject=Hablemos%20sobre%
     #work-showcase > * { flex: 1 1 100% !important; }
     #work-showcase > div:first-child { position: static !important; top: auto !important; }
   }
+
+  @media (max-width: 640px) {
+    #mobile-menu-btn { display: flex !important; }
+    #site-nav { display: none !important; }
+    #site-nav.is-open {
+      display: flex !important;
+      position: absolute;
+      top: calc(100% + 1px);
+      left: 0;
+      right: 0;
+      flex-direction: column;
+      align-items: stretch !important;
+      gap: 2px !important;
+      background: var(--bg);
+      border-bottom: 1px solid var(--line);
+      padding: 6px clamp(18px,4vw,40px) 18px;
+      box-shadow: 0 16px 32px rgba(0,0,0,.25);
+    }
+    #site-nav.is-open > a { padding: 13px 2px; border-bottom: 1px solid var(--line); text-transform: none; font-size: 14px; }
+    #site-nav.is-open > div, #site-nav.is-open > button { align-self: flex-start; margin-top: 10px; }
+  }
 </style>
 
 <script>
@@ -527,6 +549,21 @@ const EMAIL_URL_ES = "mailto:franespindola71@gmail.com?subject=Hablemos%20sobre%
     apply();
   });
   document.getElementById('motion-toggle')?.addEventListener('click', () => { motion = !motion; apply(); });
+
+  (function mobileMenu() {
+    const btn = document.getElementById('mobile-menu-btn');
+    const nav = document.getElementById('site-nav');
+    if (!btn || !nav) return;
+    function toggle() {
+      const isOpen = nav!.classList.toggle('is-open');
+      btn!.textContent = isOpen ? '✕' : '☰';
+      btn!.setAttribute('aria-expanded', String(isOpen));
+    }
+    btn.addEventListener('click', toggle);
+    nav.querySelectorAll('a').forEach((a) => a.addEventListener('click', () => {
+      if (nav!.classList.contains('is-open')) toggle();
+    }));
+  })();
 
   // CLOCK + UPTIME
   const START = new Date('2024-08-01T09:00:00-03:00').getTime();
