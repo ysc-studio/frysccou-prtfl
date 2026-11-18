@@ -1,0 +1,98 @@
+---
+import CaseStudy from "../../components/CaseStudy.astro";
+import heroImage from "../../assets/projects/tiklivetts.png";
+
+const overview = [
+  { labelEn: "Project", labelEs: "Proyecto", valueEn: "TikLiveTTS" },
+  { labelEn: "Category", labelEs: "Categoría", valueEn: "Desktop Software", valueEs: "Software de Escritorio" },
+  { labelEn: "Role", labelEs: "Rol", valueEn: "Full Stack Engineer" },
+  { labelEn: "Project type", labelEs: "Tipo de proyecto", valueEn: "Open Source" },
+  { labelEn: "Platform", labelEs: "Plataforma", valueEn: "Windows" },
+  { labelEn: "Status", labelEs: "Estado", valueEn: "Ongoing", valueEs: "En curso" },
+  { labelEn: "Website", labelEs: "Sitio web", valueEn: "tiklivetts.es", href: "https://www.tiklivetts.es/" },
+  { labelEn: "Repository", labelEs: "Repositorio", valueEn: "GitHub", href: "https://github.com/iKhunsa/tiktok-tts" },
+];
+
+const sections = [
+  {
+    num: "01", titleEn: "The Challenge", titleEs: "El Desafío",
+    paragraphs: [
+      { en: "Live streamers frequently rely on multiple disconnected tools to manage their audiences across streaming platforms. Chat readers, moderation systems, alerts, audio tools and overlays often operate independently, creating fragmented workflows and unnecessary operational complexity.", es: "Los streamers suelen depender de múltiples herramientas desconectadas entre sí para gestionar a su audiencia en distintas plataformas de streaming. Lectores de chat, sistemas de moderación, alertas, herramientas de audio y overlays suelen funcionar de forma independiente, generando flujos de trabajo fragmentados y una complejidad operativa innecesaria." },
+      { en: "The challenge was to bring these capabilities together into a cohesive environment capable of handling real-time interactions reliably, while remaining flexible enough to support multiple streaming platforms.", es: "El desafío fue unificar estas capacidades en un entorno cohesivo, capaz de manejar interacciones en tiempo real de forma confiable, sin perder la flexibilidad necesaria para soportar múltiples plataformas de streaming." },
+    ],
+  },
+  {
+    num: "02", titleEn: "The Solution", titleEs: "La Solución",
+    paragraphs: [
+      { en: "TikLiveTTS provides a centralized desktop environment that connects TikTok Live, Twitch, YouTube and Kick.", es: "TikLiveTTS ofrece un entorno de escritorio centralizado que conecta TikTok Live, Twitch, YouTube y Kick." },
+      { en: "Instead of relying on separate applications, streamers can manage their live interactions through a unified interface.", es: "En lugar de depender de aplicaciones separadas, los streamers pueden gestionar sus interacciones en vivo desde una interfaz unificada." },
+      { en: "The platform combines real-time chat aggregation, text-to-speech, moderation, OBS overlays, soundboard functionality, music requests, mobile controls and automation tools.", es: "La plataforma combina agregación de chat en tiempo real, texto a voz, moderación, overlays para OBS, soundboard, pedidos de música, controles móviles y herramientas de automatización." },
+      { en: "Its architecture prioritizes local execution, modular functionality and extensibility, allowing different capabilities to evolve independently.", es: "Su arquitectura prioriza la ejecución local, la modularidad y la extensibilidad, permitiendo que cada capacidad evolucione de forma independiente." },
+    ],
+  },
+  {
+    num: "03", titleEn: "Engineering & Architecture", titleEs: "Ingeniería y Arquitectura",
+    paragraphs: [
+      { en: "The application uses Electron as its desktop runtime, with a locally hosted Express server and WebSocket communication layer.", es: "La aplicación usa Electron como runtime de escritorio, con un servidor Express alojado localmente y una capa de comunicación por WebSockets." },
+      { en: "Its internal backend is organized around independent functional domains, supported by a shared core responsible for infrastructure concerns such as event distribution, logging, HTTP handling and application contracts.", es: "Su backend interno está organizado en dominios funcionales independientes, apoyados por un núcleo compartido responsable de aspectos de infraestructura como distribución de eventos, logging, manejo de HTTP y contratos de la aplicación." },
+      { en: "The frontend, built with Vite, powers the desktop interface, mobile control panel and OBS browser-source overlays.", es: "El frontend, construido con Vite, da vida a la interfaz de escritorio, el panel de control móvil y los overlays de navegador para OBS." },
+      { en: "This architecture allows the application to expose multiple interaction surfaces while maintaining a shared application environment.", es: "Esta arquitectura permite que la aplicación exponga múltiples superficies de interacción manteniendo un entorno compartido." },
+    ],
+  },
+  {
+    num: "04", titleEn: "Technical Highlights", titleEs: "Aspectos Técnicos Destacados",
+    bullets: [
+      { en: "Unified real-time communication across four streaming platforms.", es: "Comunicación unificada en tiempo real entre cuatro plataformas de streaming." },
+      { en: "Timestamp-ordered speech processing through a shared TTS queue.", es: "Procesamiento de voz ordenado por timestamp mediante una cola de TTS compartida." },
+      { en: "Modular backend architecture with independent functional domains.", es: "Arquitectura backend modular con dominios funcionales independientes." },
+      { en: "Automatic reconnection and recovery mechanisms.", es: "Mecanismos de reconexión y recuperación automática." },
+      { en: "Local HTTP and WebSocket infrastructure for OBS integrations.", es: "Infraestructura local de HTTP y WebSockets para integraciones con OBS." },
+      { en: "Mobile control interface for remote stream management.", es: "Interfaz de control móvil para gestión remota del stream." },
+      { en: "Extensible tooling through Model Context Protocol (MCP).", es: "Herramientas extensibles mediante Model Context Protocol (MCP)." },
+      { en: "Automated application packaging and release workflows.", es: "Empaquetado automatizado de la aplicación y flujos de release." },
+    ],
+  },
+  {
+    num: "05", titleEn: "Engineering Evolution", titleEs: "Evolución del Proyecto",
+    paragraphs: [
+      { en: "One of the most significant milestones was the backend reconstruction.", es: "Uno de los hitos más importantes fue la reconstrucción del backend." },
+      { en: "The original server was reorganized into 17 independent functional areas, replacing a monolithic structure with a modular architecture.", es: "El servidor original se reorganizó en 17 áreas funcionales independientes, reemplazando una estructura monolítica por una arquitectura modular." },
+      { en: "This transition improved separation of concerns and reduced the risk of unrelated functionality interfering with one another.", es: "Esta transición mejoró la separación de responsabilidades y redujo el riesgo de que funcionalidades no relacionadas interfirieran entre sí." },
+      { en: "The migration also introduced more robust configuration persistence, improved error handling and automated validation.", es: "La migración también introdujo una persistencia de configuración más robusta, mejor manejo de errores y validación automatizada." },
+    ],
+  },
+  {
+    num: "06", titleEn: "My Contribution", titleEs: "Mi Contribución",
+    paragraphs: [
+      { en: "My work focuses on full-stack development across the TikLiveTTS ecosystem, contributing to the development and evolution of its application infrastructure, backend services and user-facing functionality.", es: "Mi trabajo se centra en el desarrollo full-stack dentro del ecosistema de TikLiveTTS, contribuyendo al desarrollo y evolución de su infraestructura de aplicación, servicios backend y funcionalidades de cara al usuario." },
+      { en: "I work across different layers of the system, from application logic and API integrations to frontend development, deployment and infrastructure-related tasks.", es: "Trabajo en distintas capas del sistema, desde la lógica de aplicación e integraciones con APIs hasta el desarrollo frontend, el despliegue y tareas relacionadas con infraestructura." },
+    ],
+  },
+  {
+    num: "07", titleEn: "The Outcome", titleEs: "El Resultado",
+    paragraphs: [
+      { en: "TikLiveTTS evolved into a unified streaming toolkit that combines audience interaction, voice processing, moderation and automation within a single desktop application.", es: "TikLiveTTS evolucionó hacia un kit de herramientas de streaming unificado que combina interacción con la audiencia, procesamiento de voz, moderación y automatización en una sola aplicación de escritorio." },
+      { en: "Its modular architecture provides a foundation for continued development, additional integrations and new capabilities.", es: "Su arquitectura modular sienta las bases para seguir desarrollando el proyecto, sumar integraciones y agregar nuevas capacidades." },
+    ],
+  },
+];
+---
+
+<CaseStudy
+  num="001"
+  categoryEn="Desktop Software"
+  categoryEs="Software de Escritorio"
+  title="TikLiveTTS"
+  taglineEn="A unified streaming ecosystem, engineered for real-time interaction."
+  taglineEs="Un ecosistema de streaming unificado, diseñado para la interacción en tiempo real."
+  introEn="An open-source desktop application that brings live chat, text-to-speech, moderation, automation and streaming tools together in one environment."
+  introEs="Una aplicación de escritorio open-source que reúne chat en vivo, texto a voz, moderación, automatización y herramientas de streaming en un solo entorno."
+  domain="tiklivetts.es"
+  domainUrl="https://www.tiklivetts.es/"
+  heroImage={heroImage}
+  heroAlt="TikLiveTTS — app screenshot"
+  overview={overview}
+  sections={sections}
+  websiteUrl="https://www.tiklivetts.es/"
+  repoUrl="https://github.com/iKhunsa/tiktok-tts"
+/>

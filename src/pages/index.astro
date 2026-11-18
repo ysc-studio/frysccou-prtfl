@@ -37,6 +37,7 @@ const PROJECTS = [
     descEn: "Open-source Electron desktop app that reads TikTok Live, Twitch, YouTube and Kick chat aloud while streaming, with OBS-ready overlays, moderation tools and Polar-powered subscriptions.",
     descEs: "App de escritorio open-source hecha con Electron que lee en voz alta el chat de TikTok Live, Twitch, YouTube y Kick mientras transmitís, con overlays para OBS, moderación y suscripciones gestionadas con Polar.",
     stack: ["Electron", "Express", "WebSocket", "Polar"], url: "https://www.tiklivetts.es/", domain: "tiklivetts.es",
+    caseStudy: "/work/tiklivetts",
   },
   {
     num: "02", title: "Tokenit — Investor App", stackShort: "Meteor.js · Web3",
@@ -45,6 +46,7 @@ const PROJECTS = [
     descEn: "Investor dashboard for a Chilean blockchain real-estate platform — real-time monitoring, KYC, digital signing and AI risk scoring.",
     descEs: "Panel de inversores para una plataforma chilena de real estate en blockchain — monitoreo en tiempo real, KYC, firma digital y scoring de riesgo con IA.",
     stack: ["Meteor.js", "React", "Web3"], url: "https://app.tokenit.cl", domain: "app.tokenit.cl",
+    caseStudy: "/work/tokenit",
   },
   {
     num: "03", title: "Tokenit — Landing Page", stackShort: "Gatsby · Python",
@@ -53,6 +55,7 @@ const PROJECTS = [
     descEn: "Public marketplace connecting investors with tokenized real-estate opportunities backed by real assets.",
     descEs: "Marketplace público que conecta inversores con oportunidades de real estate tokenizado respaldadas por activos reales.",
     stack: ["Gatsby", "Python", "MongoDB"], url: "https://tokenit.cl", domain: "tokenit.cl",
+    caseStudy: "/work/tokenit",
   },
   {
     num: "04", title: "ZatoBox", stackShort: "Next.js · Docker", archived: true,
@@ -63,6 +66,7 @@ const PROJECTS = [
     memorialEn: "The site is no longer live. This video shows ZatoBox back when it was up and running.",
     memorialEs: "El sitio ya no está en línea. Este video muestra ZatoBox cuando estaba en vivo.",
     stack: ["Next.js", "Supabase", "Docker"],
+    caseStudy: "/work/zatobox",
   },
   {
     num: "05", title: "ConSentido Cognitivo", stackShort: "Next.js · Firebase",
@@ -71,6 +75,7 @@ const PROJECTS = [
     descEn: "Accessible platform for a psychopedagogy practice, built to make cognitive-support resources easy to reach for families.",
     descEs: "Plataforma accesible para un consultorio de psicopedagogía, pensada para que las familias accedan fácilmente a recursos de apoyo cognitivo.",
     stack: ["Next.js", "Tailwind", "Firebase"], url: "https://www.consentidocognitivo.site/", domain: "consentidocognitivo.site",
+    caseStudy: "/work/consentidocognitivo",
   },
 ];
 
@@ -99,13 +104,14 @@ const EMAIL_URL_ES = "mailto:franespindola71@gmail.com?subject=Hablemos%20sobre%
 
   <header style="position:sticky;top:0;z-index:30;background:color-mix(in oklab,var(--bg) 78%,transparent);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);border-bottom:1px solid var(--line)">
     <div style="max-width:1200px;margin:0 auto;padding:12px clamp(18px,4vw,40px);display:flex;align-items:center;justify-content:space-between;gap:14px;font-family:'Martian Mono',monospace;font-size:11px;text-transform:uppercase;letter-spacing:.02em">
-      <a href="#top" style="display:flex;align-items:center;gap:6px;text-decoration:none;color:var(--fg);text-transform:none;font-size:13px;font-weight:500">
-        <span style="color:var(--acc)">ysc</span><span style="color:var(--mute)">/</span><span>studio</span><span style="width:8px;height:15px;background:var(--acc);animation:blink 1.1s step-end infinite"></span>
+      <a href="#top" style="display:flex;align-items:center;text-decoration:none;color:var(--fg)">
+        <img src="/YSC/logo+text.png" alt="YSC Studio" style="height:38px;width:auto;display:block" />
       </a>
       <nav style="display:flex;align-items:center;gap:clamp(10px,2.4vw,24px);flex-wrap:wrap;justify-content:flex-end">
         <a href="#work" style="text-decoration:none;color:var(--mute)">./<span data-en="">work</span><span data-es="">proyectos</span></a>
         <a href="#log" style="text-decoration:none;color:var(--mute)">./log</a>
         <a href="#contact" style="text-decoration:none;color:var(--mute)">./<span data-en="">contact</span><span data-es="">contacto</span></a>
+        <a href="/resume" style="text-decoration:none;color:var(--mute)">./resume</a>
         <div style="display:flex;align-items:center;border:1px solid var(--line);border-radius:6px;overflow:hidden">
           <button id="lang-en-btn" type="button" style="all:unset;cursor:pointer;padding:6px 9px">EN</button>
           <button id="lang-es-btn" type="button" style="all:unset;cursor:pointer;padding:6px 9px">ES</button>
@@ -157,6 +163,7 @@ const EMAIL_URL_ES = "mailto:franespindola71@gmail.com?subject=Hablemos%20sobre%
         <div style="display:flex;flex-wrap:wrap;gap:10px;justify-content:flex-start">
           <a href="#work" class="hover-bright" style="display:inline-flex;align-items:center;gap:10px;padding:15px 22px;border-radius:10px;background:var(--acc);color:var(--on-acc);text-decoration:none;font-family:'Martian Mono',monospace;font-size:12px;font-weight:500;text-transform:uppercase"><span data-en="">See the work</span><span data-es="">Ver proyectos</span> ↓</a>
           <a href="#contact" style="display:inline-flex;align-items:center;gap:10px;padding:15px 22px;border-radius:10px;border:1px solid var(--line);background:var(--bg);text-decoration:none;font-family:'Martian Mono',monospace;font-size:12px;font-weight:500;text-transform:uppercase"><span data-en="">Let's talk</span><span data-es="">Hablemos</span> →</a>
+          <a href="/resume" style="display:inline-flex;align-items:center;gap:10px;padding:15px 22px;border-radius:10px;border:1px solid var(--line);background:var(--bg);color:var(--mute);text-decoration:none;font-family:'Martian Mono',monospace;font-size:12px;font-weight:500;text-transform:uppercase"><span style="color:var(--acc)">$</span> <span data-en="">cat resume.ts</span><span data-es="">cat currículum.ts</span></a>
         </div>
       </div>
     </div>
@@ -223,6 +230,9 @@ const EMAIL_URL_ES = "mailto:franespindola71@gmail.com?subject=Hablemos%20sobre%
                 <code style="font-family:'Martian Mono',monospace;font-size:12px;line-height:1.7;color:var(--mute)">// <span data-en="">{p.memorialEn}</span><span data-es="">{p.memorialEs}</span></code>
               )}
               <code style="font-family:'Martian Mono',monospace;font-size:12px;line-height:1.8;color:var(--mute)"><span style="color:var(--acc2)">stack</span> = [{p.stack.map((s, si) => <>{si > 0 && ", "}<span style="color:var(--acc)">"{s}"</span></>)}]</code>
+              {p.caseStudy && (
+                <a href={p.caseStudy} class="hover-bright" style="align-self:flex-start;display:inline-flex;align-items:center;gap:10px;margin-top:4px;padding:13px 20px;border-radius:10px;background:var(--acc);color:var(--on-acc);text-decoration:none;font-family:'Martian Mono',monospace;font-size:12px;font-weight:500;text-transform:uppercase"><span data-en="">Read case study</span><span data-es="">Ver case study</span> →</a>
+              )}
             </article>
           ))}
         </div>
@@ -283,14 +293,17 @@ const EMAIL_URL_ES = "mailto:franespindola71@gmail.com?subject=Hablemos%20sobre%
     <section id="log" style="padding-bottom:clamp(72px,10vw,128px)">
       <div data-reveal="" style="display:flex;align-items:center;gap:14px;margin-bottom:20px;font-family:'Martian Mono',monospace;font-size:11px;text-transform:uppercase;color:var(--mute)"><span style="color:var(--acc)">03</span><span><span data-en="">Experience &amp; education</span><span data-es="">Experiencia y educación</span></span><span style="flex:1;height:1px;background:var(--line)"></span><span>git log</span></div>
       <h2 data-reveal="" style="margin:0 0 18px;font-size:clamp(36px,5.6vw,76px);line-height:1;font-weight:600;letter-spacing:-.035em"><span data-en="">The commit history.</span><span data-es="">El historial de commits.</span></h2>
-      <div data-reveal="" style="display:flex;flex-wrap:wrap;gap:8px 20px;margin-bottom:28px;font-family:'Martian Mono',monospace;font-size:11px;color:var(--mute)">
-        <span><span style="color:var(--acc)">$</span> git log --graph --career</span>
-        <span style="display:flex;align-items:center;gap:7px"><span style="width:8px;height:8px;border-radius:50%;background:var(--acc)"></span><span data-en="">work</span><span data-es="">trabajo</span></span>
-        <span style="display:flex;align-items:center;gap:7px"><span style="width:8px;height:8px;border-radius:50%;background:var(--acc2)"></span><span data-en="">education</span><span data-es="">educación</span></span>
+      <div data-reveal="" style="display:flex;flex-wrap:wrap;align-items:center;gap:10px 20px;margin-bottom:28px;font-family:'Martian Mono',monospace;font-size:11px;color:var(--mute)">
+        <span><span style="color:var(--acc)">$</span> git log --graph --filter=<span id="log-filter-label">all</span></span>
+        <div id="log-filter" style="display:flex;align-items:center;gap:3px;margin-left:auto;border:1px solid var(--line);border-radius:999px;padding:3px">
+          <button type="button" data-log-filter="all" style="all:unset;cursor:pointer;display:flex;align-items:center;gap:6px;padding:5px 11px;border-radius:999px;transition:background .25s,color .25s"><span data-en="">all</span><span data-es="">todo</span></button>
+          <button type="button" data-log-filter="work" style="all:unset;cursor:pointer;display:flex;align-items:center;gap:6px;padding:5px 11px;border-radius:999px;transition:background .25s,color .25s"><span style="width:7px;height:7px;border-radius:50%;background:var(--acc)"></span><span data-en="">work</span><span data-es="">trabajo</span></button>
+          <button type="button" data-log-filter="education" style="all:unset;cursor:pointer;display:flex;align-items:center;gap:6px;padding:5px 11px;border-radius:999px;transition:background .25s,color .25s"><span style="width:7px;height:7px;border-radius:50%;background:var(--acc2)"></span><span data-en="">education</span><span data-es="">educación</span></button>
+        </div>
       </div>
 
       <div style="display:flex;flex-direction:column">
-        <div data-reveal="" style="display:grid;grid-template-columns:44px minmax(0,1fr);gap:0 14px">
+        <div data-reveal="" data-log-entry="work" style="display:grid;grid-template-columns:44px minmax(0,1fr);gap:0 14px">
           <div style="position:relative"><span style="position:absolute;left:11px;top:28px;bottom:0;width:2px;background:var(--acc)"></span><span style="position:absolute;left:31px;top:28px;bottom:0;width:2px;background:color-mix(in oklab,var(--acc2) 60%,transparent)"></span><span style="position:absolute;left:5px;top:22px;width:14px;height:14px;border-radius:50%;background:var(--acc);box-shadow:0 0 0 5px color-mix(in oklab,var(--acc) 20%,transparent)"></span></div>
           <div style="padding:18px 0 22px;border-bottom:1px solid var(--line);display:flex;flex-direction:column;gap:8px">
             <div style="display:flex;flex-wrap:wrap;align-items:center;gap:8px;font-family:'Martian Mono',monospace;font-size:11px;color:var(--mute)"><span style="color:var(--acc)">9f3c2a1</span><span style="padding:2px 7px;border-radius:4px;background:var(--acc);color:var(--on-acc)">HEAD → main</span><span style="flex:1"></span><span><span data-en="">Oct 2026 — Present</span><span data-es="">Oct 2026 — Actual</span></span></div>
@@ -298,14 +311,14 @@ const EMAIL_URL_ES = "mailto:franespindola71@gmail.com?subject=Hablemos%20sobre%
             <div style="font-size:15px;line-height:1.55;color:var(--mute);max-width:70ch"><span data-en="">Building an open-source Electron desktop app that reads TikTok Live, Twitch, YouTube and Kick chat aloud for streamers.</span><span data-es="">Construyendo una app de escritorio open-source con Electron que lee en voz alta el chat de TikTok Live, Twitch, YouTube y Kick para streamers.</span></div>
           </div>
         </div>
-        <div data-reveal="" style="display:grid;grid-template-columns:44px minmax(0,1fr);gap:0 14px">
+        <div data-reveal="" data-log-entry="education" style="display:grid;grid-template-columns:44px minmax(0,1fr);gap:0 14px">
           <div style="position:relative"><span style="position:absolute;left:11px;top:0;bottom:0;width:2px;background:var(--acc)"></span><span style="position:absolute;left:31px;top:0;bottom:0;width:2px;background:color-mix(in oklab,var(--acc2) 60%,transparent)"></span><span style="position:absolute;left:26px;top:23px;width:8px;height:8px;border-radius:50%;background:var(--bg);border:2px solid var(--acc2)"></span></div>
           <div style="padding:18px 0 22px;border-bottom:1px solid var(--line);display:flex;flex-direction:column;gap:8px">
             <div style="display:flex;flex-wrap:wrap;align-items:center;gap:8px;font-family:'Martian Mono',monospace;font-size:11px;color:var(--mute)"><span style="color:var(--acc2)">e71b0d4</span><span style="padding:2px 7px;border-radius:4px;border:1px solid var(--line)">tag: <span data-en="">graduated</span><span data-es="">egresado</span></span><span style="flex:1"></span><span><span data-en="">Jan 2026</span><span data-es="">Ene 2026</span></span></div>
             <div style="font-size:clamp(20px,2.2vw,26px);font-weight:600;letter-spacing:-.02em">Codigo Facilito <span style="font-weight:400;color:var(--mute)">· <span data-en="">Modern Frontend Bootcamp</span><span data-es="">Bootcamp de Frontend Moderno</span></span></div>
           </div>
         </div>
-        <div data-reveal="" style="display:grid;grid-template-columns:44px minmax(0,1fr);gap:0 14px">
+        <div data-reveal="" data-log-entry="work" style="display:grid;grid-template-columns:44px minmax(0,1fr);gap:0 14px">
           <div style="position:relative"><span style="position:absolute;left:11px;top:0;bottom:0;width:2px;background:var(--acc)"></span><span style="position:absolute;left:31px;top:0;bottom:0;width:2px;background:color-mix(in oklab,var(--acc2) 60%,transparent)"></span><span style="position:absolute;left:6px;top:23px;width:8px;height:8px;border-radius:50%;background:var(--bg);border:2px solid var(--acc)"></span></div>
           <div style="padding:18px 0 22px;border-bottom:1px solid var(--line);display:flex;flex-direction:column;gap:8px">
             <div style="display:flex;flex-wrap:wrap;align-items:center;gap:8px;font-family:'Martian Mono',monospace;font-size:11px;color:var(--mute)"><span style="color:var(--acc)">4ac9e82</span><span style="padding:2px 7px;border-radius:4px;border:1px solid var(--line)">merge: tokenit</span><span style="flex:1"></span><span><span data-en="">Dec 2025 — Aug 2026</span><span data-es="">Dic 2025 — Ago 2026</span></span></div>
@@ -313,7 +326,7 @@ const EMAIL_URL_ES = "mailto:franespindola71@gmail.com?subject=Hablemos%20sobre%
             <div style="font-size:15px;line-height:1.55;color:var(--mute);max-width:70ch"><span data-en="">Placed at Tokenit, a Chilean blockchain-based real-estate investment platform.</span><span data-es="">Asignado a Tokenit, una plataforma chilena de inversión inmobiliaria basada en blockchain.</span></div>
           </div>
         </div>
-        <div data-reveal="" style="display:grid;grid-template-columns:44px minmax(0,1fr);gap:0 14px">
+        <div data-reveal="" data-log-entry="work" style="display:grid;grid-template-columns:44px minmax(0,1fr);gap:0 14px">
           <div style="position:relative"><span style="position:absolute;left:11px;top:0;bottom:0;width:2px;background:var(--acc)"></span><span style="position:absolute;left:31px;top:0;bottom:0;width:2px;background:color-mix(in oklab,var(--acc2) 60%,transparent)"></span><span style="position:absolute;left:6px;top:23px;width:8px;height:8px;border-radius:50%;background:var(--bg);border:2px solid var(--acc)"></span></div>
           <div style="padding:18px 0 22px;border-bottom:1px solid var(--line);display:flex;flex-direction:column;gap:8px">
             <div style="display:flex;flex-wrap:wrap;align-items:center;gap:8px;font-family:'Martian Mono',monospace;font-size:11px;color:var(--mute)"><span style="color:var(--acc)">b20f7d3</span><span style="padding:2px 7px;border-radius:4px;border:1px solid var(--line)">devops</span><span style="flex:1"></span><span><span data-en="">Aug — Dec 2025</span><span data-es="">Ago — Dic 2025</span></span></div>
@@ -321,7 +334,7 @@ const EMAIL_URL_ES = "mailto:franespindola71@gmail.com?subject=Hablemos%20sobre%
             <div style="font-size:15px;line-height:1.55;color:var(--mute);max-width:70ch"><span data-en="">DevOps lead overseeing the full software development lifecycle.</span><span data-es="">Líder de DevOps a cargo de todo el ciclo de vida del desarrollo de software.</span></div>
           </div>
         </div>
-        <div data-reveal="" style="display:grid;grid-template-columns:44px minmax(0,1fr);gap:0 14px">
+        <div data-reveal="" data-log-entry="work" style="display:grid;grid-template-columns:44px minmax(0,1fr);gap:0 14px">
           <div style="position:relative"><span style="position:absolute;left:11px;top:0;bottom:0;width:2px;background:var(--acc)"></span><span style="position:absolute;left:31px;top:0;bottom:0;width:2px;background:color-mix(in oklab,var(--acc2) 60%,transparent)"></span><span style="position:absolute;left:6px;top:23px;width:8px;height:8px;border-radius:50%;background:var(--bg);border:2px solid var(--acc)"></span></div>
           <div style="padding:18px 0 22px;border-bottom:1px solid var(--line);display:flex;flex-direction:column;gap:8px">
             <div style="display:flex;flex-wrap:wrap;align-items:center;gap:8px;font-family:'Martian Mono',monospace;font-size:11px;color:var(--mute)"><span style="color:var(--acc)">5d8e1c9</span><span style="padding:2px 7px;border-radius:4px;border:1px solid var(--line)">frontend</span><span style="flex:1"></span><span>Jun — Oct 2025</span></div>
@@ -329,32 +342,32 @@ const EMAIL_URL_ES = "mailto:franespindola71@gmail.com?subject=Hablemos%20sobre%
             <div style="font-size:15px;line-height:1.55;color:var(--mute);max-width:70ch"><span data-en="">Front-end focused work — Next.js 14, TailwindCSS, Shadcn UI, NextAuth, Supabase.</span><span data-es="">Trabajo enfocado en front-end — Next.js 14, TailwindCSS, Shadcn UI, NextAuth, Supabase.</span></div>
           </div>
         </div>
-        <div data-reveal="" style="display:grid;grid-template-columns:44px minmax(0,1fr);gap:0 14px">
+        <div data-reveal="" data-log-entry="education" style="display:grid;grid-template-columns:44px minmax(0,1fr);gap:0 14px">
           <div style="position:relative"><span style="position:absolute;left:11px;top:0;bottom:0;width:2px;background:var(--acc)"></span><span style="position:absolute;left:31px;top:0;bottom:0;width:2px;background:color-mix(in oklab,var(--acc2) 60%,transparent)"></span><span style="position:absolute;left:26px;top:23px;width:8px;height:8px;border-radius:50%;background:var(--bg);border:2px solid var(--acc2)"></span></div>
           <div style="padding:18px 0 22px;border-bottom:1px solid var(--line);display:flex;flex-direction:column;gap:8px">
             <div style="display:flex;flex-wrap:wrap;align-items:center;gap:8px;font-family:'Martian Mono',monospace;font-size:11px;color:var(--mute)"><span style="color:var(--acc2)">c63a0f2</span><span style="padding:2px 7px;border-radius:4px;border:1px solid var(--line)">tag: <span data-en="">graduated</span><span data-es="">egresado</span></span><span style="flex:1"></span><span>Jun 2025</span></div>
             <div style="font-size:clamp(20px,2.2vw,26px);font-weight:600;letter-spacing:-.02em">Henry <span style="font-weight:400;color:var(--mute)">· <span data-en="">Full Stack Development Bootcamp</span><span data-es="">Bootcamp de Desarrollo Full Stack</span></span></div>
           </div>
         </div>
-        <div data-reveal="" style="display:grid;grid-template-columns:44px minmax(0,1fr);gap:0 14px">
+        <div data-reveal="" data-log-entry="education" style="display:grid;grid-template-columns:44px minmax(0,1fr);gap:0 14px">
           <div style="position:relative"><span style="position:absolute;left:11px;top:0;bottom:0;width:2px;background:var(--acc)"></span><span style="position:absolute;left:31px;top:0;bottom:0;width:2px;background:color-mix(in oklab,var(--acc2) 60%,transparent)"></span><span style="position:absolute;left:26px;top:23px;width:8px;height:8px;border-radius:50%;background:var(--acc2)"></span></div>
           <div style="padding:18px 0 22px;border-bottom:1px solid var(--line);display:flex;flex-direction:column;gap:8px">
             <div style="display:flex;flex-wrap:wrap;align-items:center;gap:8px;font-family:'Martian Mono',monospace;font-size:11px;color:var(--mute)"><span style="color:var(--acc2)">0e9b4a7</span><span style="padding:2px 7px;border-radius:4px;border:1px solid var(--line)"><span data-en="">in progress</span><span data-es="">en curso</span></span><span style="flex:1"></span><span><span data-en="">2025 — Present</span><span data-es="">2025 — Actual</span></span></div>
             <div style="font-size:clamp(20px,2.2vw,26px);font-weight:600;letter-spacing:-.02em">Inst. Sup. Santo Domingo <span style="font-weight:400;color:var(--mute)">· <span data-en="">Web Development &amp; Mobile Applications</span><span data-es="">Desarrollo Web y Aplicaciones Móviles</span></span></div>
           </div>
         </div>
-        <div data-reveal="" style="display:grid;grid-template-columns:44px minmax(0,1fr);gap:0 14px">
+        <div data-reveal="" data-log-entry="education" style="display:grid;grid-template-columns:44px minmax(0,1fr);gap:0 14px">
           <div style="position:relative"><span style="position:absolute;left:11px;top:0;height:30px;width:2px;background:var(--acc)"></span><span style="position:absolute;left:31px;top:0;height:30px;width:2px;background:color-mix(in oklab,var(--acc2) 60%,transparent)"></span><span style="position:absolute;left:26px;top:23px;width:8px;height:8px;border-radius:50%;background:var(--bg);border:2px solid var(--acc2)"></span></div>
           <div style="padding:18px 0 22px;border-bottom:1px solid var(--line);display:flex;flex-direction:column;gap:8px">
             <div style="display:flex;flex-wrap:wrap;align-items:center;gap:8px;font-family:'Martian Mono',monospace;font-size:11px;color:var(--mute)"><span style="color:var(--acc2)">7f12d6e</span><span style="padding:2px 7px;border-radius:4px;border:1px solid var(--line)">tag: <span data-en="">graduated</span><span data-es="">egresado</span></span><span style="flex:1"></span><span>Feb 2025</span></div>
             <div style="font-size:clamp(20px,2.2vw,26px);font-weight:600;letter-spacing:-.02em">Coderhouse <span style="font-weight:400;color:var(--mute)">· <span data-en="">Full Stack Development Program</span><span data-es="">Programa de Desarrollo Full Stack</span></span></div>
           </div>
         </div>
-        <div data-reveal="" style="display:grid;grid-template-columns:44px minmax(0,1fr);gap:0 14px">
+        <div data-reveal="" data-log-entry="work" style="display:grid;grid-template-columns:44px minmax(0,1fr);gap:0 14px">
           <div style="position:relative"><span style="position:absolute;left:11px;top:0;height:28px;width:2px;background:var(--acc)"></span><span style="position:absolute;left:5px;top:22px;width:14px;height:14px;border-radius:50%;background:var(--acc);box-shadow:0 0 0 5px color-mix(in oklab,var(--acc) 20%,transparent)"></span></div>
           <div style="padding:18px 0 22px;display:flex;flex-direction:column;gap:8px">
             <div style="display:flex;flex-wrap:wrap;align-items:center;gap:8px;font-family:'Martian Mono',monospace;font-size:11px;color:var(--mute)"><span style="color:var(--acc)">3a7e910</span><span style="padding:2px 7px;border-radius:4px;border:1px solid var(--acc);color:var(--acc)">origin/studio</span><span style="padding:2px 7px;border-radius:4px;border:1px solid var(--line)">init</span><span style="flex:1"></span><span><span data-en="">Aug 2024 — Present</span><span data-es="">Ago 2024 — Actual</span></span></div>
-            <div style="font-size:clamp(20px,2.2vw,26px);font-weight:600;letter-spacing:-.02em">YSC Studio <span style="font-weight:400;color:var(--mute)">· <span data-en="">Full Stack Engineer &amp; Content Creator</span><span data-es="">Full Stack Engineer y Creador de Contenido</span></span></div>
+            <div style="font-size:clamp(20px,2.2vw,26px);font-weight:600;letter-spacing:-.02em">YSC <span style="font-weight:400;color:var(--mute)">· <span data-en="">Full Stack Engineer &amp; Content Creator</span><span data-es="">Full Stack Engineer y Creador de Contenido</span></span></div>
             <div style="font-size:15px;line-height:1.55;color:var(--mute);max-width:70ch"><span data-en="">Independent developer building functional, well-structured digital solutions and creating tech content.</span><span data-es="">Desarrollador independiente construyendo soluciones digitales funcionales y creando contenido tech.</span></div>
           </div>
         </div>
@@ -376,6 +389,20 @@ const EMAIL_URL_ES = "mailto:franespindola71@gmail.com?subject=Hablemos%20sobre%
           <div class="hover-line" style="display:flex;gap:16px;padding:0 18px"><span style="flex:none;width:18px;text-align:right;opacity:.5">7</span><span style="padding-left:2ch;text-wrap:pretty"><span style="color:var(--fg)">databases</span>: [<span style="color:var(--acc)">"MongoDB"</span>, <span style="color:var(--acc)">"Supabase"</span>, <span style="color:var(--acc)">"Firebase"</span>, <span style="color:var(--acc)">"PostgreSQL"</span>, <span style="color:var(--acc)">"MySQL"</span>],</span></div>
           <div class="hover-line" style="display:flex;gap:16px;padding:0 18px"><span style="flex:none;width:18px;text-align:right;opacity:.5">8</span><span style="padding-left:2ch;text-wrap:pretty"><span style="color:var(--fg)">tools</span>: [<span style="color:var(--acc)">"Docker"</span>, <span style="color:var(--acc)">"Git"</span>, <span style="color:var(--acc)">"GitHub"</span>, <span style="color:var(--acc)">"AWS"</span>, <span style="color:var(--acc)">"Figma"</span>],</span></div>
           <div style="display:flex;gap:16px;padding:0 18px"><span style="flex:none;width:18px;text-align:right;opacity:.5">9</span><span>{`}`} <span style="color:var(--acc2)">as const</span>;<span style="display:inline-block;width:.6em;height:1.1em;margin-left:4px;vertical-align:-.2em;background:var(--acc);animation:blink 1.1s step-end infinite"></span></span></div>
+        </div>
+      </div>
+
+      <div data-reveal="" style="margin-top:24px;border:1px solid var(--line);border-radius:14px;background:var(--card);overflow:hidden">
+        <div style="display:flex;justify-content:space-between;padding:10px 16px;border-bottom:1px solid var(--line);font-family:'Martian Mono',monospace;font-size:10px;text-transform:uppercase;color:var(--mute)"><span>focus.md</span><span>Markdown</span></div>
+        <div style="padding:20px 20px 22px;display:flex;flex-direction:column;gap:14px">
+          <div style="font-family:'Martian Mono',monospace;font-size:12px;letter-spacing:.02em;color:var(--acc)">## <span data-en="">Areas of focus</span><span data-es="">Áreas de enfoque</span></div>
+          <ul style="margin:0;padding:0;list-style:none;display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,240px),1fr));gap:10px 24px;font-size:16px;line-height:1.5">
+            <li style="display:flex;align-items:baseline;gap:10px"><span style="font-family:'Martian Mono',monospace;font-size:13px;color:var(--acc)">-</span><span data-en="">Full Stack Development</span><span data-es="">Desarrollo Full Stack</span></li>
+            <li style="display:flex;align-items:baseline;gap:10px"><span style="font-family:'Martian Mono',monospace;font-size:13px;color:var(--acc)">-</span><span data-en="">Software Architecture</span><span data-es="">Arquitectura de Software</span></li>
+            <li style="display:flex;align-items:baseline;gap:10px"><span style="font-family:'Martian Mono',monospace;font-size:13px;color:var(--acc)">-</span><span data-en="">Real-time Applications</span><span data-es="">Aplicaciones en Tiempo Real</span></li>
+            <li style="display:flex;align-items:baseline;gap:10px"><span style="font-family:'Martian Mono',monospace;font-size:13px;color:var(--acc)">-</span><span data-en="">API Development</span><span data-es="">Desarrollo de APIs</span></li>
+            <li style="display:flex;align-items:baseline;gap:10px"><span style="font-family:'Martian Mono',monospace;font-size:13px;color:var(--acc)">-</span><span data-en="">Cloud &amp; DevOps</span><span data-es="">Cloud y DevOps</span></li>
+          </ul>
         </div>
       </div>
     </section>
@@ -421,6 +448,11 @@ const EMAIL_URL_ES = "mailto:franespindola71@gmail.com?subject=Hablemos%20sobre%
 
   .pan-shot { object-position: center top; animation: pan-shot 11s ease-in-out infinite alternate; }
   @keyframes pan-shot { from { object-position: center top; } to { object-position: center bottom; } }
+
+  @media (max-width: 760px) {
+    #work-showcase > * { flex: 1 1 100% !important; }
+    #work-showcase > div:first-child { position: static !important; top: auto !important; }
+  }
 </style>
 
 <script>
@@ -526,6 +558,30 @@ const EMAIL_URL_ES = "mailto:franespindola71@gmail.com?subject=Hablemos%20sobre%
   }
   scramble(WORDS[lang as 'en' | 'es'][0]);
   setInterval(() => { if (!motion) return; const w = WORDS[lang as 'en' | 'es']; wi = (wi + 1) % w.length; scramble(w[wi]); }, 2600);
+
+  // LOG FILTER — work / education / all
+  (function logFilter() {
+    const wrap = document.getElementById('log-filter');
+    const label = document.getElementById('log-filter-label');
+    if (!wrap || !label) return;
+    const buttons = Array.from(wrap.querySelectorAll('[data-log-filter]')) as HTMLElement[];
+    const entries = Array.from(document.querySelectorAll('[data-log-entry]')) as HTMLElement[];
+
+    function setFilter(filter: string) {
+      buttons.forEach((b) => {
+        const active = b.dataset.logFilter === filter;
+        b.style.background = active ? 'var(--fg)' : 'transparent';
+        b.style.color = active ? 'var(--bg)' : 'var(--mute)';
+      });
+      label.textContent = filter;
+      entries.forEach((entry) => {
+        entry.style.display = filter === 'all' || entry.dataset.logEntry === filter ? 'grid' : 'none';
+      });
+    }
+
+    buttons.forEach((b) => b.addEventListener('click', () => setFilter(b.dataset.logFilter!)));
+    setFilter('all');
+  })();
 
   // REVEAL ON SCROLL
   (function reveal() {

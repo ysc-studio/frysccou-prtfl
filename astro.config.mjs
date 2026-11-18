@@ -4,7 +4,7 @@ import vercel from "@astrojs/vercel";
 import tailwindcss from "@tailwindcss/vite";
 
 export default defineConfig({
-  site: "https://frysccou-portfolio.vercel.app",
+  site: "https://ysc.com.ar",
   integrations: [react()],
   adapter: vercel({
     imageService: true,

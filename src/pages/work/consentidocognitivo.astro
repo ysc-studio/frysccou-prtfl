@@ -1,0 +1,91 @@
+---
+import CaseStudy from "../../components/CaseStudy.astro";
+import heroImage from "../../assets/projects/consentido.png";
+
+const overview = [
+  { labelEn: "Project", labelEs: "Proyecto", valueEn: "ConSentido Cognitivo" },
+  { labelEn: "Category", labelEs: "Categoría", valueEn: "Psychopedagogy · Accessibility", valueEs: "Psicopedagogía · Accesibilidad" },
+  { labelEn: "Role", labelEs: "Rol", valueEn: "Full Stack Engineer" },
+  { labelEn: "Project type", labelEs: "Tipo de proyecto", valueEn: "Client Project", valueEs: "Proyecto para Cliente" },
+  { labelEn: "Platform", labelEs: "Plataforma", valueEn: "Web" },
+  { labelEn: "Status", labelEs: "Estado", valueEn: "Live", valueEs: "En producción" },
+  { labelEn: "Website", labelEs: "Sitio web", valueEn: "consentidocognitivo.site", href: "https://www.consentidocognitivo.site/" },
+  { labelEn: "Repository", labelEs: "Repositorio", valueEn: "Private", valueEs: "Privado" },
+];
+
+const sections = [
+  {
+    num: "01", titleEn: "The Challenge", titleEs: "El Desafío",
+    paragraphs: [
+      { en: "The client, a psychopedagogist, had cognitive-support material and a growing audience, but no digital storefront to sell or distribute it, and no easy way to manage content without developer help.", es: "La clienta, psicopedagoga, tenía material de apoyo cognitivo y una audiencia en crecimiento, pero ninguna tienda digital para venderlo o distribuirlo, ni una forma simple de gestionar contenido sin ayuda de un desarrollador." },
+      { en: "The platform needed to feel approachable to families looking for support, while giving the client full control over what she publishes, without technical friction.", es: "La plataforma necesitaba sentirse cercana para las familias que buscan apoyo, y a la vez darle a la clienta control total sobre lo que publica, sin fricción técnica." },
+    ],
+  },
+  {
+    num: "02", titleEn: "The Solution", titleEs: "La Solución",
+    paragraphs: [
+      { en: "I built a public-facing site where visitors can learn about the practice, purchase or download cognitive-support resources, and get in touch directly.", es: "Construí un sitio público donde las visitas pueden conocer el consultorio, comprar o descargar recursos de apoyo cognitivo, y contactar directamente." },
+      { en: "Behind it, a private admin view lets the client upload new resources and manage the catalog herself, without needing to touch code or ask for developer support.", es: "Detrás, una vista de administración privada le permite a la clienta subir nuevos recursos y gestionar el catálogo por su cuenta, sin tocar código ni depender de un desarrollador." },
+      { en: "The result is a self-serve content pipeline: she publishes, the platform handles presentation, delivery and contact.", es: "El resultado es un flujo de contenido autogestionado: ella publica, la plataforma se encarga de la presentación, la entrega y el contacto." },
+    ],
+  },
+  {
+    num: "03", titleEn: "Engineering & Architecture", titleEs: "Ingeniería y Arquitectura",
+    paragraphs: [
+      { en: "The platform is built with Next.js and styled with Tailwind, with Firebase handling authentication, data and resource storage.", es: "La plataforma está construida con Next.js y estilizada con Tailwind, con Firebase manejando autenticación, datos y almacenamiento de recursos." },
+      { en: "The admin area is gated behind authenticated routes, isolated from the public-facing pages but sharing the same codebase and deployment pipeline.", es: "El área de administración está protegida detrás de rutas autenticadas, aislada de las páginas públicas pero compartiendo el mismo código base y pipeline de despliegue." },
+      { en: "Accessibility was treated as a core requirement rather than an afterthought, given the platform's audience of families seeking cognitive-support resources.", es: "La accesibilidad se trató como un requisito central y no como un detalle adicional, dado que el público de la plataforma son familias que buscan recursos de apoyo cognitivo." },
+    ],
+  },
+  {
+    num: "04", titleEn: "Technical Highlights", titleEs: "Aspectos Técnicos Destacados",
+    bullets: [
+      { en: "Public storefront for purchasing and downloading cognitive-support material.", es: "Tienda pública para comprar y descargar material de apoyo cognitivo." },
+      { en: "Self-serve admin panel for content and resource management.", es: "Panel de administración autogestionado para contenido y recursos." },
+      { en: "Firebase-backed authentication and data layer.", es: "Capa de autenticación y datos respaldada por Firebase." },
+      { en: "Accessibility-first UI decisions across the public pages.", es: "Decisiones de UI centradas en la accesibilidad en todas las páginas públicas." },
+      { en: "Direct contact flow connecting visitors with the practice.", es: "Flujo de contacto directo entre las visitas y el consultorio." },
+      { en: "Shared codebase for public site and admin area, single deployment pipeline.", es: "Código base compartido entre el sitio público y el panel de admin, con un solo pipeline de despliegue." },
+    ],
+  },
+  {
+    num: "05", titleEn: "Designing for a Non-Technical Client", titleEs: "Diseñar para una Clienta No Técnica",
+    paragraphs: [
+      { en: "A big part of this project was translating a non-technical client's day-to-day needs into a system she could operate independently.", es: "Una parte importante de este proyecto fue traducir las necesidades diarias de una clienta no técnica en un sistema que pudiera operar de forma independiente." },
+      { en: "The admin experience was kept deliberately simple — upload, publish, done — so the platform could keep growing without requiring ongoing developer involvement.", es: "La experiencia de administración se mantuvo deliberadamente simple — subir, publicar, listo — para que la plataforma pudiera seguir creciendo sin requerir intervención constante de un desarrollador." },
+    ],
+  },
+  {
+    num: "06", titleEn: "My Contribution", titleEs: "Mi Contribución",
+    paragraphs: [
+      { en: "I designed and built the platform end to end — public site, purchase/download flow, contact system and the private admin area — as the sole engineer on the project.", es: "Diseñé y construí la plataforma de punta a punta — sitio público, flujo de compra/descarga, sistema de contacto y el área de administración privada — como único ingeniero del proyecto." },
+      { en: "This included structuring the Firebase data model, implementing authentication for the admin view, and making accessibility a baseline rather than an add-on.", es: "Esto incluyó estructurar el modelo de datos en Firebase, implementar autenticación para la vista de administración, y tratar la accesibilidad como base y no como un agregado." },
+    ],
+  },
+  {
+    num: "07", titleEn: "The Outcome", titleEs: "El Resultado",
+    paragraphs: [
+      { en: "ConSentido Cognitivo turned a psychopedagogy practice into a self-sufficient digital storefront, giving the client a way to sell, distribute and manage her own material without developer involvement.", es: "ConSentido Cognitivo convirtió un consultorio de psicopedagogía en una tienda digital autosuficiente, dándole a la clienta una forma de vender, distribuir y gestionar su propio material sin depender de un desarrollador." },
+      { en: "The platform continues to operate as the client's primary channel for reaching families looking for cognitive-support resources.", es: "La plataforma sigue operando como el canal principal de la clienta para llegar a familias que buscan recursos de apoyo cognitivo." },
+    ],
+  },
+];
+---
+
+<CaseStudy
+  num="003"
+  categoryEn="Psychopedagogy · Accessibility"
+  categoryEs="Psicopedagogía · Accesibilidad"
+  title="ConSentido Cognitivo"
+  taglineEn="An accessible platform that turns a psychopedagogy practice into a digital-first business."
+  taglineEs="Una plataforma accesible que convierte un consultorio de psicopedagogía en un negocio digital."
+  introEn="A client-facing platform for a psychopedagogy practice, built to sell and distribute cognitive-support material online, backed by a private admin area for content management."
+  introEs="Una plataforma de cara al cliente para un consultorio de psicopedagogía, pensada para vender y distribuir material de apoyo cognitivo online, respaldada por un panel de administración privado para gestión de contenido."
+  domain="consentidocognitivo.site"
+  domainUrl="https://www.consentidocognitivo.site/"
+  heroImage={heroImage}
+  heroAlt="ConSentido Cognitivo — platform"
+  overview={overview}
+  sections={sections}
+  websiteUrl="https://www.consentidocognitivo.site/"
+/>

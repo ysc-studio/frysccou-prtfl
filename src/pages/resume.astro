@@ -1,0 +1,326 @@
+---
+import Layout from "../layouts/Layout.astro";
+
+const EXPERIENCE = [
+  {
+    company: "TikLive TTS",
+    roleEn: "Full Stack Engineer", roleEs: "Full Stack Engineer",
+    periodEn: "Oct 2026 – Present", periodEs: "Oct 2026 – Actual",
+    locationEn: "Remote", locationEs: "Remoto",
+    bullets: [
+      { en: "Develop and maintain a cross-platform desktop application for live streaming, integrating TikTok Live, Twitch, YouTube and Kick.", es: "Desarrollar y mantener una aplicación de escritorio multiplataforma para streaming en vivo, integrando TikTok Live, Twitch, YouTube y Kick." },
+      { en: "Work across the application stack using Electron, Node.js, Express, JavaScript and Vite.", es: "Trabajar en toda la pila de la aplicación usando Electron, Node.js, Express, JavaScript y Vite." },
+      { en: "Develop real-time communication and event-driven functionality for streaming chat integrations using WebSockets.", es: "Desarrollar funcionalidad de comunicación en tiempo real y basada en eventos para integraciones de chat de streaming usando WebSockets." },
+      { en: "Implement and maintain streaming features including text-to-speech, chat management, moderation, OBS browser overlays and notification systems.", es: "Implementar y mantener funciones de streaming como texto a voz, gestión de chat, moderación, overlays de navegador para OBS y sistemas de notificaciones." },
+      { en: "Work with application packaging, build automation and deployment workflows using electron-builder, NSIS and GitHub Actions.", es: "Trabajar con empaquetado de aplicaciones, automatización de builds y flujos de despliegue usando electron-builder, NSIS y GitHub Actions." },
+    ],
+  },
+  {
+    company: "Niuro · Client: Tokenit",
+    roleEn: "Full Stack Engineer", roleEs: "Full Stack Engineer",
+    periodEn: "Dec 2025 – Aug 2026", periodEs: "Dic 2025 – Ago 2026",
+    locationEn: "Remote", locationEs: "Remoto",
+    bullets: [
+      { en: "Developed and maintained a blockchain-based real-estate investment platform, including its public marketplace and investor dashboard.", es: "Desarrollar y mantener una plataforma de inversión inmobiliaria basada en blockchain, incluyendo su marketplace público y panel de inversores." },
+      { en: "Designed and implemented AWS infrastructure from scratch, configuring CloudFront, S3, App Runner and related services.", es: "Diseñar e implementar infraestructura en AWS desde cero, configurando CloudFront, S3, App Runner y servicios relacionados." },
+      { en: "Built CI/CD pipelines using GitHub Actions to automate testing and application deployments.", es: "Construir pipelines de CI/CD con GitHub Actions para automatizar testing y despliegues de la aplicación." },
+      { en: "Developed platform features involving KYC, digital signatures, real-time monitoring and AI-powered risk scoring.", es: "Desarrollar funcionalidades de la plataforma como KYC, firmas digitales, monitoreo en tiempo real y scoring de riesgo con IA." },
+      { en: "Worked across the stack using Meteor, Gatsby, React, TypeScript, Node.js and Python.", es: "Trabajar en toda la pila usando Meteor, Gatsby, React, TypeScript, Node.js y Python." },
+    ],
+  },
+  {
+    company: "ZatoBox",
+    roleEn: "Full Stack & Cloud Solutions Architect", roleEs: "Full Stack & Cloud Solutions Architect",
+    periodEn: "Aug 2025 – Dec 2025", periodEs: "Ago 2025 – Dic 2025",
+    locationEn: "Remote", locationEs: "Remoto",
+    bullets: [
+      { en: "Led technical development activities, coordinating team tasks and organizing development priorities and workflows.", es: "Liderar actividades de desarrollo técnico, coordinando tareas del equipo y organizando prioridades y flujos de trabajo." },
+      { en: "Architected and developed the platform using Next.js, Tailwind CSS and Supabase.", es: "Diseñar y desarrollar la plataforma usando Next.js, Tailwind CSS y Supabase." },
+      { en: "Designed backend services, database structures, authentication workflows and external API integrations.", es: "Diseñar servicios backend, estructuras de base de datos, flujos de autenticación e integraciones con APIs externas." },
+      { en: "Implemented Docker-based infrastructure and automated CI/CD pipelines using GitHub Actions.", es: "Implementar infraestructura basada en Docker y pipelines de CI/CD automatizados con GitHub Actions." },
+      { en: "Integrated external services and AI capabilities, including Google's Gemini API.", es: "Integrar servicios externos y capacidades de IA, incluyendo la API Gemini de Google." },
+    ],
+  },
+  {
+    company: "Dragon Pyramid",
+    roleEn: "Full Stack Engineer", roleEs: "Full Stack Engineer",
+    periodEn: "Jun 2025 – Oct 2025", periodEs: "Jun 2025 – Oct 2025",
+    locationEn: "Remote", locationEs: "Remoto",
+    bullets: [
+      { en: "Developed modern interfaces and reusable components for the Gym Master project using Next.js 14, TypeScript, Tailwind CSS.", es: "Desarrollar interfaces modernas y componentes reutilizables para el proyecto Gym Master usando Next.js 14, TypeScript y Tailwind CSS." },
+      { en: "Implemented authentication and role-based access control using NextAuth.", es: "Implementar autenticación y control de acceso basado en roles usando NextAuth." },
+      { en: "Integrated Supabase for real-time notifications and application updates.", es: "Integrar Supabase para notificaciones en tiempo real y actualizaciones de la aplicación." },
+      { en: "Collaborated on product improvements and frontend performance optimization.", es: "Colaborar en mejoras del producto y optimización de performance del frontend." },
+    ],
+  },
+  {
+    company: "YSC by frysccou",
+    roleEn: "Independent Developer & Content Creator", roleEs: "Desarrollador Independiente y Creador de Contenido",
+    periodEn: "Aug 2024 – Present", periodEs: "Ago 2024 – Actual",
+    locationEn: "Remote", locationEs: "Remoto",
+    bullets: [
+      { en: "Design and develop custom web applications, landing pages and full-stack solutions for clients and personal projects.", es: "Diseñar y desarrollar aplicaciones web a medida, landing pages y soluciones full-stack para clientes y proyectos personales." },
+      { en: "Build end-to-end digital products covering frontend, backend, database integration and deployment.", es: "Construir productos digitales de punta a punta cubriendo frontend, backend, integración de bases de datos y despliegue." },
+      { en: "Create technical content focused on web development and modern technologies.", es: "Crear contenido técnico enfocado en desarrollo web y tecnologías modernas." },
+    ],
+  },
+];
+
+const EDUCATION = [
+  { school: "Instituto Superior Santo Domingo (ISSD)", degreeEn: "Higher Technical Degree in Web Development and Mobile Applications", degreeEs: "Tecnicatura Superior en Desarrollo Web y Aplicaciones Móviles", periodEn: "2025 – Expected 2027", periodEs: "2025 – Previsto 2027", location: "Córdoba, Argentina (Online)" },
+  { school: "Henry", degreeEn: "Full Stack Development Bootcamp", degreeEs: "Bootcamp de Desarrollo Full Stack", periodEn: "Jun 2025", periodEs: "Jun 2025", location: "Online" },
+  { school: "Coderhouse", degreeEn: "Full Stack Development Program", degreeEs: "Programa de Desarrollo Full Stack", periodEn: "Feb 2025", periodEs: "Feb 2025", location: "Online" },
+  { school: "Código Facilito", degreeEn: "Modern Frontend Bootcamp", degreeEs: "Bootcamp de Frontend Moderno", periodEn: "Jan 2026", periodEs: "Ene 2026", location: "Online" },
+];
+
+const SKILLS = [
+  { key: "languages", items: ["HTML", "CSS", "JavaScript", "TypeScript", "Java", "Python", "PHP"] },
+  { key: "frontend", items: ["React", "Vue.js", "Angular", "Astro"] },
+  { key: "backend", items: ["Node.js", "NestJS", "Spring Boot", "Django", "FastAPI", "Laravel"] },
+  { key: "frameworks", items: ["Next.js", "Nuxt.js", "Meteor", "Gatsby"] },
+  { key: "mobile", items: ["Flutter", "Dart", "React Native"] },
+  { key: "databases", items: ["MongoDB", "Supabase", "Firebase", "PostgreSQL", "MySQL"] },
+  { key: "cloudDevOps", items: ["AWS (CloudFront, S3, App Runner, etc)", "Docker", "GitHub Actions", "CI/CD"] },
+  { key: "desktop", items: ["Electron", "Vite", "electron-builder"] },
+  { key: "tools", items: ["Git", "GitHub", "Figma", "VS Code", "Claude Code"] },
+];
+
+function makeCounter() {
+  let n = 0;
+  return () => ++n;
+}
+const Lx = makeCounter();
+const Le = makeCounter();
+const Ls = makeCounter();
+const Ll = makeCounter();
+---
+
+<Layout title="Resume — Francisco Espindola · Full Stack Engineer" description="Francisco Espindola's resume, rendered as code — experience, education and skills.">
+<div style="min-height:100vh;background:var(--bg);color:var(--fg);transition:background .35s,color .35s;overflow-x:clip">
+
+  <header style="position:sticky;top:0;z-index:30;background:color-mix(in oklab,var(--bg) 78%,transparent);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);border-bottom:1px solid var(--line)">
+    <div style="max-width:1000px;margin:0 auto;padding:12px clamp(18px,4vw,40px);display:flex;align-items:center;justify-content:space-between;gap:14px;font-family:'Martian Mono',monospace;font-size:11px;text-transform:uppercase;letter-spacing:.02em">
+      <a href="/" style="display:flex;align-items:center;text-decoration:none;color:var(--fg)">
+        <img src="/YSC/logo+text.png" alt="YSC Studio" style="height:38px;width:auto;display:block" />
+      </a>
+      <nav style="display:flex;align-items:center;gap:clamp(10px,2.4vw,24px);flex-wrap:wrap;justify-content:flex-end">
+        <a href="#experience" style="text-decoration:none;color:var(--mute)">./<span data-en="">experience</span><span data-es="">experiencia</span></a>
+        <a href="#education" style="text-decoration:none;color:var(--mute)">./<span data-en="">education</span><span data-es="">educación</span></a>
+        <a href="#skills" style="text-decoration:none;color:var(--mute)">./skills</a>
+        <a href="/" style="text-decoration:none;color:var(--mute)">cd ~ ↑</a>
+        <div style="display:flex;align-items:center;border:1px solid var(--line);border-radius:6px;overflow:hidden">
+          <button id="lang-en-btn" type="button" style="all:unset;cursor:pointer;padding:6px 9px">EN</button>
+          <button id="lang-es-btn" type="button" style="all:unset;cursor:pointer;padding:6px 9px">ES</button>
+        </div>
+        <button id="theme-toggle" type="button" aria-label="Toggle theme" class="hover-fg" style="all:unset;cursor:pointer;padding:6px 9px;border:1px solid var(--line);border-radius:6px;color:var(--mute)">◐ dark</button>
+      </nav>
+    </div>
+  </header>
+
+  <main style="max-width:1000px;margin:0 auto;padding:0 clamp(18px,4vw,40px)">
+
+    <section style="padding:clamp(40px,7vw,80px) 0 clamp(32px,5vw,48px)">
+      <div data-reveal="" style="display:flex;align-items:center;gap:14px;margin-bottom:20px;font-family:'Martian Mono',monospace;font-size:11px;text-transform:uppercase;color:var(--mute)"><span style="color:var(--acc)">00</span><span><span data-en="">Resume</span><span data-es="">Currículum</span></span><span style="flex:1;height:1px;background:var(--line)"></span><span>~/resume.ts</span></div>
+      <a href="/" style="display:inline-flex;align-items:center;gap:8px;margin-bottom:20px;color:var(--mute);text-decoration:none;font-family:'Martian Mono',monospace;font-size:12px"><span style="color:var(--acc)">$</span> cd ~ <span data-en="">(back to home)</span><span data-es="">(volver al home)</span> ↑</a>
+      <div data-reveal="" style="display:flex;flex-wrap:wrap;align-items:baseline;justify-content:space-between;gap:16px;margin-bottom:clamp(24px,4vw,36px)">
+        <h1 style="margin:0;font-size:clamp(34px,5.5vw,64px);line-height:1;font-weight:600;letter-spacing:-.035em"><span data-en="">Resume, rendered as code.</span><span data-es="">Currículum, en formato código.</span></h1>
+        <div style="display:flex;flex-wrap:wrap;gap:8px">
+          <button id="download-btn" type="button" class="hover-bright" style="all:unset;cursor:pointer;flex:none;display:flex;align-items:center;gap:8px;padding:11px 16px;border-radius:8px;background:var(--acc);color:var(--on-acc);font-family:'Martian Mono',monospace;font-size:11px;font-weight:500;text-transform:uppercase"><span data-en="">download .pdf</span><span data-es="">descargar .pdf</span> ↓</button>
+          <button id="print-btn" type="button" style="all:unset;cursor:pointer;flex:none;display:flex;align-items:center;gap:8px;padding:11px 16px;border-radius:8px;border:1px solid var(--line);color:var(--mute);font-family:'Martian Mono',monospace;font-size:11px;text-transform:uppercase"><span style="color:var(--acc)">$</span> <span data-en="">print --pdf</span><span data-es="">imprimir --pdf</span></button>
+        </div>
+      </div>
+
+      <div data-reveal="" style="border:1px solid var(--line);border-radius:14px;background:color-mix(in oklab,var(--card) 88%,transparent);backdrop-filter:blur(6px);overflow:hidden">
+        <div style="display:flex;justify-content:space-between;padding:10px 16px;border-bottom:1px solid var(--line);font-family:'Martian Mono',monospace;font-size:10px;text-transform:uppercase;color:var(--mute)"><span>~/francisco — zsh</span><span>profile.ts</span></div>
+        <div style="padding:20px 20px 22px;display:flex;flex-direction:column;gap:16px;font-size:16px;line-height:1.6">
+          <div style="display:flex;align-items:center;gap:12px;font-family:'Martian Mono',monospace;font-size:12px"><span style="color:var(--acc)">$</span><span>whoami</span></div>
+          <div style="display:flex;flex-direction:column;gap:4px">
+            <span style="font-size:clamp(20px,2.2vw,24px);font-weight:600;letter-spacing:-.02em">Francisco Espindola</span>
+            <span style="color:var(--mute)">Full Stack Engineer · Argentina</span>
+          </div>
+          <div style="display:flex;flex-wrap:wrap;gap:8px 18px;font-family:'Martian Mono',monospace;font-size:12px;color:var(--mute)">
+            <a href="mailto:franespindola71@gmail.com" style="color:var(--mute);text-decoration:none">franespindola71@gmail.com</a>
+            <span>+54 11 6767-2197</span>
+            <a href="/" style="color:var(--acc);text-decoration:none">portfolio ↗</a>
+            <a href="https://github.com/esspindola" target="_blank" style="color:var(--acc);text-decoration:none">github ↗</a>
+            <a href="https://www.linkedin.com/in/espindola-francisco" target="_blank" style="color:var(--acc);text-decoration:none">linkedin ↗</a>
+          </div>
+          <div style="display:flex;flex-direction:column;gap:10px;padding-top:8px;border-top:1px solid var(--line)">
+            <div style="display:flex;align-items:center;gap:12px;font-family:'Martian Mono',monospace;font-size:12px"><span style="color:var(--acc)">$</span><span>cat summary.md</span></div>
+            <p style="margin:0;color:var(--mute);max-width:72ch;text-wrap:pretty"><span data-en="">Full Stack Engineer experienced in designing and developing modern web applications, desktop software and scalable digital platforms. Strong background in frontend and backend development, real-time systems, third-party integrations, database design, cloud infrastructure and CI/CD automation. Experienced in technical architecture and development team coordination, with a focus on building reliable, maintainable software and delivering end-to-end solutions.</span><span data-es="">Full Stack Engineer con experiencia diseñando y desarrollando aplicaciones web modernas, software de escritorio y plataformas digitales escalables. Sólida experiencia en desarrollo frontend y backend, sistemas en tiempo real, integraciones con terceros, diseño de bases de datos, infraestructura cloud y automatización de CI/CD. Experiencia en arquitectura técnica y coordinación de equipos de desarrollo, con foco en construir software confiable y mantenible, entregando soluciones de punta a punta.</span></p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="experience" style="padding-bottom:clamp(56px,8vw,88px)">
+      <div data-reveal="" style="display:flex;align-items:center;gap:14px;margin-bottom:20px;font-family:'Martian Mono',monospace;font-size:11px;text-transform:uppercase;color:var(--mute)"><span style="color:var(--acc)">01</span><span><span data-en="">Professional experience</span><span data-es="">Experiencia profesional</span></span><span style="flex:1;height:1px;background:var(--line)"></span><span>experience.ts</span></div>
+      <div data-reveal="" style="border:1px solid var(--line);border-radius:14px;background:var(--card);overflow:hidden">
+        <div style="display:flex;justify-content:space-between;padding:10px 16px;border-bottom:1px solid var(--line);font-family:'Martian Mono',monospace;font-size:10px;text-transform:uppercase;color:var(--mute)"><span>src/experience.ts</span><span>TypeScript</span></div>
+        <div style="padding:18px 0;font-family:'Martian Mono',monospace;font-size:clamp(11px,1.25vw,13px);line-height:1.95;color:var(--mute)">
+          <div style="display:flex;gap:16px;padding:0 18px"><span style="flex:none;width:22px;text-align:right;opacity:.5">{Lx()}</span><span><span style="color:var(--acc2)">export const</span> <span style="color:var(--fg)">experience</span>: <span style="color:var(--fg)">Job[]</span> = [</span></div>
+          {EXPERIENCE.map((job) => (
+            <>
+              <div style="display:flex;gap:16px;padding:0 18px"><span style="flex:none;width:22px;text-align:right;opacity:.5">{Lx()}</span><span style="padding-left:2ch">{"{"}</span></div>
+              <div style="display:flex;gap:16px;padding:0 18px"><span style="flex:none;width:22px;text-align:right;opacity:.5">{Lx()}</span><span style="padding-left:4ch"><span style="color:var(--fg)">company</span>: <span style="color:var(--acc)">"{job.company}"</span>,</span></div>
+              <div style="display:flex;gap:16px;padding:0 18px"><span style="flex:none;width:22px;text-align:right;opacity:.5">{Lx()}</span><span style="padding-left:4ch"><span style="color:var(--fg)">role</span>: <span style="color:var(--acc)">"<span data-en="">{job.roleEn}</span><span data-es="">{job.roleEs}</span>"</span>,</span></div>
+              <div style="display:flex;gap:16px;padding:0 18px"><span style="flex:none;width:22px;text-align:right;opacity:.5">{Lx()}</span><span style="padding-left:4ch"><span style="color:var(--fg)">period</span>: <span style="color:var(--acc)">"<span data-en="">{job.periodEn}</span><span data-es="">{job.periodEs}</span>"</span>, <span style="color:var(--fg)">location</span>: <span style="color:var(--acc)">"<span data-en="">{job.locationEn}</span><span data-es="">{job.locationEs}</span>"</span>,</span></div>
+              <div style="display:flex;gap:16px;padding:0 18px"><span style="flex:none;width:22px;text-align:right;opacity:.5">{Lx()}</span><span style="padding-left:4ch"><span style="color:var(--fg)">focus</span>: [</span></div>
+              {job.bullets.map((b) => (
+                <div style="display:flex;gap:16px;padding:0 18px"><span style="flex:none;width:22px;text-align:right;opacity:.5">{Lx()}</span><span style="padding-left:6ch;text-wrap:pretty"><span style="color:var(--acc)">"<span data-en="">{b.en}</span><span data-es="">{b.es}</span>"</span>,</span></div>
+              ))}
+              <div style="display:flex;gap:16px;padding:0 18px"><span style="flex:none;width:22px;text-align:right;opacity:.5">{Lx()}</span><span style="padding-left:4ch">],</span></div>
+              <div style="display:flex;gap:16px;padding:0 18px"><span style="flex:none;width:22px;text-align:right;opacity:.5">{Lx()}</span><span style="padding-left:2ch">{"},"}</span></div>
+            </>
+          ))}
+          <div style="display:flex;gap:16px;padding:0 18px"><span style="flex:none;width:22px;text-align:right;opacity:.5">{Lx()}</span><span>];</span></div>
+        </div>
+      </div>
+    </section>
+
+    <section id="education" style="padding-bottom:clamp(56px,8vw,88px)">
+      <div data-reveal="" style="display:flex;align-items:center;gap:14px;margin-bottom:20px;font-family:'Martian Mono',monospace;font-size:11px;text-transform:uppercase;color:var(--mute)"><span style="color:var(--acc)">02</span><span><span data-en="">Education</span><span data-es="">Educación</span></span><span style="flex:1;height:1px;background:var(--line)"></span><span>education.ts</span></div>
+      <div data-reveal="" style="border:1px solid var(--line);border-radius:14px;background:var(--card);overflow:hidden">
+        <div style="display:flex;justify-content:space-between;padding:10px 16px;border-bottom:1px solid var(--line);font-family:'Martian Mono',monospace;font-size:10px;text-transform:uppercase;color:var(--mute)"><span>src/education.ts</span><span>TypeScript</span></div>
+        <div style="padding:18px 0;font-family:'Martian Mono',monospace;font-size:clamp(11px,1.25vw,13px);line-height:2;color:var(--mute)">
+          <div style="display:flex;gap:16px;padding:0 18px"><span style="flex:none;width:22px;text-align:right;opacity:.5">{Le()}</span><span><span style="color:var(--acc2)">export const</span> <span style="color:var(--fg)">education</span>: <span style="color:var(--fg)">Degree[]</span> = [</span></div>
+          {EDUCATION.map((ed) => (
+            <div style="display:flex;gap:16px;padding:0 18px"><span style="flex:none;width:22px;text-align:right;opacity:.5">{Le()}</span><span style="padding-left:2ch;text-wrap:pretty">{"{ "}<span style="color:var(--fg)">school</span>: <span style="color:var(--acc)">"{ed.school}"</span>, <span style="color:var(--fg)">degree</span>: <span style="color:var(--acc)">"<span data-en="">{ed.degreeEn}</span><span data-es="">{ed.degreeEs}</span>"</span>, <span style="color:var(--fg)">period</span>: <span style="color:var(--acc)">"<span data-en="">{ed.periodEn}</span><span data-es="">{ed.periodEs}</span>"</span>, <span style="color:var(--fg)">location</span>: <span style="color:var(--acc)">"{ed.location}"</span>{" },"}</span></div>
+          ))}
+          <div style="display:flex;gap:16px;padding:0 18px"><span style="flex:none;width:22px;text-align:right;opacity:.5">{Le()}</span><span>];</span></div>
+        </div>
+      </div>
+    </section>
+
+    <section id="skills" style="padding-bottom:clamp(56px,8vw,88px)">
+      <div data-reveal="" style="display:flex;align-items:center;gap:14px;margin-bottom:20px;font-family:'Martian Mono',monospace;font-size:11px;text-transform:uppercase;color:var(--mute)"><span style="color:var(--acc)">03</span><span><span data-en="">Technical skills</span><span data-es="">Habilidades técnicas</span></span><span style="flex:1;height:1px;background:var(--line)"></span><span>skills.ts</span></div>
+      <div data-reveal="" style="border:1px solid var(--line);border-radius:14px;background:var(--card);overflow:hidden">
+        <div style="display:flex;justify-content:space-between;padding:10px 16px;border-bottom:1px solid var(--line);font-family:'Martian Mono',monospace;font-size:10px;text-transform:uppercase;color:var(--mute)"><span>src/skills.ts</span><span>TypeScript</span></div>
+        <div style="padding:18px 0;font-family:'Martian Mono',monospace;font-size:clamp(11px,1.25vw,13px);line-height:2;color:var(--mute)">
+          <div style="display:flex;gap:16px;padding:0 18px"><span style="flex:none;width:22px;text-align:right;opacity:.5">{Ls()}</span><span><span style="color:var(--acc2)">export const</span> <span style="color:var(--fg)">skills</span> = {"{"}</span></div>
+          {SKILLS.map((cat) => (
+            <div class="hover-line" style="display:flex;gap:16px;padding:0 18px"><span style="flex:none;width:22px;text-align:right;opacity:.5">{Ls()}</span><span style="padding-left:2ch;text-wrap:pretty"><span style="color:var(--fg)">{cat.key}</span>: [{cat.items.map((it, ii) => <>{ii > 0 && ", "}<span style="color:var(--acc)">"{it}"</span></>)}],</span></div>
+          ))}
+          <div style="display:flex;gap:16px;padding:0 18px"><span style="flex:none;width:22px;text-align:right;opacity:.5">{Ls()}</span><span>{"}"} <span style="color:var(--acc2)">as const</span>;</span></div>
+        </div>
+      </div>
+    </section>
+
+    <section style="padding-bottom:clamp(72px,10vw,96px)">
+      <div data-reveal="" style="display:flex;align-items:center;gap:14px;margin-bottom:20px;font-family:'Martian Mono',monospace;font-size:11px;text-transform:uppercase;color:var(--mute)"><span style="color:var(--acc)">04</span><span><span data-en="">Languages</span><span data-es="">Idiomas</span></span><span style="flex:1;height:1px;background:var(--line)"></span><span>languages.ts</span></div>
+      <div data-reveal="" style="border:1px solid var(--line);border-radius:14px;background:var(--card);overflow:hidden">
+        <div style="display:flex;justify-content:space-between;padding:10px 16px;border-bottom:1px solid var(--line);font-family:'Martian Mono',monospace;font-size:10px;text-transform:uppercase;color:var(--mute)"><span>src/languages.ts</span><span>TypeScript</span></div>
+        <div style="padding:18px 0;font-family:'Martian Mono',monospace;font-size:clamp(11px,1.25vw,13px);line-height:2;color:var(--mute)">
+          <div style="display:flex;gap:16px;padding:0 18px"><span style="flex:none;width:22px;text-align:right;opacity:.5">{Ll()}</span><span><span style="color:var(--acc2)">export const</span> <span style="color:var(--fg)">languages</span> = {"{"}</span></div>
+          <div style="display:flex;gap:16px;padding:0 18px"><span style="flex:none;width:22px;text-align:right;opacity:.5">{Ll()}</span><span style="padding-left:2ch"><span style="color:var(--fg)">spanish</span>: <span style="color:var(--acc)">"<span data-en="">Native</span><span data-es="">Nativo</span>"</span>,</span></div>
+          <div style="display:flex;gap:16px;padding:0 18px"><span style="flex:none;width:22px;text-align:right;opacity:.5">{Ll()}</span><span style="padding-left:2ch"><span style="color:var(--fg)">english</span>: <span style="color:var(--acc)">"<span data-en="">Advanced (C1)</span><span data-es="">Avanzado (C1)</span>"</span>,</span></div>
+          <div style="display:flex;gap:16px;padding:0 18px"><span style="flex:none;width:22px;text-align:right;opacity:.5">{Ll()}</span><span>{"}"} <span style="color:var(--acc2)">as const</span>;<span style="display:inline-block;width:.6em;height:1.1em;margin-left:4px;vertical-align:-.2em;background:var(--acc);animation:blink 1.1s step-end infinite"></span></span></div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <div id="download-modal" role="dialog" aria-modal="true" aria-hidden="true" style="position:fixed;inset:0;z-index:50;display:flex;align-items:center;justify-content:center;padding:20px;background:color-mix(in oklab,var(--bg) 60%,transparent);backdrop-filter:blur(4px);opacity:0;pointer-events:none;transition:opacity .25s ease">
+    <div style="width:min(360px,100%);border:1px solid var(--line);border-radius:14px;background:var(--card);overflow:hidden;transform:translateY(8px);transition:transform .25s cubic-bezier(.2,.8,.2,1)" id="download-modal-card">
+      <div style="display:flex;justify-content:space-between;padding:10px 16px;border-bottom:1px solid var(--line);font-family:'Martian Mono',monospace;font-size:10px;text-transform:uppercase;color:var(--mute)"><span>confirm.sh</span><span>↙ EspindolaFrancisco-Resume.pdf</span></div>
+      <div style="padding:20px;display:flex;flex-direction:column;gap:16px">
+        <div style="display:flex;align-items:center;gap:12px;font-family:'Martian Mono',monospace;font-size:12px;color:var(--mute)"><span style="color:var(--acc)">$</span><span data-en="">download resume.pdf?</span><span data-es="">¿descargar resume.pdf?</span></div>
+        <p style="margin:0;font-size:15px;line-height:1.5;color:var(--fg)"><span data-en="">Do you want to download Francisco's resume as a PDF?</span><span data-es="">¿Querés descargar el currículum de Francisco en PDF?</span></p>
+        <div style="display:flex;gap:8px;justify-content:flex-end">
+          <button id="download-no" type="button" style="all:unset;cursor:pointer;padding:10px 16px;border-radius:8px;border:1px solid var(--line);color:var(--mute);font-family:'Martian Mono',monospace;font-size:11px;text-transform:uppercase"><span data-en="">no</span><span data-es="">no</span></button>
+          <button id="download-yes" type="button" class="hover-bright" style="all:unset;cursor:pointer;padding:10px 16px;border-radius:8px;background:var(--acc);color:var(--on-acc);font-family:'Martian Mono',monospace;font-size:11px;font-weight:500;text-transform:uppercase"><span data-en="">yes, download</span><span data-es="">sí, descargar</span></button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <footer style="border-top:1px solid var(--line)">
+    <div style="max-width:1000px;margin:0 auto;padding:28px clamp(18px,4vw,40px) 40px;display:flex;flex-wrap:wrap;justify-content:space-between;align-items:baseline;gap:16px;font-family:'Martian Mono',monospace;font-size:11px;color:var(--mute)">
+      <span>© 2026 Francisco Espindola</span>
+      <span>Buenos Aires, Argentina</span>
+      <a href="/" style="text-decoration:none;color:var(--mute)">cd ~ ↑</a>
+    </div>
+  </footer>
+
+</div>
+</Layout>
+
+<style>
+  .hover-fg:hover { color: var(--fg); }
+  .hover-line:hover { background: color-mix(in oklab, var(--acc) 7%, transparent); }
+
+  @media print {
+    header, footer, #print-btn, #download-btn, #download-modal { display: none !important; }
+  }
+</style>
+
+<script>
+  const THEME_KEY = 'ysc-theme', LANG_KEY = 'ysc-lang';
+  const root = document.documentElement;
+  let theme = localStorage.getItem(THEME_KEY) || 'dark';
+  let lang = localStorage.getItem(LANG_KEY) || 'en';
+
+  function apply() {
+    root.dataset.theme = theme; root.dataset.lang = lang; root.lang = lang;
+    try { localStorage.setItem(THEME_KEY, theme); localStorage.setItem(LANG_KEY, lang); } catch (e) {}
+    const themeBtn = document.getElementById('theme-toggle');
+    if (themeBtn) themeBtn.textContent = theme === 'dark' ? '◐ dark' : '◑ light';
+    const enBtn = document.getElementById('lang-en-btn'), esBtn = document.getElementById('lang-es-btn');
+    if (enBtn) { (enBtn as HTMLElement).style.background = lang === 'en' ? 'var(--fg)' : 'transparent'; (enBtn as HTMLElement).style.color = lang === 'en' ? 'var(--bg)' : 'var(--mute)'; }
+    if (esBtn) { (esBtn as HTMLElement).style.background = lang === 'es' ? 'var(--fg)' : 'transparent'; (esBtn as HTMLElement).style.color = lang === 'es' ? 'var(--bg)' : 'var(--mute)'; }
+  }
+  apply();
+
+  document.getElementById('lang-en-btn')?.addEventListener('click', () => { lang = 'en'; apply(); });
+  document.getElementById('lang-es-btn')?.addEventListener('click', () => { lang = 'es'; apply(); });
+  document.getElementById('theme-toggle')?.addEventListener('click', () => { theme = theme === 'dark' ? 'light' : 'dark'; apply(); });
+  document.getElementById('print-btn')?.addEventListener('click', () => window.print());
+
+  (function downloadModal() {
+    const modal = document.getElementById('download-modal');
+    const card = document.getElementById('download-modal-card');
+    if (!modal || !card) return;
+
+    function open() {
+      modal!.style.pointerEvents = 'auto';
+      modal!.style.opacity = '1';
+      modal!.setAttribute('aria-hidden', 'false');
+      (card as HTMLElement).style.transform = 'translateY(0)';
+    }
+    function close() {
+      modal!.style.opacity = '0';
+      modal!.style.pointerEvents = 'none';
+      modal!.setAttribute('aria-hidden', 'true');
+      (card as HTMLElement).style.transform = 'translateY(8px)';
+    }
+    function confirmDownload() {
+      const a = document.createElement('a');
+      a.href = '/EspindolaFrancisco-Resume.pdf';
+      a.download = 'EspindolaFrancisco-Resume.pdf';
+      document.body.appendChild(a);
+      a.click();
+      a.remove();
+      close();
+    }
+
+    document.getElementById('download-btn')?.addEventListener('click', open);
+    document.getElementById('download-yes')?.addEventListener('click', confirmDownload);
+    document.getElementById('download-no')?.addEventListener('click', close);
+    modal.addEventListener('click', (e) => { if (e.target === modal) close(); });
+    document.addEventListener('keydown', (e) => { if (e.key === 'Escape') close(); });
+  })();
+
+  (function reveal() {
+    const els = document.querySelectorAll('[data-reveal]');
+    const io = new IntersectionObserver((es) => es.forEach((en) => {
+      if (en.isIntersecting) { (en.target as HTMLElement).style.opacity = '1'; (en.target as HTMLElement).style.transform = 'none'; io.unobserve(en.target); }
+    }), { rootMargin: '0px 0px -8% 0px' });
+    els.forEach((el) => {
+      const r = el.getBoundingClientRect(); if (r.top < innerHeight) return;
+      (el as HTMLElement).style.opacity = '0'; (el as HTMLElement).style.transform = 'translateY(24px)';
+      (el as HTMLElement).style.transition = 'opacity .8s ease, transform .9s cubic-bezier(.2,.7,.2,1)';
+      io.observe(el);
+    });
+  })();
+</script>

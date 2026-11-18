@@ -1,0 +1,89 @@
+---
+import CaseStudy from "../../components/CaseStudy.astro";
+import heroImage from "../../assets/projects/zatobox.png";
+
+const overview = [
+  { labelEn: "Project", labelEs: "Proyecto", valueEn: "ZatoBox" },
+  { labelEn: "Category", labelEs: "Categoría", valueEn: "Open Source · POS" },
+  { labelEn: "Role", labelEs: "Rol", valueEn: "Full Stack & Cloud Solutions Architect" },
+  { labelEn: "Project type", labelEs: "Tipo de proyecto", valueEn: "Open Source · Team Lead", valueEs: "Open Source · Líder de Equipo" },
+  { labelEn: "Platform", labelEs: "Plataforma", valueEn: "Web" },
+  { labelEn: "Status", labelEs: "Estado", valueEn: "Archived", valueEs: "Archivado" },
+  { labelEn: "Website", labelEs: "Sitio web", valueEn: "No longer live", valueEs: "Ya no está en línea" },
+  { labelEn: "Repository", labelEs: "Repositorio", valueEn: "Private", valueEs: "Privado" },
+];
+
+const sections = [
+  {
+    num: "01", titleEn: "The Challenge", titleEs: "El Desafío",
+    paragraphs: [
+      { en: "ZatoBox was a crypto-based point-of-sale system in rough shape when I joined — unstable infrastructure, inconsistent deployments and a codebase that needed real technical direction, not just patches.", es: "ZatoBox era un sistema de punto de venta con criptomonedas en mal estado cuando me uní — infraestructura inestable, despliegues inconsistentes y un código que necesitaba dirección técnica real, no solo parches." },
+      { en: "The priority was to stabilize what existed while steering a development team toward a workable, shippable product.", es: "La prioridad fue estabilizar lo que ya existía mientras guiaba a un equipo de desarrollo hacia un producto viable y entregable." },
+    ],
+  },
+  {
+    num: "02", titleEn: "The Solution", titleEs: "La Solución",
+    paragraphs: [
+      { en: "I took over as technical lead, migrating the unstable parts of the stack, rebuilding core flows on Next.js and Supabase, and putting Docker-based infrastructure in place.", es: "Asumí como líder técnico, migrando las partes inestables del stack, reconstruyendo los flujos centrales sobre Next.js y Supabase, y dejando en pie una infraestructura basada en Docker." },
+      { en: "Rather than rewriting everything, I focused on stabilizing critical paths first — inventory, orders, authentication — then expanded from a solid base.", es: "En lugar de reescribir todo, prioricé estabilizar primero los caminos críticos — inventario, pedidos, autenticación — y expandir desde una base sólida." },
+      { en: "I coordinated the development team's priorities and workflow, turning scattered effort into a structured release process.", es: "Coordiné las prioridades y el flujo de trabajo del equipo de desarrollo, convirtiendo un esfuerzo disperso en un proceso de release estructurado." },
+    ],
+  },
+  {
+    num: "03", titleEn: "Engineering & Architecture", titleEs: "Ingeniería y Arquitectura",
+    paragraphs: [
+      { en: "The rebuilt platform runs on Next.js with Tailwind CSS on the frontend, and Supabase handling data, auth and real-time features on the backend.", es: "La plataforma reconstruida corre sobre Next.js con Tailwind CSS en el frontend, y Supabase manejando datos, autenticación y funciones en tiempo real en el backend." },
+      { en: "Docker-based infrastructure replaced the previous inconsistent deployment setup, with CI/CD pipelines on GitHub Actions automating testing and releases.", es: "Una infraestructura basada en Docker reemplazó el esquema de despliegue inconsistente anterior, con pipelines de CI/CD en GitHub Actions automatizando testing y releases." },
+      { en: "I also integrated external AI capabilities, including Google's Gemini API, into the platform's feature set.", es: "También integré capacidades externas de IA, incluyendo la API Gemini de Google, dentro del conjunto de funcionalidades de la plataforma." },
+    ],
+  },
+  {
+    num: "04", titleEn: "Technical Highlights", titleEs: "Aspectos Técnicos Destacados",
+    bullets: [
+      { en: "Full migration from an unstable infrastructure to a Docker-based deployment.", es: "Migración completa desde una infraestructura inestable hacia un despliegue basado en Docker." },
+      { en: "Real-time inventory and order management built on Supabase.", es: "Inventario y gestión de pedidos en tiempo real construidos sobre Supabase." },
+      { en: "CI/CD pipelines automating testing and releases via GitHub Actions.", es: "Pipelines de CI/CD automatizando testing y releases vía GitHub Actions." },
+      { en: "Authentication and external API integrations designed from the ground up.", es: "Autenticación e integraciones con APIs externas diseñadas desde cero." },
+      { en: "Gemini API integration for AI-assisted features.", es: "Integración de la API Gemini para funcionalidades asistidas por IA." },
+      { en: "Technical leadership across a development team, from priorities to delivery.", es: "Liderazgo técnico de un equipo de desarrollo, desde las prioridades hasta la entrega." },
+    ],
+  },
+  {
+    num: "05", titleEn: "Leading the Rebuild", titleEs: "Liderar la Reconstrucción",
+    paragraphs: [
+      { en: "Stabilizing ZatoBox was as much about people as it was about code — the development team needed clear priorities and a workflow that didn't rely on heroics.", es: "Estabilizar ZatoBox fue tanto un tema de personas como de código — el equipo de desarrollo necesitaba prioridades claras y un flujo de trabajo que no dependiera de hazañas individuales." },
+      { en: "I split the rebuild into stages, tackled the most unstable parts first, and kept the team focused on shipping incremental, working releases instead of chasing a perfect rewrite.", es: "Dividí la reconstrucción en etapas, ataqué primero las partes más inestables, y mantuve al equipo enfocado en entregar releases incrementales y funcionales en lugar de perseguir una reescritura perfecta." },
+    ],
+  },
+  {
+    num: "06", titleEn: "My Contribution", titleEs: "Mi Contribución",
+    paragraphs: [
+      { en: "I joined as Full Stack & Cloud Solutions Architect, leading the technical direction of the project and coordinating the development team's day-to-day work.", es: "Me uní como Full Stack & Cloud Solutions Architect, liderando la dirección técnica del proyecto y coordinando el trabajo diario del equipo de desarrollo." },
+      { en: "My contributions spanned the full stack — from rebuilding frontend flows and backend services to designing the Docker infrastructure and CI/CD pipelines that kept releases consistent.", es: "Mis contribuciones abarcaron toda la pila — desde reconstruir flujos de frontend y servicios de backend hasta diseñar la infraestructura en Docker y los pipelines de CI/CD que mantuvieron los releases consistentes." },
+    ],
+  },
+  {
+    num: "07", titleEn: "The Outcome", titleEs: "El Resultado",
+    paragraphs: [
+      { en: "ZatoBox went from an unstable, hard-to-deploy system to a working, Docker-based point-of-sale platform with a functioning development process behind it.", es: "ZatoBox pasó de ser un sistema inestable y difícil de desplegar a una plataforma de punto de venta funcional, basada en Docker y con un proceso de desarrollo sólido detrás." },
+      { en: "The site is no longer live, but the engineering and leadership work done during this period remain a reference point for stabilizing troubled codebases under real constraints.", es: "El sitio ya no está en línea, pero el trabajo de ingeniería y liderazgo realizado durante ese período sigue siendo un punto de referencia para estabilizar código en problemas bajo restricciones reales." },
+    ],
+  },
+];
+---
+
+<CaseStudy
+  num="004"
+  categoryEn="Open Source · POS"
+  categoryEs="Open Source · POS"
+  title="ZatoBox"
+  taglineEn="A crypto-powered point-of-sale system, rescued, rebuilt and stabilized."
+  taglineEs="Un sistema de punto de venta con criptomonedas, rescatado, reconstruido y estabilizado."
+  introEn="An open-source crypto point-of-sale system that needed stabilizing and a team to see it through — I joined, fixed what was broken, and led the effort."
+  introEs="Un sistema de punto de venta open-source con criptomonedas que necesitaba estabilizarse y un equipo que lo llevara adelante — me uní, arreglé lo que estaba roto y lideré el esfuerzo."
+  archived={true}
+  heroImage={heroImage}
+  heroAlt="ZatoBox — video still"
+  overview={overview}
+  sections={sections}
+/>

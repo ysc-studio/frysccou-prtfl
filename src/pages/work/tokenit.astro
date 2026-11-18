@@ -1,0 +1,97 @@
+---
+import CaseStudy from "../../components/CaseStudy.astro";
+import heroImage from "../../assets/projects/app-tokenit.png";
+
+const overview = [
+  { labelEn: "Project", labelEs: "Proyecto", valueEn: "Tokenit" },
+  { labelEn: "Category", labelEs: "Categoría", valueEn: "Investor Platform · Web3", valueEs: "Plataforma de Inversores · Web3" },
+  { labelEn: "Role", labelEs: "Rol", valueEn: "Full Stack Engineer (Solo)" },
+  { labelEn: "Project type", labelEs: "Tipo de proyecto", valueEn: "Client Project", valueEs: "Proyecto para Cliente" },
+  { labelEn: "Platform", labelEs: "Plataforma", valueEn: "Web" },
+  { labelEn: "Status", labelEs: "Estado", valueEn: "Delivered", valueEs: "Entregado" },
+  { labelEn: "Website", labelEs: "Sitio web", valueEn: "app.tokenit.cl", href: "https://app.tokenit.cl" },
+  { labelEn: "Repository", labelEs: "Repositorio", valueEn: "Private", valueEs: "Privado" },
+];
+
+const sections = [
+  {
+    num: "01", titleEn: "The Challenge", titleEs: "El Desafío",
+    paragraphs: [
+      { en: "Tokenit set out to let everyday investors buy into tokenized real-estate opportunities backed by real assets — a product that depended as much on trust and compliance as it did on good engineering.", es: "Tokenit buscaba permitir que inversores comunes accedan a oportunidades de real estate tokenizado respaldadas por activos reales — un producto que dependía tanto de la confianza y el cumplimiento normativo como de una buena ingeniería." },
+      { en: "The platform needed a public marketplace to attract investors and a secure dashboard for existing ones, built on infrastructure that could scale without a dedicated DevOps team in place.", es: "La plataforma necesitaba un marketplace público para atraer inversores y un panel seguro para los existentes, construido sobre una infraestructura capaz de escalar sin un equipo de DevOps dedicado." },
+    ],
+  },
+  {
+    num: "02", titleEn: "The Solution", titleEs: "La Solución",
+    paragraphs: [
+      { en: "I rebuilt Tokenit almost entirely from the ground up, acting as sole designer, architect and engineer across both the public marketplace and the investor dashboard.", es: "Reconstruí Tokenit casi por completo desde cero, actuando como único diseñador, arquitecto e ingeniero tanto del marketplace público como del panel de inversores." },
+      { en: "The marketplace, built with Gatsby and Python, presents tokenized real-estate opportunities to the public, while the investor dashboard — built with Meteor and React — handles real-time monitoring, KYC, digital signing and AI-assisted risk scoring.", es: "El marketplace, construido con Gatsby y Python, presenta al público las oportunidades de real estate tokenizado, mientras que el panel de inversores — hecho con Meteor y React — maneja monitoreo en tiempo real, KYC, firma digital y scoring de riesgo asistido por IA." },
+      { en: "Every layer, from UI to infrastructure, was designed to operate reliably with a single engineer owning the full lifecycle.", es: "Cada capa, desde la interfaz hasta la infraestructura, fue pensada para funcionar de forma confiable con un solo ingeniero a cargo de todo el ciclo de vida." },
+    ],
+  },
+  {
+    num: "03", titleEn: "Engineering & Architecture", titleEs: "Ingeniería y Arquitectura",
+    paragraphs: [
+      { en: "The investor dashboard runs on Meteor and React with TypeScript, while the public marketplace is a statically generated Gatsby site backed by Python services.", es: "El panel de inversores corre sobre Meteor y React con TypeScript, mientras que el marketplace público es un sitio generado estáticamente con Gatsby respaldado por servicios en Python." },
+      { en: "I designed the AWS infrastructure from scratch — configuring CloudFront, S3 and App Runner — to serve both applications reliably at scale, without relying on a managed platform.", es: "Diseñé la infraestructura de AWS desde cero — configurando CloudFront, S3 y App Runner — para servir ambas aplicaciones de forma confiable y escalable, sin depender de una plataforma gestionada." },
+      { en: "CI/CD pipelines built with GitHub Actions automate testing and deployments across both the marketplace and the dashboard, reducing manual release overhead.", es: "Pipelines de CI/CD construidos con GitHub Actions automatizan testing y despliegues tanto del marketplace como del dashboard, reduciendo el trabajo manual en cada release." },
+    ],
+  },
+  {
+    num: "04", titleEn: "Technical Highlights", titleEs: "Aspectos Técnicos Destacados",
+    bullets: [
+      { en: "End-to-end ownership of architecture, infrastructure and product.", es: "Propiedad de punta a punta sobre arquitectura, infraestructura y producto." },
+      { en: "AWS infrastructure (CloudFront, S3, App Runner) designed and deployed from scratch.", es: "Infraestructura de AWS (CloudFront, S3, App Runner) diseñada y desplegada desde cero." },
+      { en: "Automated CI/CD pipelines for marketplace and dashboard deployments.", es: "Pipelines de CI/CD automatizados para marketplace y dashboard." },
+      { en: "KYC and digital signing flows for investor onboarding.", es: "Flujos de KYC y firma digital para el onboarding de inversores." },
+      { en: "AI-powered risk scoring integrated into the investment flow.", es: "Scoring de riesgo con IA integrado al flujo de inversión." },
+      { en: "Real-time monitoring across the investor dashboard.", es: "Monitoreo en tiempo real en el panel de inversores." },
+      { en: "Meeting and calendar automation for investor operations.", es: "Automatización de reuniones y calendarios para operaciones con inversores." },
+      { en: "Dual-stack delivery: Meteor/React dashboard and Gatsby/Python marketplace.", es: "Entrega en doble stack: dashboard en Meteor/React y marketplace en Gatsby/Python." },
+    ],
+  },
+  {
+    num: "05", titleEn: "Scaling Solo", titleEs: "Escalar en Solitario",
+    paragraphs: [
+      { en: "Being the only engineer on the project meant every architectural decision had direct consequences on delivery speed and maintainability.", es: "Ser el único ingeniero del proyecto implicaba que cada decisión de arquitectura tenía consecuencias directas en la velocidad de entrega y en la mantenibilidad." },
+      { en: "I prioritized automation wherever possible — from deployments to investor-facing operational workflows like meeting scheduling — to offset the lack of a larger team.", es: "Prioricé la automatización en todo lo posible — desde los despliegues hasta flujos operativos de cara al inversor, como la coordinación de reuniones — para compensar la falta de un equipo más grande." },
+      { en: "This approach let the platform grow in scope without a proportional increase in operational overhead.", es: "Este enfoque permitió que la plataforma creciera en alcance sin un aumento proporcional en la carga operativa." },
+    ],
+  },
+  {
+    num: "06", titleEn: "My Contribution", titleEs: "Mi Contribución",
+    paragraphs: [
+      { en: "I was solely responsible for the product's design, architecture and implementation — from the investor-facing dashboard to the public marketplace and the AWS infrastructure behind both.", es: "Fui el único responsable del diseño, la arquitectura y la implementación del producto — desde el panel de inversores hasta el marketplace público y la infraestructura de AWS detrás de ambos." },
+      { en: "This included setting up CI/CD, implementing compliance-related features like KYC and digital signing, and integrating AI-based risk scoring into the investment workflow.", es: "Esto incluyó configurar CI/CD, implementar funcionalidades de cumplimiento como KYC y firma digital, e integrar scoring de riesgo con IA al flujo de inversión." },
+    ],
+  },
+  {
+    num: "07", titleEn: "The Outcome", titleEs: "El Resultado",
+    paragraphs: [
+      { en: "Tokenit grew from an early-stage concept into a functioning Web3 investment platform with a public marketplace and a secure, real-time investor dashboard.", es: "Tokenit pasó de ser un concepto en etapa temprana a una plataforma de inversión Web3 en funcionamiento, con un marketplace público y un panel de inversores seguro y en tiempo real." },
+      { en: "The infrastructure and automation put in place allowed the platform to operate reliably without a dedicated operations team.", es: "La infraestructura y la automatización implementadas permitieron que la plataforma operara de forma confiable sin un equipo de operaciones dedicado." },
+    ],
+  },
+];
+---
+
+<CaseStudy
+  num="002"
+  categoryEn="Investor Platform · Web3"
+  categoryEs="Plataforma de Inversores · Web3"
+  title="Tokenit"
+  taglineEn="A blockchain real-estate investment platform, built and scaled end to end."
+  taglineEs="Una plataforma de inversión inmobiliaria en blockchain, construida y escalada de punta a punta."
+  introEn="A Web3 real-estate investment platform combining a public marketplace with an investor dashboard, built almost entirely solo — from architecture to infrastructure."
+  introEs="Una plataforma de inversión inmobiliaria Web3 que combina un marketplace público con un panel de inversores, construida casi en su totalidad en solitario — desde la arquitectura hasta la infraestructura."
+  domain="app.tokenit.cl"
+  domainUrl="https://app.tokenit.cl"
+  heroImage={heroImage}
+  heroAlt="Tokenit — investor app"
+  overview={overview}
+  sections={sections}
+  websiteUrl="https://app.tokenit.cl"
+  websiteLabel="Investor app"
+  repoUrl="https://tokenit.cl"
+  repoLabel="Public marketplace"
+/>
