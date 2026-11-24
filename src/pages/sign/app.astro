@@ -1,0 +1,33 @@
+---
+import SignLayout from "../../layouts/SignLayout.astro";
+import Bi from "../../components/sign/Bi.astro";
+import SignEditor from "../../components/sign/SignEditor.tsx";
+---
+
+<SignLayout
+  title="Sign a PDF — YSC Sign"
+  description="Upload a PDF, add your signature and text, and download it signed. Everything runs in your browser."
+  active="app"
+  robots="noindex, follow"
+  compact
+>
+  <div class="sg-app-main">
+    <div id="sg-intro" class="sg-app-intro">
+      <div class="sg-eyebrow" style="margin-bottom:16px"><span class="on"><span class="sg-dot"></span><Bi en="local · nothing uploaded" es="local · nada se sube" /></span><span>~/sign/app</span></div>
+      <h1><Bi en="Sign a PDF" es="Firmá un PDF" /></h1>
+    </div>
+    <SignEditor client:only="react" />
+  </div>
+</SignLayout>
+
+<script>
+  const intro = document.getElementById("sg-intro");
+  const root = document.querySelector(".sg-app-main");
+  if (intro && root) {
+    const sync = () => {
+      intro.style.display = root.querySelector(".sg-work") ? "none" : "";
+    };
+    new MutationObserver(sync).observe(root, { childList: true, subtree: true });
+    sync();
+  }
+</script>

@@ -1,0 +1,205 @@
+---
+import SignLayout from "../../layouts/SignLayout.astro";
+import Bi from "../../components/sign/Bi.astro";
+
+const sections = [
+  {
+    id: "who",
+    title: ["Who provides this tool", "Quién provee esta herramienta"],
+    body: [
+      [
+        "YSC Sign (the “Tool”) is provided by Francisco Espindola, trading as YSC, based in Buenos Aires, Argentina (“YSC”, “we”). It is available at ysc.com.ar/sign. By using the Tool you agree to these Terms & Privacy notice.",
+        "YSC Sign (la “Herramienta”) es provista por Francisco Espindola, bajo la marca YSC, con base en Buenos Aires, Argentina (“YSC”, “nosotros”). Está disponible en ysc.com.ar/sign. Al usar la Herramienta aceptás estos Términos y Aviso de Privacidad.",
+      ],
+    ],
+  },
+  {
+    id: "what",
+    title: ["What the Tool does", "Qué hace la Herramienta"],
+    body: [
+      [
+        "The Tool lets you open a PDF file in your browser, place a drawn or typed signature, text blocks and dates on its pages, and download a new PDF with those elements added. It does not edit or remove the original content of the document.",
+        "La Herramienta te permite abrir un archivo PDF en tu navegador, colocar sobre sus páginas una firma dibujada o escrita, bloques de texto y fechas, y descargar un nuevo PDF con esos elementos agregados. No edita ni elimina el contenido original del documento.",
+      ],
+    ],
+  },
+  {
+    id: "privacy",
+    title: ["Your documents and privacy", "Tus documentos y tu privacidad"],
+    body: [
+      [
+        "<b>Your documents stay on your device.</b> PDF files are opened, edited and exported locally in your browser. We do not upload, receive, store, read or have access to your documents, signatures or any text you add. When you close or reload the page, that information is discarded and we cannot recover it.",
+        "<b>Tus documentos quedan en tu dispositivo.</b> Los archivos PDF se abren, editan y exportan localmente en tu navegador. No subimos, recibimos, almacenamos, leemos ni tenemos acceso a tus documentos, firmas o textos que agregues. Cuando cerrás o recargás la página, esa información se descarta y no podemos recuperarla.",
+      ],
+      [
+        "<b>What is stored in your browser:</b> your theme and language preferences and whether you accepted these terms (browser local storage). No document content is saved there.",
+        "<b>Qué se guarda en tu navegador:</b> tus preferencias de tema e idioma y si aceptaste estos términos (almacenamiento local del navegador). No se guarda contenido de documentos.",
+      ],
+      [
+        "<b>Third-party services:</b> the site loads typefaces from Google Fonts and uses Vercel Web Analytics and hosting for aggregated page statistics. These services may process technical data such as your IP address under their own policies. They never receive your document.",
+        "<b>Servicios de terceros:</b> el sitio carga tipografías desde Google Fonts y usa Vercel Web Analytics y hosting para estadísticas agregadas de páginas. Estos servicios pueden procesar datos técnicos como tu dirección IP bajo sus propias políticas. Nunca reciben tu documento.",
+      ],
+      [
+        "If you send a signed file back to someone (for example to Francisco by email or WhatsApp), that transfer is your decision and is governed by the service you use.",
+        "Si enviás un archivo firmado a alguien (por ejemplo a Francisco por email o WhatsApp), esa transferencia es decisión tuya y se rige por el servicio que uses.",
+      ],
+    ],
+  },
+  {
+    id: "signature",
+    title: ["Electronic signatures and legal effect", "Firmas electrónicas y efecto legal"],
+    callout: true,
+    body: [
+      [
+        "The Tool creates a <b>simple electronic signature</b>: an image or text representing your signature placed on a document. It does <b>not</b> verify your identity, does not use a digital certificate, does not add a trusted timestamp and does not keep an audit trail.",
+        "La Herramienta crea una <b>firma electrónica simple</b>: una imagen o texto que representa tu firma colocada sobre un documento. <b>No</b> verifica tu identidad, no usa certificado digital, no agrega sello de tiempo confiable y no conserva un registro de auditoría.",
+      ],
+      [
+        "Whether such a signature is valid or enforceable depends on the applicable law and on what the parties agreed. Some documents legally require a certified digital signature, notarization or other formalities; do not use the Tool for those. Nothing here is legal advice.",
+        "Que una firma así sea válida o exigible depende de la ley aplicable y de lo acordado entre las partes. Algunos documentos requieren legalmente firma digital certificada, certificación notarial u otras formalidades; no uses la Herramienta para esos casos. Nada de esto constituye asesoramiento legal.",
+      ],
+    ],
+  },
+  {
+    id: "responsibilities",
+    title: ["Your responsibilities", "Tus responsabilidades"],
+    list: [
+      [
+        "Read and understand a document before signing it.",
+        "Leer y comprender un documento antes de firmarlo.",
+      ],
+      [
+        "Sign only your own name, or on behalf of another person or company only if you are authorized to do so.",
+        "Firmar solo con tu propio nombre, o en nombre de otra persona o empresa únicamente si estás autorizado.",
+      ],
+      [
+        "Use the Tool only for lawful purposes. Forging signatures or altering documents to deceive others is prohibited.",
+        "Usar la Herramienta solo con fines lícitos. Está prohibido falsificar firmas o alterar documentos para engañar a otros.",
+      ],
+      [
+        "Check the downloaded PDF before sending it, and keep your own copies of both the original and the signed file.",
+        "Revisar el PDF descargado antes de enviarlo y conservar tus propias copias del original y del archivo firmado.",
+      ],
+    ],
+  },
+  {
+    id: "ip",
+    title: ["Intellectual property", "Propiedad intelectual"],
+    body: [
+      [
+        "The Tool, its design and the YSC brand belong to Francisco Espindola. Your documents and signatures remain yours; we claim no rights over them. The Tool includes third-party open-source components (pdf.js, Apache-2.0; pdf-lib, MIT) and fonts distributed under open licenses (Google Fonts, SIL OFL), which keep their own licenses.",
+        "La Herramienta, su diseño y la marca YSC pertenecen a Francisco Espindola. Tus documentos y firmas siguen siendo tuyos; no reclamamos derechos sobre ellos. La Herramienta incluye componentes open-source de terceros (pdf.js, Apache-2.0; pdf-lib, MIT) y tipografías distribuidas bajo licencias abiertas (Google Fonts, SIL OFL), que conservan sus propias licencias.",
+      ],
+    ],
+  },
+  {
+    id: "warranty",
+    title: ["No warranty", "Sin garantías"],
+    body: [
+      [
+        "The Tool is provided “as is” and “as available”, free of charge, without warranties of any kind, express or implied, including fitness for a particular purpose, accuracy, uninterrupted availability or compatibility with every PDF. Some files (encrypted, damaged or with unusual structures) may not open or may render differently.",
+        "La Herramienta se provee “tal cual” y “según disponibilidad”, de forma gratuita, sin garantías de ningún tipo, expresas o implícitas, incluyendo idoneidad para un fin particular, exactitud, disponibilidad ininterrumpida o compatibilidad con todos los PDF. Algunos archivos (cifrados, dañados o con estructuras inusuales) pueden no abrirse o verse distinto.",
+      ],
+    ],
+  },
+  {
+    id: "liability",
+    title: ["Limitation of liability", "Limitación de responsabilidad"],
+    body: [
+      [
+        "To the maximum extent permitted by law, YSC and Francisco Espindola are not liable for any indirect or consequential loss, loss of data or documents, or any dispute about the validity of a signature arising from your use of the Tool. Nothing in these terms limits liability that cannot be limited under applicable law, including consumer protection rules.",
+        "En la máxima medida permitida por la ley, YSC y Francisco Espindola no son responsables por pérdidas indirectas o consecuentes, pérdida de datos o documentos, ni por disputas sobre la validez de una firma derivadas del uso de la Herramienta. Nada en estos términos limita responsabilidades que no puedan limitarse según la ley aplicable, incluidas las normas de defensa del consumidor.",
+      ],
+    ],
+  },
+  {
+    id: "changes",
+    title: ["Changes and availability", "Cambios y disponibilidad"],
+    body: [
+      [
+        "We may change, suspend or discontinue the Tool, or update these terms, at any time. The date below shows the latest version. Continuing to use the Tool after a change means you accept the updated terms.",
+        "Podemos modificar, suspender o discontinuar la Herramienta, o actualizar estos términos, en cualquier momento. La fecha de abajo indica la última versión. Continuar usando la Herramienta tras un cambio implica aceptar los términos actualizados.",
+      ],
+    ],
+  },
+  {
+    id: "law",
+    title: ["Governing law", "Ley aplicable"],
+    body: [
+      [
+        "These terms are governed by the laws of the Argentine Republic. Any dispute will be submitted to the competent courts of the City of Buenos Aires, without prejudice to any mandatory rights you have as a consumer in your place of residence.",
+        "Estos términos se rigen por las leyes de la República Argentina. Cualquier controversia se someterá a los tribunales competentes de la Ciudad de Buenos Aires, sin perjuicio de los derechos irrenunciables que tengas como consumidor en tu lugar de residencia.",
+      ],
+    ],
+  },
+  {
+    id: "contact",
+    title: ["Contact", "Contacto"],
+    body: [
+      [
+        "Questions about these terms or the Tool: franespindola71@gmail.com.",
+        "Consultas sobre estos términos o la Herramienta: franespindola71@gmail.com.",
+      ],
+    ],
+  },
+];
+
+const crumbs = {
+  "@type": "BreadcrumbList",
+  itemListElement: [
+    { "@type": "ListItem", position: 1, name: "Home", item: "https://ysc.com.ar/" },
+    { "@type": "ListItem", position: 2, name: "YSC Sign", item: "https://ysc.com.ar/sign" },
+    { "@type": "ListItem", position: 3, name: "Terms & Privacy", item: "https://ysc.com.ar/sign/terms" },
+  ],
+};
+---
+
+<SignLayout
+  jsonLdExtra={[crumbs]}
+  title="Terms & Privacy — YSC Sign"
+  description="Terms of use and privacy notice for YSC Sign: your PDFs are processed in your browser and never uploaded."
+  active="terms"
+>
+  <main class="sg-main">
+    <div class="sg-prose-wrap">
+      <nav class="sg-toc" aria-label="Index">
+        {
+          sections.map((s, i) => (
+            <a href={`#${s.id}`}>{String(i + 1).padStart(2, "0")} <Bi en={s.title[0]} es={s.title[1]} /></a>
+          ))
+        }
+      </nav>
+
+      <article class="sg-prose">
+        <div class="sg-sec-head" style="margin-bottom:0"><span class="n">~/sign/terms</span><span class="rule"></span></div>
+        <h1><Bi en="Terms & Privacy" es="Términos y Privacidad" /></h1>
+        <p class="sg-updated"><Bi en="Last updated: 24 Nov 2026" es="Última actualización: 24 nov 2026" /></p>
+
+        {
+          sections.map((s, i) => (
+            <>
+              <h2 id={s.id}><span class="n">{String(i + 1).padStart(2, "0")}</span><Bi en={s.title[0]} es={s.title[1]} /></h2>
+              {s.body &&
+                s.body.map((p) => {
+                  const el = (
+                    <p>
+                      <span data-en="" set:html={p[0]} />
+                      <span data-es="" set:html={p[1]} />
+                    </p>
+                  );
+                  return s.callout ? <div class="sg-callout">{el}</div> : el;
+                })}
+              {s.list && (
+                <ul>
+                  {s.list.map((l) => (
+                    <li><Bi en={l[0]} es={l[1]} /></li>
+                  ))}
+                </ul>
+              )}
+            </>
+          ))
+        }
+      </article>
+    </div>
+  </main>
+</SignLayout>

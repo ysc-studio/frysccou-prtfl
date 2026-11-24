@@ -1,0 +1,255 @@
+---
+import SignLayout from "../../layouts/SignLayout.astro";
+import Bi from "../../components/sign/Bi.astro";
+
+const steps = [
+  {
+    n: "01",
+    en: ["Open your PDF", "Drag the file in or pick it from your device. It opens instantly, right in your browser."],
+    es: ["Abrí tu PDF", "Arrastrá el archivo o elegilo desde tu dispositivo. Se abre al instante, directo en el navegador."],
+  },
+  {
+    n: "02",
+    en: ["Sign it your way", "Draw your signature with mouse or finger, or type it in a handwriting font. Add text and dates wherever you need."],
+    es: ["Firmá a tu manera", "Dibujá tu firma con el mouse o el dedo, o escribila con una tipografía manuscrita. Sumá texto y fechas donde necesites."],
+  },
+  {
+    n: "03",
+    en: ["Download and send it back", "You get the same PDF, signed. Send it back by email or WhatsApp. Done."],
+    es: ["Descargá y devolvelo", "Obtenés el mismo PDF, firmado. Devolvelo por email o WhatsApp. Listo."],
+  },
+];
+
+const features = [
+  {
+    code: "draw()",
+    en: ["Draw your signature", "Freehand with mouse, trackpad or touch. Pick color and thickness, undo strokes, start over."],
+    es: ["Dibujá tu firma", "A mano alzada con mouse, trackpad o touch. Elegí color y grosor, deshacé trazos, empezá de nuevo."],
+  },
+  {
+    code: "type()",
+    en: ["Type it in style", "Seven handwriting fonts to turn your name into a clean, professional signature."],
+    es: ["Escribila con estilo", "Siete tipografías manuscritas para convertir tu nombre en una firma prolija y profesional."],
+  },
+  {
+    code: "text()",
+    en: ["Text blocks", "Add names, ID numbers, dates or notes. Thirteen typefaces, any size, bold and italic."],
+    es: ["Bloques de texto", "Agregá nombres, documentos, fechas o notas. Trece tipografías, cualquier tamaño, negrita y cursiva."],
+  },
+  {
+    code: "style()",
+    en: ["Colors and outlines", "Ink colors, custom picker, adjustable thickness and optional outlines for any element."],
+    es: ["Colores y contornos", "Colores de tinta, selector libre, grosor ajustable y contorno opcional para cualquier elemento."],
+  },
+  {
+    code: "place()",
+    en: ["Drag, resize, repeat", "Move and scale anything on the page. Copy initials to every page with a single click."],
+    es: ["Mové, escalá, repetí", "Movés y escalás todo en la página. Copiá iniciales a todas las páginas con un solo click."],
+  },
+  {
+    code: "export()",
+    en: ["Same PDF, signed", "Multi-page documents supported. Your original layout stays untouched."],
+    es: ["El mismo PDF, firmado", "Compatible con documentos de varias páginas. El diseño original queda intacto."],
+  },
+];
+
+const faqs = [
+  {
+    en: ["Is it free?", "Yes. There is no account, no watermark and no limit."],
+    es: ["¿Es gratis?", "Sí. No hay cuenta, ni marca de agua, ni límite."],
+  },
+  {
+    en: ["Is my document uploaded anywhere?", "No. The PDF is opened and edited inside your browser. It is never sent to a server, and closing the tab discards everything."],
+    es: ["¿Mi documento se sube a algún lado?", "No. El PDF se abre y edita dentro de tu navegador. Nunca se envía a un servidor y al cerrar la pestaña se descarta todo."],
+  },
+  {
+    en: ["Is this signature legally binding?", "It is a simple electronic signature: an image of your signature placed on the document. Whether it is valid depends on the law that applies and on what the parties agreed. It is not a certified digital signature. See the terms for details."],
+    es: ["¿Esta firma tiene validez legal?", "Es una firma electrónica simple: una imagen de tu firma colocada sobre el documento. Su validez depende de la ley aplicable y de lo acordado entre las partes. No es una firma digital certificada. Mirá los términos para más detalle."],
+  },
+  {
+    en: ["Does it work on my phone?", "Yes. You can draw your signature with your finger and place it on the page."],
+    es: ["¿Funciona en el celular?", "Sí. Podés dibujar tu firma con el dedo y ubicarla en la página."],
+  },
+  {
+    en: ["Can I sign password-protected PDFs?", "Not yet. Remove the protection first, or ask the sender for an unprotected copy."],
+    es: ["¿Puedo firmar PDFs con contraseña?", "Todavía no. Quitá primero la protección o pedile al remitente una copia sin protección."],
+  },
+];
+
+const cases = [
+  ["Contracts", "Contratos"],
+  ["NDAs", "Acuerdos de confidencialidad"],
+  ["Rental agreements", "Contratos de alquiler"],
+  ["Freelance agreements", "Acuerdos freelance"],
+  ["Quotes & invoices", "Cotizaciones y facturas"],
+  ["Consent forms", "Formularios de consentimiento"],
+];
+
+const jsonLdExtra = [
+  {
+    "@type": "WebApplication",
+    "@id": "https://ysc.com.ar/sign#app",
+    name: "YSC Sign",
+    url: "https://ysc.com.ar/sign",
+    description: "Free online tool to sign PDF documents in the browser. Draw or type a signature, add text, dates and check marks. Files are never uploaded.",
+    applicationCategory: "BusinessApplication",
+    operatingSystem: "Any (web browser)",
+    browserRequirements: "Requires a modern browser with JavaScript",
+    inLanguage: ["en", "es"],
+    isAccessibleForFree: true,
+    offers: { "@type": "Offer", price: "0", priceCurrency: "USD" },
+    featureList: ["Draw your signature", "Typed handwriting signatures", "Text blocks and dates", "Freehand drawing to tick boxes", "Multi-page PDFs", "No upload, processed locally"],
+    author: { "@id": "https://ysc.com.ar/#person" },
+    publisher: { "@type": "Organization", name: "YSC" },
+  },
+  {
+    "@type": "FAQPage",
+    mainEntity: faqs.map((q) => ({
+      "@type": "Question",
+      name: q.en[0],
+      acceptedAnswer: { "@type": "Answer", text: q.en[1] },
+    })),
+  },
+  {
+    "@type": "BreadcrumbList",
+    itemListElement: [
+      { "@type": "ListItem", position: 1, name: "Home", item: "https://ysc.com.ar/" },
+      { "@type": "ListItem", position: 2, name: "YSC Sign", item: "https://ysc.com.ar/sign" },
+    ],
+  },
+];
+---
+
+<SignLayout
+  title="Sign PDF Online Free — No Upload, No Account | YSC Sign"
+  description="Sign PDF documents online for free. Draw or type your signature, add text, dates and check marks, then download. Private: your file never leaves your browser."
+  active="home"
+  jsonLdExtra={jsonLdExtra}
+>
+  <main class="sg-main">
+    <section class="sg-hero">
+      <div class="sg-hero-copy">
+        <div class="sg-eyebrow">
+          <span class="on"><span class="sg-dot"></span><Bi en="free · no account · no upload" es="gratis · sin cuenta · sin subidas" /></span>
+          <span>~/sign</span>
+        </div>
+        <h1 class="sg-h1">
+          <Bi en="Sign PDFs." es="Firmá PDFs." /><br />
+          <em><Bi en="Privately." es="En privado." /></em>
+        </h1>
+        <p class="sg-lead">
+          <Bi
+            en="Open a contract, draw or type your signature, add text and dates, and download it signed. All inside your browser."
+            es="Abrí un contrato, dibujá o escribí tu firma, sumá texto y fechas, y descargalo firmado. Todo dentro de tu navegador."
+          />
+        </p>
+        <div class="sg-cta">
+          <a href="/sign/app" class="sg-btn"><Bi en="Open the editor" es="Abrir el editor" /> →</a>
+          <a href="/sign/terms" class="sg-btn sg-btn-ghost"><Bi en="Terms & privacy" es="Términos y privacidad" /></a>
+        </div>
+      </div>
+
+      <div class="sg-doc" aria-hidden="true">
+        <div class="sg-doc-bar"><span>~/contract.pdf</span><span>page 1 / 3</span></div>
+        <div class="sg-doc-paper">
+          <span class="sg-doc-chip">signed</span>
+          <div class="sg-doc-title"></div>
+          <div class="sg-doc-line"></div>
+          <div class="sg-doc-line m"></div>
+          <div class="sg-doc-line"></div>
+          <div class="sg-doc-line s"></div>
+          <div class="sg-doc-line"></div>
+          <div class="sg-doc-line m"></div>
+          <div class="sg-doc-sign">
+            <div class="sg-doc-sigbox">
+              <svg viewBox="0 0 220 70">
+                <path pathLength="1" d="M6 52 C 16 8, 34 6, 38 34 S 50 62, 62 30 S 80 8, 90 38 S 108 62, 124 26 C 130 12, 142 14, 138 34 C 134 54, 160 50, 172 30 L 214 40" />
+              </svg>
+            </div>
+            <div class="sg-doc-date">24 Nov 2026</div>
+          </div>
+        </div>
+        <div class="sg-term">
+          <div><b>$</b> sign --file contract.pdf</div>
+          <div>✓ loaded locally · 0 bytes uploaded</div>
+          <div>✓ signature placed · p.3</div>
+          <div>✓ saved contract-signed.pdf</div>
+        </div>
+      </div>
+    </section>
+
+    <section class="sg-section" id="how">
+      <div class="sg-sec-head"><span class="n">01</span><span><Bi en="How it works" es="Cómo funciona" /></span><span class="rule"></span><span>~/sign/flow</span></div>
+      <h2 class="sg-h2"><Bi en="Three steps. No account." es="Tres pasos. Sin cuenta." /></h2>
+      <div class="sg-grid">
+        {
+          steps.map((s) => (
+            <article class="sg-card">
+              <span class="num">{s.n}</span>
+              <h3><Bi en={s.en[0]} es={s.es[0]} /></h3>
+              <p><Bi en={s.en[1]} es={s.es[1]} /></p>
+            </article>
+          ))
+        }
+      </div>
+    </section>
+
+    <section class="sg-section" id="features" style="padding-top:0">
+      <div class="sg-sec-head"><span class="n">02</span><span><Bi en="Toolbox" es="Herramientas" /></span><span class="rule"></span><span>features.ts</span></div>
+      <h2 class="sg-h2"><Bi en="Everything to sign properly." es="Todo para firmar bien." /></h2>
+      <div class="sg-grid">
+        {
+          features.map((f) => (
+            <article class="sg-card">
+              <code>{f.code}</code>
+              <h3><Bi en={f.en[0]} es={f.es[0]} /></h3>
+              <p><Bi en={f.en[1]} es={f.es[1]} /></p>
+            </article>
+          ))
+        }
+      </div>
+    </section>
+
+    <section class="sg-section" id="privacy" style="padding-top:0">
+      <div class="sg-sec-head"><span class="n">03</span><span><Bi en="Privacy" es="Privacidad" /></span><span class="rule"></span><span>~/sign/privacy</span></div>
+      <div class="sg-privacy-box">
+        <h2><Bi en="Your PDF never leaves your device." es="Tu PDF nunca sale de tu dispositivo." /></h2>
+        <ul>
+          <li><Bi en="Processed 100% in your browser." es="Procesado 100% en tu navegador." /></li>
+          <li><Bi en="No uploads, no storage, no copies on our servers." es="Sin subidas, sin almacenamiento, sin copias en nuestros servidores." /></li>
+          <li><Bi en="No account or personal data required." es="Sin cuenta ni datos personales." /></li>
+          <li><Bi en="Close the tab and everything is gone." es="Cerrás la pestaña y todo desaparece." /></li>
+        </ul>
+      </div>
+    </section>
+
+    <section class="sg-section" id="uses" style="padding-top:0">
+      <div class="sg-sec-head"><span class="n">04</span><span><Bi en="Use cases" es="Casos de uso" /></span><span class="rule"></span><span>~/sign/uses</span></div>
+      <h2 class="sg-h2"><Bi en="Sign any PDF online." es="Firmá cualquier PDF online." /></h2>
+      <ul class="sg-tags">
+        {cases.map((c) => <li><Bi en={c[0]} es={c[1]} /></li>)}
+      </ul>
+    </section>
+
+    <section class="sg-section" id="faq" style="padding-top:0">
+      <div class="sg-sec-head"><span class="n">05</span><span>FAQ</span><span class="rule"></span><span>~/sign/faq</span></div>
+      <h2 class="sg-h2"><Bi en="Quick answers." es="Respuestas rápidas." /></h2>
+      <div class="sg-faq">
+        {
+          faqs.map((q) => (
+            <details>
+              <summary><span><Bi en={q.en[0]} es={q.es[0]} /></span></summary>
+              <p><Bi en={q.en[1]} es={q.es[1]} /></p>
+            </details>
+          ))
+        }
+      </div>
+    </section>
+
+    <section class="sg-final">
+      <span class="sg-eyebrow"><span class="on"><span class="sg-dot"></span><Bi en="ready when you are" es="listo cuando quieras" /></span></span>
+      <h2><Bi en="Got a document to sign?" es="¿Tenés algo para firmar?" /><span class="sg-cursor"></span></h2>
+      <a href="/sign/app" class="sg-btn"><Bi en="Open the editor" es="Abrir el editor" /> →</a>
+    </section>
+  </main>
+</SignLayout>

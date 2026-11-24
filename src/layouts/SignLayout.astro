@@ -1,0 +1,108 @@
+---
+import Layout from "./Layout.astro";
+import Bi from "../components/sign/Bi.astro";
+import "../styles/sign.css";
+
+interface Props {
+  title: string;
+  description: string;
+  active?: "home" | "app" | "terms";
+  compact?: boolean;
+  robots?: string;
+  jsonLdExtra?: object[];
+}
+
+const { title, description, active = "home", compact = false, robots, jsonLdExtra } = Astro.props;
+---
+
+<Layout
+  title={title}
+  description={description}
+  robots={robots}
+  jsonLdExtra={jsonLdExtra}
+  image="/YSC/og-sign.png"
+  imageWidth={1200}
+  imageHeight={630}
+  imageAlt="YSC Sign — sign PDFs online, free and private"
+>
+  <div class="sg-root">
+    <header class="sg-header">
+      <div class="sg-header-in">
+        <a href="/sign" class="sg-brand" aria-label="YSC Sign">
+          <img src="/YSC/YSC-Sign-nav.png" alt="YSC Sign" width="279" height="132" />
+        </a>
+        <nav class="sg-nav">
+          <a href="/sign" class:list={[{ "is-active": active === "home" }]}>./<Bi en="home" es="inicio" /></a>
+          <a href="/sign/app" class:list={[{ "is-active": active === "app" }]}>./<Bi en="editor" es="editor" /></a>
+          <a href="/sign/terms" class:list={[{ "is-active": active === "terms" }]}>./<Bi en="terms" es="términos" /></a>
+          <a href="/" class="sg-back">← <Bi en="portfolio" es="portfolio" /></a>
+          <div class="sg-seg">
+            <button id="sg-lang-en" type="button">EN</button>
+            <button id="sg-lang-es" type="button">ES</button>
+          </div>
+          <button id="sg-theme" type="button" class="sg-toggle" aria-label="Toggle theme">◐ dark</button>
+        </nav>
+      </div>
+    </header>
+
+    <slot />
+
+    {
+      !compact && (
+        <footer class="sg-footer">
+          <div class="sg-footer-in">
+            <span>
+              © {new Date().getFullYear()} YSC · Francisco Espindola · Buenos Aires
+            </span>
+            <span class="sg-footer-links">
+              <a href="/sign/terms"><Bi en="Terms & Privacy" es="Términos y Privacidad" /></a>
+              <a href="/">ysc.com.ar</a>
+            </span>
+          </div>
+        </footer>
+      )
+    }
+  </div>
+</Layout>
+
+<script>
+  const THEME_KEY = "ysc-theme";
+  const LANG_KEY = "ysc-lang";
+  const root = document.documentElement;
+  let theme = "dark";
+  let lang = "en";
+  try {
+    theme = localStorage.getItem(THEME_KEY) === "light" ? "light" : "dark";
+    lang = localStorage.getItem(LANG_KEY) === "es" ? "es" : "en";
+  } catch {}
+
+  function apply() {
+    root.dataset.theme = theme;
+    root.dataset.lang = lang;
+    root.lang = lang;
+    try {
+      localStorage.setItem(THEME_KEY, theme);
+      localStorage.setItem(LANG_KEY, lang);
+    } catch {}
+    const tb = document.getElementById("sg-theme");
+    if (tb) tb.textContent = theme === "dark" ? "◐ dark" : "◑ light";
+    const en = document.getElementById("sg-lang-en");
+    const es = document.getElementById("sg-lang-es");
+    en?.classList.toggle("is-on", lang === "en");
+    es?.classList.toggle("is-on", lang === "es");
+  }
+
+  apply();
+  document.getElementById("sg-lang-en")?.addEventListener("click", () => {
+    lang = "en";
+    apply();
+  });
+  document.getElementById("sg-lang-es")?.addEventListener("click", () => {
+    lang = "es";
+    apply();
+  });
+  document.getElementById("sg-theme")?.addEventListener("click", () => {
+    theme = theme === "dark" ? "light" : "dark";
+    apply();
+  });
+</script>
