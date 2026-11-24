@@ -105,4 +105,68 @@ const { title, description, active = "home", compact = false, robots, jsonLdExtr
     theme = theme === "dark" ? "light" : "dark";
     apply();
   });
+
+  const motionOff =
+    matchMedia("(prefers-reduced-motion: reduce)").matches ||
+    (() => {
+      try {
+        return localStorage.getItem("ysc-motion") === "off";
+      } catch {
+        return false;
+      }
+    })();
+
+  function reveal() {
+    const els = Array.from(document.querySelectorAll<HTMLElement>("[data-reveal]"));
+    const io = new IntersectionObserver(
+      (entries) =>
+        entries.forEach((en) => {
+          if (!en.isIntersecting) return;
+          const el = en.target as HTMLElement;
+          io.unobserve(el);
+          el.classList.add("is-in");
+          setTimeout(() => {
+            el.classList.remove("is-pending");
+            el.classList.add("is-done");
+          }, 1600);
+        }),
+      { rootMargin: "0px 0px -8% 0px" },
+    );
+    const groups = new Map<Element, number>();
+    els.forEach((el) => {
+      if (el.getBoundingClientRect().top < innerHeight) return;
+      const parent = el.parentElement as Element;
+      const n = groups.get(parent) ?? 0;
+      groups.set(parent, n + 1);
+      el.style.setProperty("--d", Math.min(n, 5) * 80 + "ms");
+      el.classList.add("is-pending");
+      io.observe(el);
+    });
+  }
+
+  function scramble(el: HTMLElement) {
+    const final = el.textContent ?? "";
+    const chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789#%&";
+    const start = performance.now();
+    const dur = 900;
+    function tick(now: number) {
+      const t = Math.min(1, (now - start) / dur);
+      const lock = Math.floor(t * final.length);
+      let out = "";
+      for (let i = 0; i < final.length; i++) {
+        const c = final[i];
+        out += i < lock || c === " " || /[.,!?]/.test(c) ? c : chars[Math.floor(Math.random() * chars.length)];
+      }
+      el.textContent = t < 1 ? out : final;
+      if (t < 1) requestAnimationFrame(tick);
+    }
+    requestAnimationFrame(tick);
+  }
+
+  if (!motionOff) {
+    reveal();
+    setTimeout(() => {
+      document.querySelectorAll<HTMLElement>(".sg-h1 em [data-en], .sg-h1 em [data-es]").forEach(scramble);
+    }, 350);
+  }
 </script>

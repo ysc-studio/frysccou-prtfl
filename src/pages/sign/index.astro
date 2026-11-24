@@ -179,12 +179,12 @@ const jsonLdExtra = [
     </section>
 
     <section class="sg-section" id="how">
-      <div class="sg-sec-head"><span class="n">01</span><span><Bi en="How it works" es="Cómo funciona" /></span><span class="rule"></span><span>~/sign/flow</span></div>
-      <h2 class="sg-h2"><Bi en="Three steps. No account." es="Tres pasos. Sin cuenta." /></h2>
+      <div class="sg-sec-head" data-reveal><span class="n">01</span><span><Bi en="How it works" es="Cómo funciona" /></span><span class="rule"></span><span>~/sign/flow</span></div>
+      <h2 class="sg-h2" data-reveal><Bi en="Three steps. No account." es="Tres pasos. Sin cuenta." /></h2>
       <div class="sg-grid">
         {
           steps.map((s) => (
-            <article class="sg-card">
+            <article class="sg-card" data-reveal>
               <span class="num">{s.n}</span>
               <h3><Bi en={s.en[0]} es={s.es[0]} /></h3>
               <p><Bi en={s.en[1]} es={s.es[1]} /></p>
@@ -195,12 +195,12 @@ const jsonLdExtra = [
     </section>
 
     <section class="sg-section" id="features" style="padding-top:0">
-      <div class="sg-sec-head"><span class="n">02</span><span><Bi en="Toolbox" es="Herramientas" /></span><span class="rule"></span><span>features.ts</span></div>
-      <h2 class="sg-h2"><Bi en="Everything to sign properly." es="Todo para firmar bien." /></h2>
+      <div class="sg-sec-head" data-reveal><span class="n">02</span><span><Bi en="Toolbox" es="Herramientas" /></span><span class="rule"></span><span>features.ts</span></div>
+      <h2 class="sg-h2" data-reveal><Bi en="Everything to sign properly." es="Todo para firmar bien." /></h2>
       <div class="sg-grid">
         {
           features.map((f) => (
-            <article class="sg-card">
+            <article class="sg-card" data-reveal>
               <code>{f.code}</code>
               <h3><Bi en={f.en[0]} es={f.es[0]} /></h3>
               <p><Bi en={f.en[1]} es={f.es[1]} /></p>
@@ -211,8 +211,8 @@ const jsonLdExtra = [
     </section>
 
     <section class="sg-section" id="privacy" style="padding-top:0">
-      <div class="sg-sec-head"><span class="n">03</span><span><Bi en="Privacy" es="Privacidad" /></span><span class="rule"></span><span>~/sign/privacy</span></div>
-      <div class="sg-privacy-box">
+      <div class="sg-sec-head" data-reveal><span class="n">03</span><span><Bi en="Privacy" es="Privacidad" /></span><span class="rule"></span><span>~/sign/privacy</span></div>
+      <div class="sg-privacy-box" data-reveal>
         <h2><Bi en="Your PDF never leaves your device." es="Tu PDF nunca sale de tu dispositivo." /></h2>
         <ul>
           <li><Bi en="Processed 100% in your browser." es="Procesado 100% en tu navegador." /></li>
@@ -224,20 +224,20 @@ const jsonLdExtra = [
     </section>
 
     <section class="sg-section" id="uses" style="padding-top:0">
-      <div class="sg-sec-head"><span class="n">04</span><span><Bi en="Use cases" es="Casos de uso" /></span><span class="rule"></span><span>~/sign/uses</span></div>
-      <h2 class="sg-h2"><Bi en="Sign any PDF online." es="Firmá cualquier PDF online." /></h2>
+      <div class="sg-sec-head" data-reveal><span class="n">04</span><span><Bi en="Use cases" es="Casos de uso" /></span><span class="rule"></span><span>~/sign/uses</span></div>
+      <h2 class="sg-h2" data-reveal><Bi en="Sign any PDF online." es="Firmá cualquier PDF online." /></h2>
       <ul class="sg-tags">
-        {cases.map((c) => <li><Bi en={c[0]} es={c[1]} /></li>)}
+        {cases.map((c) => <li data-reveal><Bi en={c[0]} es={c[1]} /></li>)}
       </ul>
     </section>
 
     <section class="sg-section" id="faq" style="padding-top:0">
-      <div class="sg-sec-head"><span class="n">05</span><span>FAQ</span><span class="rule"></span><span>~/sign/faq</span></div>
-      <h2 class="sg-h2"><Bi en="Quick answers." es="Respuestas rápidas." /></h2>
+      <div class="sg-sec-head" data-reveal><span class="n">05</span><span>FAQ</span><span class="rule"></span><span>~/sign/faq</span></div>
+      <h2 class="sg-h2" data-reveal><Bi en="Quick answers." es="Respuestas rápidas." /></h2>
       <div class="sg-faq">
         {
           faqs.map((q) => (
-            <details>
+            <details data-reveal>
               <summary><span><Bi en={q.en[0]} es={q.es[0]} /></span></summary>
               <p><Bi en={q.en[1]} es={q.es[1]} /></p>
             </details>
@@ -246,7 +246,7 @@ const jsonLdExtra = [
       </div>
     </section>
 
-    <section class="sg-final">
+    <section class="sg-final" data-reveal>
       <span class="sg-eyebrow"><span class="on"><span class="sg-dot"></span><Bi en="ready when you are" es="listo cuando quieras" /></span></span>
       <h2><Bi en="Got a document to sign?" es="¿Tenés algo para firmar?" /><span class="sg-cursor"></span></h2>
       <a href="/sign/app" class="sg-btn"><Bi en="Open the editor" es="Abrir el editor" /> →</a>
