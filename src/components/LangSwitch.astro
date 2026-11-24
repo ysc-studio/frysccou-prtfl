@@ -1,0 +1,22 @@
+---
+interface Props {
+  enId?: string;
+  esId?: string;
+}
+const { enId = "lang-en-btn", esId = "lang-es-btn" } = Astro.props;
+---
+
+<div class="lang-switch" role="group" aria-label="Language / Idioma">
+  <svg class="lang-globe" viewBox="0 0 20 20" fill="none" aria-hidden="true">
+    <circle cx="10" cy="10" r="7.5" stroke="currentColor" stroke-width="1.4" />
+    <ellipse cx="10" cy="10" rx="3.3" ry="7.5" stroke="currentColor" stroke-width="1.2" opacity=".7" />
+    <path d="M2.5 10h15" stroke="currentColor" stroke-width="1.2" opacity=".7" />
+    <rect x="14.5" y="2" width="3" height="3" fill="var(--acc)" />
+  </svg>
+  <button id={enId} type="button" data-lang-btn="en" lang="en" aria-label="English" aria-pressed="true">
+    <span class="l-full">English</span><span class="l-short">EN</span>
+  </button>
+  <button id={esId} type="button" data-lang-btn="es" lang="es" aria-label="Español" aria-pressed="false">
+    <span class="l-full">Español</span><span class="l-short">ES</span>
+  </button>
+</div>

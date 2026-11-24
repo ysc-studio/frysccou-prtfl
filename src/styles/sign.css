@@ -11,10 +11,8 @@
 .sg-nav > a { text-decoration: none; color: var(--mute); }
 .sg-nav > a:hover, .sg-nav > a.is-active { color: var(--fg); }
 .sg-nav > a.is-active { color: var(--acc); }
-.sg-seg { display: flex; border: 1px solid var(--line); border-radius: 6px; overflow: hidden; }
-.sg-seg button, .sg-toggle { all: unset; cursor: pointer; padding: 6px 9px; color: var(--mute); }
-.sg-seg button.is-on { background: var(--fg); color: var(--bg); }
-.sg-toggle { border: 1px solid var(--line); border-radius: 6px; }
+.sg-toggle { all: unset; box-sizing: border-box; cursor: pointer; padding: 6px 9px; color: var(--mute); border: 1px solid var(--line); border-radius: 6px; font-family: 'Martian Mono', monospace; font-size: 11px; text-transform: uppercase; letter-spacing: .02em; }
+.sg-toggle:focus-visible { outline: 2px solid var(--acc); outline-offset: 2px; }
 .sg-toggle:hover { color: var(--fg); }
 
 .sg-main { width: 100%; max-width: 1200px; margin: 0 auto; padding: 0 clamp(18px, 4vw, 40px); flex: 1; }

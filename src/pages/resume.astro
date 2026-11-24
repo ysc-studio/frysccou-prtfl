@@ -1,5 +1,6 @@
 ---
 import Layout from "../layouts/Layout.astro";
+import LangSwitch from "../components/LangSwitch.astro";
 
 const EXPERIENCE = [
   {
@@ -103,18 +104,17 @@ const Ll = makeCounter();
       <a href="/" style="display:flex;align-items:center;text-decoration:none;color:var(--fg)">
         <img src="/YSC/logo+text.png" alt="YSC" style="height:38px;width:auto;display:block" />
       </a>
-      <button id="mobile-menu-btn" type="button" aria-label="Menu" aria-expanded="false" style="all:unset;cursor:pointer;display:none;align-items:center;justify-content:center;width:36px;height:36px;border:1px solid var(--line);border-radius:7px;color:var(--mute);font-size:15px">☰</button>
+      <div class="hdr-right">
       <nav id="site-nav" style="display:flex;align-items:center;gap:clamp(10px,2.4vw,24px);flex-wrap:wrap;justify-content:flex-end">
         <a href="#experience" style="text-decoration:none;color:var(--mute)">./<span data-en="">experience</span><span data-es="">experiencia</span></a>
         <a href="#education" style="text-decoration:none;color:var(--mute)">./<span data-en="">education</span><span data-es="">educación</span></a>
         <a href="#skills" style="text-decoration:none;color:var(--mute)">./skills</a>
         <a href="/" style="text-decoration:none;color:var(--mute)">cd ~ ↑</a>
-        <div style="display:flex;align-items:center;border:1px solid var(--line);border-radius:6px;overflow:hidden">
-          <button id="lang-en-btn" type="button" style="all:unset;cursor:pointer;padding:6px 9px">EN</button>
-          <button id="lang-es-btn" type="button" style="all:unset;cursor:pointer;padding:6px 9px">ES</button>
-        </div>
         <button id="theme-toggle" type="button" aria-label="Toggle theme" class="hover-fg" style="all:unset;cursor:pointer;padding:6px 9px;border:1px solid var(--line);border-radius:6px;color:var(--mute)">◐ dark</button>
       </nav>
+      <LangSwitch />
+      <button id="mobile-menu-btn" type="button" aria-label="Menu" aria-expanded="false" style="all:unset;cursor:pointer;display:none;align-items:center;justify-content:center;width:36px;height:36px;border:1px solid var(--line);border-radius:7px;color:var(--mute);font-size:15px">☰</button>
+      </div>
     </div>
   </header>
 

@@ -37,3 +37,30 @@ a:hover { color: var(--acc); text-decoration-color: var(--acc); }
 
 @keyframes pulse { 0%, 100% { opacity: 1; } 50% { opacity: .3; } }
 @keyframes blink { 0%, 49% { opacity: 1; } 50%, 100% { opacity: 0; } }
+
+.hdr-right { display: flex; align-items: center; gap: clamp(10px, 2.4vw, 24px); }
+
+.lang-switch { display: inline-flex; align-items: center; gap: 2px; padding: 3px; border: 1px solid var(--line); border-radius: 999px; font-family: 'Martian Mono', monospace; font-size: 11px; letter-spacing: .02em; text-transform: none; color: var(--mute); background: color-mix(in oklab, var(--card) 70%, transparent); }
+.lang-switch .lang-globe { width: 16px; height: 16px; margin: 0 4px 0 8px; flex: none; }
+.lang-switch button { all: unset; box-sizing: border-box; cursor: pointer; padding: 6px 11px; border-radius: 999px; font: 500 11px 'Martian Mono', monospace; letter-spacing: .02em; text-transform: none; background: transparent !important; color: var(--mute) !important; transition: background .2s, color .2s; }
+.lang-switch button:hover { color: var(--fg) !important; }
+.lang-switch button.is-on { background: var(--acc) !important; color: var(--on-acc) !important; font-weight: 600; }
+.lang-switch button:focus-visible { outline: 2px solid var(--acc); outline-offset: 2px; }
+.lang-switch .l-short { display: none; }
+@media (max-width: 520px) {
+  .lang-switch .l-full { display: none; }
+  .lang-switch .l-short { display: inline; }
+  .lang-switch .lang-globe { margin: 0 2px 0 6px; }
+  .lang-switch button { padding: 6px 9px; }
+}
+
+.lang-prompt { position: fixed; z-index: 200; right: 16px; bottom: 16px; width: min(380px, calc(100vw - 32px)); padding: 16px 18px; border: 1px solid color-mix(in oklab, var(--acc) 55%, var(--line)); border-radius: 14px; background: var(--card); color: var(--fg); box-shadow: 0 20px 50px rgba(0, 0, 0, .45); display: flex; flex-direction: column; gap: 6px; animation: lang-rise .4s ease both; }
+.lang-prompt-title { font-size: 17px; font-weight: 600; letter-spacing: -.01em; }
+.lang-prompt-sub { font: 11px/1.5 'Martian Mono', monospace; color: var(--mute); }
+.lang-prompt-actions { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 8px; }
+.lang-prompt-actions button { all: unset; box-sizing: border-box; cursor: pointer; padding: 9px 14px; border-radius: 8px; border: 1px solid var(--line); font: 500 11px 'Martian Mono', monospace; text-transform: uppercase; }
+.lang-prompt-actions button:focus-visible { outline: 2px solid var(--acc); outline-offset: 2px; }
+.lang-prompt-actions .lang-prompt-yes { background: var(--acc); color: var(--on-acc); border-color: var(--acc); }
+.lang-prompt-actions .lang-prompt-no:hover { border-color: var(--acc); }
+@keyframes lang-rise { from { opacity: 0; transform: translateY(12px); } to { opacity: 1; transform: none; } }
+@media (prefers-reduced-motion: reduce) { .lang-prompt { animation: none; } }

@@ -1,5 +1,6 @@
 ---
 import Layout from "../layouts/Layout.astro";
+import LangSwitch from "../components/LangSwitch.astro";
 import { Image } from "astro:assets";
 
 import profile from "../assets/profile.jpg";
@@ -107,20 +108,19 @@ const EMAIL_URL_ES = "mailto:franespindola71@gmail.com?subject=Hablemos%20sobre%
       <a href="#top" style="display:flex;align-items:center;text-decoration:none;color:var(--fg)">
         <img src="/YSC/logo+text.png" alt="YSC" style="height:38px;width:auto;display:block" />
       </a>
-      <button id="mobile-menu-btn" type="button" aria-label="Menu" aria-expanded="false" style="all:unset;cursor:pointer;display:none;align-items:center;justify-content:center;width:36px;height:36px;border:1px solid var(--line);border-radius:7px;color:var(--mute);font-size:15px">☰</button>
+      <div class="hdr-right">
       <nav id="site-nav" style="display:flex;align-items:center;gap:clamp(10px,2.4vw,24px);flex-wrap:wrap;justify-content:flex-end">
         <a href="#work" style="text-decoration:none;color:var(--mute)">./<span data-en="">work</span><span data-es="">proyectos</span></a>
         <a href="#log" style="text-decoration:none;color:var(--mute)">./log</a>
         <a href="#contact" style="text-decoration:none;color:var(--mute)">./<span data-en="">contact</span><span data-es="">contacto</span></a>
         <a href="/resume" style="text-decoration:none;color:var(--mute)">./resume</a>
         <a href="/sign" style="text-decoration:none;color:var(--mute)">./sign</a>
-        <div style="display:flex;align-items:center;border:1px solid var(--line);border-radius:6px;overflow:hidden">
-          <button id="lang-en-btn" type="button" style="all:unset;cursor:pointer;padding:6px 9px">EN</button>
-          <button id="lang-es-btn" type="button" style="all:unset;cursor:pointer;padding:6px 9px">ES</button>
-        </div>
         <button id="theme-toggle" type="button" aria-label="Toggle theme" class="hover-fg" style="all:unset;cursor:pointer;padding:6px 9px;border:1px solid var(--line);border-radius:6px;color:var(--mute)">◐ dark</button>
         <button id="motion-toggle" type="button" aria-label="Toggle motion" class="hover-fg" style="all:unset;cursor:pointer;padding:6px 9px;border:1px solid var(--line);border-radius:6px;color:var(--mute)">❚❚ motion</button>
       </nav>
+      <LangSwitch />
+      <button id="mobile-menu-btn" type="button" aria-label="Menu" aria-expanded="false" style="all:unset;cursor:pointer;display:none;align-items:center;justify-content:center;width:36px;height:36px;border:1px solid var(--line);border-radius:7px;color:var(--mute);font-size:15px">☰</button>
+      </div>
     </div>
   </header>
 

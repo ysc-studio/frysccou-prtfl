@@ -1,6 +1,7 @@
 ---
 import Layout from "./Layout.astro";
 import Bi from "../components/sign/Bi.astro";
+import LangSwitch from "../components/LangSwitch.astro";
 import "../styles/sign.css";
 
 interface Props {
@@ -31,17 +32,16 @@ const { title, description, active = "home", compact = false, robots, jsonLdExtr
         <a href="/sign" class="sg-brand" aria-label="YSC Sign">
           <img src="/YSC/YSC-Sign-nav.png" alt="YSC Sign" width="279" height="132" />
         </a>
+        <div class="hdr-right">
         <nav class="sg-nav">
           <a href="/sign" class:list={[{ "is-active": active === "home" }]}>./<Bi en="home" es="inicio" /></a>
           <a href="/sign/app" class:list={[{ "is-active": active === "app" }]}>./<Bi en="editor" es="editor" /></a>
           <a href="/sign/terms" class:list={[{ "is-active": active === "terms" }]}>./<Bi en="terms" es="términos" /></a>
           <a href="/" class="sg-back">← <Bi en="portfolio" es="portfolio" /></a>
-          <div class="sg-seg">
-            <button id="sg-lang-en" type="button">EN</button>
-            <button id="sg-lang-es" type="button">ES</button>
-          </div>
           <button id="sg-theme" type="button" class="sg-toggle" aria-label="Toggle theme">◐ dark</button>
         </nav>
+        <LangSwitch enId="sg-lang-en" esId="sg-lang-es" />
+        </div>
       </div>
     </header>
 
