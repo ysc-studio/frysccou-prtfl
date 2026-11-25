@@ -1,5 +1,6 @@
 ---
 import "../styles/globals.css";
+import Analytics from "@vercel/analytics/astro";
 
 interface Props {
   title?: string;
@@ -127,7 +128,7 @@ const jsonLd = JSON.stringify({
       rel="stylesheet"
     />
 
-    <script defer src="https://va.vercel-scripts.com/v1/analytics"></script>
+    <Analytics />
   </head>
   <body>
     <slot />
